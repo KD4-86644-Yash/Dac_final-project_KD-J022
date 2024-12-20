@@ -1,0 +1,39 @@
+.bg-gradient {
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .nav-link {
+    font-family: "Playfair Display", serif;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .nav-link:hover {
+    color: #d63384 !important;
+    text-decoration: underline;
+  }
+  
+  .navbar-toggler {
+    border-color: #ff9a9e;
+  }
+  
+  .btn-pink {
+    background-color: #ff9a9e;
+    border: none;
+    color: white;
+  }
+  
+  .btn-pink:hover {
+    background-color: #d63384;
+    transform: scale(1.1);
+  }
+  
+  .dropdown-menu {
+    background-color: #fff7f8;
+    border: 1px solid #ffe5e5;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #ffe5e5;
+  }
+  

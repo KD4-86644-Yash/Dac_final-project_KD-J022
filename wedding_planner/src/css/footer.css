@@ -1,0 +1,90 @@
+/* Footer Background */
+footer {
+    background-color: #ffffff; /* White background */
+    color: #333; /* Dark text for good contrast on white */
+}
+
+/* Column headers (Services, Social Media, etc.) */
+footer h5 {
+    color: #2c3e50; /* Dark color for section headers */
+    font-weight: 600; /* Make section headers bold */
+}
+
+/* Logo and Name */
+footer .logo h4 {
+    color: #e67e22; /* Elegant gold color for company name */
+    font-family: 'Georgia', serif; /* Elegant font for logo */
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+/* Links in the footer */
+footer a {
+    color: #2c3e50 !important; /* Ensure dark color for links */
+    text-decoration: none; /* Remove underlines */
+}
+
+/* Links Hover Effect */
+footer a:hover {
+    color: #e67e22 !important; /* Gold color on hover */
+}
+
+/* Remove default list padding and margin */
+footer .list-unstyled {
+    padding-left: 0;
+    margin: 0;
+}
+
+/* Footer Text */
+footer .text-center p {
+    color: #2c3e50; /* Dark color for footer text */
+    margin-top: 20px;
+}
+
+/* Custom color for Copyright Text */
+footer .text-custom {
+    color: #e67e22; /* Custom gold color for copyright */
+}
+
+/* Social Media Icon Styling */
+footer .list-unstyled li a {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Space between items */
+    font-size: 16px; /* Slightly smaller font size for readability */
+}
+
+footer .list-unstyled li a .fa {
+    font-size: 1.5rem; /* Icon size */
+    margin-right: 10px; /* Space between icon and text */
+    color: #2c3e50; /* Icon color */
+}
+
+/* Icon hover color */
+footer .list-unstyled li a:hover .fa {
+    color: #e67e22 !important; /* Gold hover effect for icons */
+}
+
+/* Icon and link hover effect together */
+footer .list-unstyled li a:hover {
+    color: #e67e22 !important; /* Gold color on hover for text */
+}
+
+/* Copyright Section: Separate Row */
+footer .copyright {
+    background-color: #f4f4f4; /* Grey background for the copyright section */
+    padding: 10px 0; /* Padding for top and bottom */
+}
+
+footer .copyright p {
+    margin: 0; /* Remove margin */
+    color: #333; /* Dark text for contrast */
+    text-align: center; /* Center the text */
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    footer .col-md-3 {
+        margin-bottom: 20px; /* Add space between columns on smaller screens */
+    }
+}

@@ -1,5 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import "D:/Dac/Dac_final-project_KD-J022/wedding_planner/src/css/nav.css";
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
 
 function NavBar() {
 
@@ -8,7 +10,7 @@ function NavBar() {
         navigate("/");
     }
 
-
+    
     return ( 
       <nav class="navbar navbar-expand-lg navbar-light bg-gradient py-3">
   <div class="container-fluid">
@@ -86,6 +88,13 @@ function NavBar() {
 
       {/* <!-- Search and Login Button --> */}
       <form class="d-flex" role="search">
+      <button
+                            className="btn btn-outline-success fw-bold px-4 rounded-pill me-3"
+                            type="button"
+                            onClick={() => navigate("/cart")} // Link to cart page
+                        >
+                            <i className="bi bi-cart" style={{ fontSize: "1.5rem" }}></i>
+                        </button>
         <button
           onClick={onLogout}
           class="btn btn-pink fw-bold px-4 rounded-pill"
@@ -97,89 +106,6 @@ function NavBar() {
     </div>
   </div>
 </nav>
-
-
-    //     <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
-    //   <div class="container-fluid">
-    //     <a class="navbar-brand" href="#">
-    //       <img
-    //         src="https://as1.ftcdn.net/v2/jpg/03/10/96/54/1000_F_310965497_c5PmGRIs8e9mq1GliU4eSt4vKqHd9Pyc.jpg"
-    //         alt="Logo"
-    //         width="30"
-    //         height="30"
-    //         class="d-inline-block align-text-top"
-    //       />
-    //         MyStore
-    //     </a>
-    //     <button
-    //       class="navbar-toggler"
-    //       type="button"
-    //       data-bs-toggle="collapse"
-    //       data-bs-target="#navbarSupportedContent"
-    //       aria-controls="navbarSupportedContent"
-    //       aria-expanded="false"
-    //       aria-label="Toggle navigation"
-    //     >
-    //       <span class="navbar-toggler-icon"></span>
-    //     </button>
-    //     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    //       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-    //         <li class="nav-item">
-    //           <Link className="nav-link" aria-current="page" to="/">
-    //             Categories
-    //           </Link>
-    //         </li>
-    //         <li class="nav-item dropdown">
-    //           <Link
-    //             className="nav-link dropdown-toggle"
-    //             role="button"
-    //             data-bs-toggle="dropdown"
-    //             aria-expanded="false"
-    //             to="/product"
-    //           >
-    //             Products
-    //           </Link>
-    //           <ul class="dropdown-menu">
-    //             <li>
-    //               <a class="dropdown-item" href="#">
-    //                 Vanue
-    //               </a>
-    //             </li>
-    //             <li>
-    //               <a class="dropdown-item" href="#">
-    //                 Food
-    //               </a>
-    //             </li>
-    //             <li>
-    //               <a class="dropdown-item" href="#">
-    //                 Dj
-    //               </a>
-    //             </li>
-    //           </ul>
-    //         </li>
-    //         <li class="nav-item">
-    //           <Link className="nav-link" to="/">
-    //             Users
-    //           </Link>
-    //         </li>
-    //         <li class="nav-item">
-    //           <Link className="nav-link" to="/">
-    //             Orders
-    //           </Link>
-    //         </li>
-    //       </ul>
-    //       <form class="d-flex" role="search">
-    //         <button
-    //           onClick={onLogout}
-    //           class="btn btn-outline-success"
-    //           type="submit"
-    //         >
-    //           Log In
-    //         </button>
-    //       </form>
-    //     </div>
-    //   </div>
-    // </nav>
      );
 }
 

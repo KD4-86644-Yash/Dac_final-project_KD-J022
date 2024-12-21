@@ -1,0 +1,10 @@
+#carouselExampleAutoplaying {
+    height: 650px; /* Adjust the height here */
+    width: 100%;   /* Make the carousel full-width */
+}
+
+.carousel-item img {
+    height: 650px; /* Ensure the images take up the full height of the carousel container */
+    object-fit: fill; /* Maintain image aspect ratio while covering the area*/
+    resize: horizontal;
+}

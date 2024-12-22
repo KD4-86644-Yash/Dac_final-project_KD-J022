@@ -1,0 +1,17 @@
+.blockquote {
+    font-size: 1.2rem;
+    font-style: italic;
+    border-left: 4px solid #ff6363;
+    padding-left: 15px;
+}
+
+.blockquote-footer {
+    color: #6c757d;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.carousel-item img {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}

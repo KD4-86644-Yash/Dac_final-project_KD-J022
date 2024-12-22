@@ -5,12 +5,12 @@ import "D:/Dac/Dac_final-project_KD-J022/wedding_planner/src/css/footer.css";
 function Footer() {
     return ( 
         <footer className="bg-white text-dark pt-5 pb-3">
-            <div className="container">
+            <div className="container-fluid">
                 <div className="row">
                     {/* Column 1: Logo & Name */}
                     <div className="col-md-3">
                         <div className="logo">
-                            <img src="your-logo-url.png" alt="Logo" className="img-fluid mb-3" />
+                            <img src="https://as1.ftcdn.net/v2/jpg/03/10/96/54/1000_F_310965497_c5PmGRIs8e9mq1GliU4eSt4vKqHd9Pyc.jpg" alt="Logo" className="img-fluid mb-3" />
                             <h4 className="text-elegant">Elegant Weddings</h4>
                         </div>
                     </div>
@@ -62,9 +62,10 @@ function Footer() {
                         <h5>Quick Links</h5>
                         <ul className="list-unstyled">
                             <li><a href="/" className="text-dark">Home</a></li>
+                            <li><a href="/service" className="text-dark">Services</a></li>
+                            <li><a href="/gallery" className="text-dark">Gallery</a></li>
                             <li><a href="/about" className="text-dark">About Us</a></li>
                             <li><a href="/contact" className="text-dark">Contact</a></li>
-                            <li><a href="/blog" className="text-dark">Blog</a></li>
                         </ul>
                     </div>
                 </div>

@@ -1,0 +1,43 @@
+/* Styling for Milestone Section */
+.milestone-item {
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.milestone-item:hover {
+    transform: translateY(-10px);
+}
+
+.milestone-number {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #e67e22;
+    margin-bottom: 10px;
+}
+
+.milestone-text {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.milestone-image {
+    width: 80px; /* Set the image width */
+    height: 80px; /* Set the image height */
+    object-fit: cover; /* Ensure the image doesn't stretch */
+    border-radius: 50%; /* Optional: makes the image circular */
+    margin-bottom: 15px; /* Space between image and text */
+}
+
+.container {
+    max-width: 1200px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 600;
+}

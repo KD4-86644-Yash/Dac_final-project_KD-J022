@@ -21,7 +21,7 @@ function Footer() {
                         <ul className="list-unstyled">
                             <li>
                                 <a href="https://www.facebook.com" className="text-dark d-flex align-items-center">
-                                    <FontAwesomeIcon icon={faFacebook} className="mr-2" />
+                                    <FontAwesomeIcon icon={faFacebook} className="mr-2"/>
                                     Facebook
                                 </a>
                             </li>

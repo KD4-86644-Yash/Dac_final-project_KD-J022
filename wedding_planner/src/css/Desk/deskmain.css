@@ -1,0 +1,63 @@
+/* Sidebar */
+.sidebar {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 13%;
+    overflow-y: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.sidebar .nav-item .nav-link {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    transition: background 0.3s ease;
+    border-radius: 8px;
+}
+
+.sidebar .nav-item .nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar .nav-item .active-link {
+    background-color: #ffc107;
+    color: black;
+    font-weight: bold;
+}
+
+.sidebar .nav-item .nav-link i {
+    font-size: 1.2rem;
+}
+
+/* Table */
+.table {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+/* Main Content */
+.content {
+    margin-left: 220px; /* Space for the fixed sidebar */
+    padding: 20px; /* Adds padding inside the content */
+}
+
+/* Table Adjustments */
+.table th:first-child, 
+.table td:first-child {
+    padding-left: 20px; /* Adds space to the left of the first column */
+    text-align: left;   /* Aligns text in the first column to the left */
+}

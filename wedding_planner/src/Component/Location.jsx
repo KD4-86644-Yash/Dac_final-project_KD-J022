@@ -9,7 +9,7 @@ function Location() {
               <div className="card h-100 hover-effect">
                   <img src="https://via.placeholder.com/150" className="card-img-top" alt="Location 1" />
                   <div className="card-body">
-                      <h5 className="card-title">Location 1</h5>
+                      <h5 className="card-title">Mumbai</h5>
                       <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                   </div>
               </div>
@@ -18,7 +18,7 @@ function Location() {
               <div className="card h-100 hover-effect">
                   <img src="https://via.placeholder.com/150" className="card-img-top" alt="Location 2" />
                   <div className="card-body">
-                      <h5 className="card-title">Location 2</h5>
+                      <h5 className="card-title">Ahemdabad</h5>
                       <p className="card-text">This is a short card.</p>
                   </div>
               </div>
@@ -27,7 +27,7 @@ function Location() {
               <div className="card h-100 hover-effect">
                   <img src="https://via.placeholder.com/150" className="card-img-top" alt="Location 3" />
                   <div className="card-body">
-                      <h5 className="card-title">Location 3</h5>
+                      <h5 className="card-title">Darjeeling</h5>
                       <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
                   </div>
               </div>

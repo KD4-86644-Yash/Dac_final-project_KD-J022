@@ -1,5 +1,4 @@
-
-import NavBar from "..//Component/NavBar.jsx";
+import NavBar from "../Component/NavBar.jsx";
 import Footer from "../Component/Footer";
 import GalleryContainer from "../Component/Gallery/GalleryContainer";
 

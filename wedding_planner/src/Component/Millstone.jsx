@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import "../css/millstone.css"
 
-function Millstone() {    const milestones = [
+function Millstone() {    
+    const milestones = [
     { id: 1, label: "Happy Customers", value: 50, image: "https://via.placeholder.com/80" },
     { id: 2, label: "Years of Experience", value: 2, image: "https://via.placeholder.com/80" },
     { id: 3, label: "Destinations Covered", value: 10, image: "https://via.placeholder.com/80" },

@@ -7,7 +7,7 @@ function NavBar() {
 
     const navigate = useNavigate();
     const onLogout = ()=>{
-        navigate("/");
+        navigate("/login");
     }
 
     
@@ -73,10 +73,7 @@ function NavBar() {
           </ul>
         </li>
         <li class="nav-item">
-          <Link className="nav-link text-dark" to="/">Packages</Link>
-        </li>
-        <li class="nav-item">
-          <Link className="nav-link text-dark" to="/">Testimonials</Link>
+          <Link className="nav-link text-dark" to="/gallery">Gallery</Link>
         </li>
         <li class="nav-item">
           <Link className="nav-link text-dark" to="/contact-us">Contact</Link>

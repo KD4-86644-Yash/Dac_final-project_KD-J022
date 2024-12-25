@@ -11,12 +11,11 @@ import Testamonial from "../Component/Testemonial.jsx";
 function Home() {
     return ( 
         <div>
-            <NavBar/>
+            <NavBar />
             <HomeSilder />
             <Millstone />
             <AboutUs />
-            <br />
-            
+            <br /> 
             <OurService />
             <br />
             <br />

@@ -1,4 +1,4 @@
-import "D:/Dac/Dac_final-project_KD-J022/wedding_planner/src/css/Llocation.css"
+import "../css/Llocation.css"
 
 function Location() {
     return ( 

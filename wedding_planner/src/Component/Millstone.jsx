@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "D:/Dac/Dac_final-project_KD-J022/wedding_planner/src/css/millstone.css"
+import "../css/millstone.css"
 
 function Millstone() {    const milestones = [
     { id: 1, label: "Happy Customers", value: 50, image: "https://via.placeholder.com/80" },

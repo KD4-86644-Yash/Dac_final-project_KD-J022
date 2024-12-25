@@ -1,0 +1,173 @@
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+  }
+
+
+  
+  .container {
+    color: #333;
+    margin-top: 20px;
+  }
+  
+  /* Header Styling */
+  h1 {
+    color: #ff4c61;
+    margin-bottom: 30px;
+    font-weight: bold;
+    animation: fadeInDown 1s ease-in-out;
+  }
+  
+  /* Card Styling */
+  .card {
+    background-color: #fff;
+    border: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Image Styling */
+  .img-fluid {
+    border-radius: 10px 0 0 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover .img-fluid {
+    transform: scale(1.1);
+  }
+  
+  /* Card Body */
+  .card-body {
+    padding: 20px;
+    animation: fadeInUp 1s ease-in-out;
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  .badge {
+    font-size: 0.85rem;
+    margin-right: 5px;
+  }
+  
+  /* Button Styling */
+  .btn-pink {
+    background-color: #ff4c61;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .btn-pink:hover {
+    background-color: #d94450;
+    transform: translateY(-3px);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Animations */
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .card-title {
+      font-size: 1.25rem;
+    }
+  
+    .card-text {
+      font-size: 0.9rem;
+    }
+  
+    .btn-pink {
+      font-size: 0.9rem;
+    }
+  
+    .img-fluid {
+      border-radius: 10px;
+    }
+
+    /* Header Styling */
+h1 {
+    color: #ff4c61; /* A vibrant pink shade */
+    font-size: 2.5rem; /* Large, noticeable font size */
+    font-weight: bold; /* Bold font style */
+    text-transform: uppercase; /* Capitalize all letters */
+    margin-bottom: 30px; /* Add spacing below the header */
+    letter-spacing: 2px; /* Add spacing between letters for a modern look */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    animation: fadeInDown 1s ease-in-out; /* Smooth fade-in animation */
+  }
+  
+  /* Horizontal Line for Header Decoration */
+  h1::after {
+    content: ""; /* Add a decorative element below the header */
+    display: block;
+    width: 100px; /* Length of the line */
+    height: 4px; /* Thickness of the line */
+    background-color: #ff4c61; /* Match the header color */
+    margin: 10px auto; /* Center the line */
+    border-radius: 2px; /* Rounded ends for the line */
+  }
+  
+  /* Center the Header */
+  .center {
+    text-align: center; /* Align header text to the center */
+  }
+  
+  /* Animation */
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+
+
+  }
+  

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "D:/Dac/Dac_final-project_KD-J022/wedding_planner/src/css/Desk/deskmain.css"
+// import "E:/CDAC/Project/git_pull_data/Dac_final-project_KD-J022/wedding_planner/src/css/Desk/deskmain.css"
+import "../../../src/css/Desk/deskmain.css"
 
 function DeshMain() {
     const [activePage, setActivePage] = useState("profile");

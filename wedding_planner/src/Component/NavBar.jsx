@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import "D:/Dac/Dac_final-project_KD-J022/wedding_planner/src/css/nav.css";
+import "../css/nav.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 
@@ -76,7 +76,7 @@ function NavBar() {
           <Link className="nav-link text-dark" to="/">Packages</Link>
         </li>
         <li class="nav-item">
-          <Link className="nav-link text-dark" to="/">Testimonials</Link>
+          <Link className="nav-link text-dark" to="/gallery">Gallery</Link>
         </li>
         <li class="nav-item">
           <Link className="nav-link text-dark" to="/">Contact</Link>

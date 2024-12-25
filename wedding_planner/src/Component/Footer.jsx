@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import "D:/Dac/Dac_final-project_KD-J022/wedding_planner/src/css/footer.css";
+import "../css/footer.css";
 
 function Footer() {
     return ( 

@@ -8,7 +8,9 @@ import Gallery from './Screen/Gallery';
 // import LocationList from './Component/Services/Location/LocationList';
 import LocationService from './Screen/services/LocatonService';
 import DecorationService from './Screen/services/DecorationService';
-
+import Cart from './Component/Cart/Cart';
+import VendorDeskboard from './Screen/VendorDeskboard';
+import USerDeskboard from './Screen/UserDeskboard';
 
 function App() {
   return (
@@ -20,6 +22,9 @@ function App() {
         <Route path ='/desh' element = {<DeshBoard />} />
         <Route path ='/LocationService' element = {<LocationService />} />  
         <Route path='/DecorationService' element={<DecorationService/>} />
+        <Route path ='/cart' element = {<Cart />} />
+        <Route path ='/vendor' element = {<VendorDeskboard />} />
+        <Route path ='/user' element = {<USerDeskboard />} />
       </Routes>
 
       <ToastContainer />

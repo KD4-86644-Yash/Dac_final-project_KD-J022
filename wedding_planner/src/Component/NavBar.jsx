@@ -76,10 +76,10 @@ function NavBar() {
           <Link className="nav-link text-dark" to="/gallery">Gallery</Link>
         </li>
         <li class="nav-item">
-          <Link className="nav-link text-dark" to="/">Contact</Link>
+          <Link className="nav-link text-dark" to="/contact-us">Contact</Link>
         </li>
         <li class="nav-item">
-          <Link className="nav-link text-dark" to="/">About Us</Link>
+          <Link className="nav-link text-dark" to="/about-us">About Us</Link>
         </li>
       </ul>
 

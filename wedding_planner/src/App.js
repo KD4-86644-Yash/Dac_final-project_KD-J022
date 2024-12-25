@@ -13,6 +13,7 @@ import DecorationService from './Screen/services/DecorationService';
 import Cart from './Component/Cart/Cart';
 import VendorDeskboard from './Screen/VendorDeskboard';
 import USerDeskboard from './Screen/UserDeskboard';
+import PhotographerProfile from './Screen/services/Subservices/PhotographerProfile';
 function App() {
   return (
     <div className="container--fluid">
@@ -30,6 +31,7 @@ function App() {
         <Route path ='/cart' element = {<Cart />} />
         <Route path ='/vendor' element = {<VendorDeskboard />} />
         <Route path ='/user' element = {<USerDeskboard />} />
+        <Route path ='/photographerprofile' element = {<PhotographerProfile />} />        
 
       </Routes>
 

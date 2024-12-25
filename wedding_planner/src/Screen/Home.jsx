@@ -11,7 +11,7 @@ import Testamonial from "../Component/Testemonial";
 function Home() {
     return ( 
         <div>
-            <NavBar/>
+            <NavBar />
             <HomeSilder />
             <Millstone />
             <AboutUs />

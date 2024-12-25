@@ -1,4 +1,6 @@
-import "D:/Dac/Dac_final-project_KD-J022/wedding_planner/src/css/Gallery/gallery.css"
+// import "../css/Gallery/gallery.css"
+// import "E:/CDAC/Project/git_pull_data/Dac_final-project_KD-J022/wedding_planner/src/css/Gallery/gallery.css"
+import "../../../src/css/Gallery/gallery.css"
 
 function GalleryContainer() {
     const images = [

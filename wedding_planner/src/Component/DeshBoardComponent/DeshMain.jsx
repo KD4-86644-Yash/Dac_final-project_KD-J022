@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "D:/Dac/Dac_final-project_KD-J022/wedding_planner/src/css/Desk/deskmain.css";
+import "../../../src/css/Desk/deskmain.css"
 import Profile from "./Profile";
 
 function DeshMain() {

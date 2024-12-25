@@ -4,6 +4,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import Home from './Screen/Home';
 import DeshBoard from './Screen/Deshboard';
 import Gallery from './Screen/Gallery';
+import Cart from './Component/Cart/Cart';
+import VendorDeskboard from './Screen/VendorDeskboard';
+import USerDeskboard from './Screen/UserDeskboard';
 
 function App() {
   return (
@@ -13,6 +16,9 @@ function App() {
         <Route path ='/' element = {<Home />} />
         <Route path ='/gallery' element = {<Gallery />} />
         <Route path ='/desh' element = {<DeshBoard />} />
+        <Route path ='/cart' element = {<Cart />} />
+        <Route path ='/vendor' element = {<VendorDeskboard />} />
+        <Route path ='/user' element = {<USerDeskboard />} />
         
       </Routes>
 

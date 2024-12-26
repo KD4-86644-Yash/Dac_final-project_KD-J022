@@ -1,4 +1,4 @@
-import "D:/Dac/Dac_final-project_KD-J022/wedding_planner/src/css/slider.css"
+import "../css/slider.css"
 
 function HomeSilder() {
     return ( 

@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import "D:/Dac/Dac_final-project_KD-J022/wedding_planner/src/css/nav.css";
+import "../css/nav.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 

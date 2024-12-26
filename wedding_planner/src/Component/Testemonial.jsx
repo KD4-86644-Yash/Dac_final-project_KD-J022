@@ -1,4 +1,4 @@
-import "D:/Dac/Dac_final-project_KD-J022/wedding_planner/src/css/testamonial.css"
+import "../css/testamonial.css"
 
 function Testamonial() {
         const testimonials = [

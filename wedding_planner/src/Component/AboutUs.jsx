@@ -1,4 +1,4 @@
-import "D:/Dac/Dac_final-project_KD-J022/wedding_planner/src/css/about.css"
+import "../css/about.css"
 
 function AboutUs() {
     return ( 

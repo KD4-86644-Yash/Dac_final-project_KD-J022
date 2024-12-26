@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import "../css/nav.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import logo from "../image/logo.jpg";
 
 
 function NavBar() {
@@ -17,7 +18,7 @@ function NavBar() {
     {/* <!-- Logo and Brand --> */}
     <a class="navbar-brand d-flex align-items-center" href="#">
       <img
-        src="https://as1.ftcdn.net/v2/jpg/03/10/96/54/1000_F_310965497_c5PmGRIs8e9mq1GliU4eSt4vKqHd9Pyc.jpg"
+        src={logo}
         alt="Logo"
         width="40"
         height="40"

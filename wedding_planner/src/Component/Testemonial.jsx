@@ -1,4 +1,7 @@
 import "../css/testamonial.css"
+import test2 from "../image/test2.jpg"
+import test3 from "../image/test3.jpg"
+
 
 function Testamonial() {
         const testimonials = [
@@ -10,12 +13,12 @@ function Testamonial() {
             {
                 name: "Rhea & Kunal",
                 text: "The team made our dream wedding come true! Everything was so seamless, and the attention to detail was impeccable. We can't thank DWP enough for making our special day truly magical.",
-                image: "https://via.placeholder.com/400x300"
+                image: {test2}
             },
             {
                 name: "Aarav & Meera",
                 text: "Highly professional team that takes care of every little thing. We were stress-free during the entire event, and our guests were awestruck. Thank you for an unforgettable experience!",
-                image: "https://via.placeholder.com/400x300"
+                image: {test3}
             }
         ];
     
@@ -40,7 +43,8 @@ function Testamonial() {
                                 {/* Image Section */}
                                 <div className="col-md-6 order-md-2 text-center">
                                     <img
-                                        src={testimonial.image}
+                                    style={{height :200}}
+                                        src={test2}
                                         alt={testimonial.name}
                                         className="img-fluid rounded shadow-lg"
                                     />

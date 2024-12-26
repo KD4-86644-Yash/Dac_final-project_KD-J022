@@ -1,10 +1,13 @@
 import "../css/gallery.css"
+import homegallery1 from "../image/homegallery1.webp"
+import homegallery2 from "../image/homegallery2.jpg"
+import homegallery3 from "../image/homegallery3.jpeg"
 
 function Gallery() {
     const images = [
-        "https://via.placeholder.com/300x200",
-        "https://via.placeholder.com/300x200",
-        "https://via.placeholder.com/300x200",
+        homegallery1,
+        homegallery2,
+        homegallery3,
         "https://via.placeholder.com/300x200",
         "https://via.placeholder.com/300x200",
         "https://via.placeholder.com/300x200",

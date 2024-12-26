@@ -5,6 +5,12 @@ import Home from '../src/Screen/Home';
 
 import DeshBoard from './Screen/Deshboard';
 import Gallery from './Screen/Gallery';
+
+import MainService from './Screen/MainService';
+import Logins from './Screen/Login';
+import User from './Screen/User';
+import Vendor from './Screen/Vendor';
+
 import AboutUs from './Screen/AboutUs';
 import ContactUs from './Screen/ContactUs';
 // import LocationList from './Component/Services/Location/LocationList';
@@ -13,6 +19,8 @@ import DecorationService from './Screen/services/DecorationService';
 import Cart from './Component/Cart/Cart';
 import VendorDeskboard from './Screen/VendorDeskboard';
 import USerDeskboard from './Screen/UserDeskboard';
+import PhotographerProfile from './Screen/services/Subservices/PhotographerProfile';
+
 function App() {
   return (
     <div className="container--fluid">
@@ -22,6 +30,11 @@ function App() {
         <Route path ='/gallery' element = {<Gallery />} />
         <Route path ='/desh' element = {<DeshBoard />} />
 
+        <Route path ='/services' element = {<MainService />} />
+        <Route path ='/login' element = {<Logins />} />
+        <Route path ='/user' element = {<User />} />
+        <Route path ='/vendor' element = {<Vendor />} />
+
         <Route path ='/about-us' element = {<AboutUs />} />
         <Route path ='/contact-us' element = {<ContactUs />} />
 
@@ -30,6 +43,7 @@ function App() {
         <Route path ='/cart' element = {<Cart />} />
         <Route path ='/vendor' element = {<VendorDeskboard />} />
         <Route path ='/user' element = {<USerDeskboard />} />
+        <Route path ='/photographerprofile' element = {<PhotographerProfile />} />        
 
       </Routes>
 

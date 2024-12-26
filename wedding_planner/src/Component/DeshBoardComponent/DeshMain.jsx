@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+
+import "../../css/Desk/deskmain.css"
+
 import "../../../src/css/Desk/deskmain.css"
 import Profile from "./Profile";
 

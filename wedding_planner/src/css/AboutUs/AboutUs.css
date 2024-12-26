@@ -1,0 +1,339 @@
+/* AboutUs.css */
+
+.about-container {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    background-color: #f8f8f8;
+    padding-bottom: 40px;
+  }
+  
+  .about-header {
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  .about-header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+  }
+  
+  .about-header p {
+    margin: 5px 0;
+    font-size: 1rem;
+  }
+  
+  .about-header span {
+    color: #A76BCF;
+  }
+  
+  .about-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    gap: 20px;
+  }
+  
+  .about-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .about-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .card img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .experience {
+    background: #f4f4f4;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .experience h1 {
+    font-size: 3rem;
+    color: #A76BCF;
+    margin: 0;
+  }
+  
+  .experience p {
+    font-size: 1.2rem;
+    margin: 5px 0 0;
+  }
+  
+  .about-info {
+    flex: 1.5;
+    padding: 20px;
+    background: #f8f8f8;
+    border-radius: 10px;
+  }
+  
+  .about-info h3 {
+    color: #A76BCF;
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  
+  .about-info h2 {
+    font-size: 2rem;
+    margin: 10px 0;
+  }
+  
+  .about-info p {
+    font-size: 1rem;
+    margin: 10px 0 20px;
+  }
+  
+  .about-info ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 20px;
+  }
+  
+  .about-info ul li {
+    margin: 5px 0;
+    position: relative;
+    padding-left: 20px;
+  }
+  
+  .about-info ul li:before {
+    content: '•';
+    color: #A76BCF;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  
+  .learn-more {
+    background-color: #A76BCF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .learn-more:hover {
+    background-color: #ff7e1c;
+  }
+
+  /* AboutUs.css */
+
+.about-header {
+    position: relative;
+    text-align: center;
+    color: #fff;
+  }
+  
+  .header-background {
+    position: relative;
+    background: url('../../image/AboutUs1top.jpeg') no-repeat center center;
+    background-size: cover;
+    padding: 60px 20px;
+    border-radius: 10px;
+    width: 100%;
+    height: 500px;
+  }
+  
+  .header-background h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    color: #A76BCF;
+  }
+  
+  .header-background p {
+    margin: 10px 0 0;
+    font-size: 1rem;
+    color: #f8f8f8;
+  }
+  
+  .header-background span {
+    color: #A76BCF;
+  }
+  /* Vision, Mission, History Section */
+.vision-mission-history {
+    display: flex;
+    gap: 20px;
+    margin-top: 50px;
+    padding: 20px;
+  }
+  
+  .vmh-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .vmh-card {
+    background: #fef6f0;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .vmh-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .vmh-card p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .vmh-card.history {
+    background: #A76BCF;
+    color: #fff;
+  }
+  
+  .vmh-card.history p {
+    color: #fff;
+  }
+  
+  .vmh-right {
+    flex: 1;
+    background: url('../../image/aboutmini4.jpeg');
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    height: 688px;
+    position: relative;
+    background-size: cover; 
+    background-position: center; 
+     
+    background-repeat: no-repeat;
+    
+  }
+  
+  .vmh-right h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #a70ff3;
+  }
+  
+  .vmh-right p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  
+  .vmh-right .contact-us {
+    background: #A76BCF;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    left: 335px;
+    position: relative;
+    top: 200px;
+  }
+  
+  .vmh-right .contact-us:hover {
+    background: #4d027e;
+  }
+
+  /* AboutUs.css */
+
+/* Third Section */
+.third-section {
+    margin-top: 50px;
+    padding: 20px;
+  }
+  
+  .third-section-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .third-section-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .third-section-content {
+    flex: 1;
+    padding: 20px;
+    background: #fef6f0;
+    border-radius: 10px;
+    text-align: left;
+  }
+  
+  .third-section-content h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+  
+  .third-section-content p {
+    font-size: 1rem;
+    color: #f7f3f3;
+    margin-bottom: 20px;
+  }
+  
+  .contact-button {
+    background: #A76BCF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .contact-button:hover {
+    background: #A76BCF;
+  }
+  
+  .third-section-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .third-card {
+    flex: 1;
+    background: #A76BCF;
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.);
+  }
+  
+  .third-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .third-card p {
+    font-size: 1rem;
+  }
+  
+  .icon-container {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+  
+  

@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import "../css/footer.css";
-import pngegg from "../image/pngegg.png";
+import logo from "../image/logo.jpg";
 
 function Footer() {
     // const imd = "D:/Dac/Dac_final-project_KD-J022/wedding_planner/src/image";
@@ -12,8 +12,8 @@ function Footer() {
                     {/* Column 1: Logo & Name */}
                     <div className="col-md-3">
                         <div className="logo">
-                            <img src={pngegg} alt="Logo" className="img-fluid mb-3" />
-                            <h4 className="text-elegant">Elegant Weddings</h4>
+                            <img src={logo} alt="Logo" className="img-fluid mb-3" style={{height :100}}/>
+                            <h4 className="text-elegant">Golden Knots</h4>
                         </div>
                     </div>
 

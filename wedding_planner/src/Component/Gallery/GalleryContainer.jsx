@@ -1,13 +1,14 @@
-import "../../css/Gallery/gallery.css"
-// import "../css/Gallery/gallery.css"
-// import "E:/CDAC/Project/git_pull_data/Dac_final-project_KD-J022/wedding_planner/src/css/Gallery/gallery.css"
-import "../../../src/css/Gallery/gallery.css"
+import "../../css/Gallery/gallery.css";
+// import "../../../src/css/Gallery/gallery.css"
+import homegallery1 from "../../image/homegallery1.webp"
+import homegallery2 from "../../image/homegallery2.jpg"
+import homegallery3 from "../../image/homegallery3.jpeg"
 
 function GalleryContainer() {
     const images = [
-        "image1.jpg",
-        "image2.jpg",
-        "image3.jpg",
+        homegallery1,
+        homegallery2,
+        homegallery3,
         "image4.jpg",
         "image5.jpg",
         "image6.jpg",

@@ -30,16 +30,6 @@ h1 {
   transform: scale(1.05);
 }
 
-.category-image {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-}
-
-.category-content {
-  padding: 15px;
-}
-
 .category-content h3 {
   margin: 0;
   font-size: 18px;
@@ -70,15 +60,16 @@ h1 {
 
 .category-content {
   margin-top: 10px;
+  padding: 15px;
 }
 
-.dropdown {
+/* .dropdown {
   margin-top: 10px;
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 5px;
   padding: 10px;
-}
+} */
 
 .dropdown ul {
   list-style-type: none;

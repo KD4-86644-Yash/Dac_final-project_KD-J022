@@ -60,13 +60,13 @@ function NavBar() {
           </Link>
           <ul class="dropdown-menu">
             <li>
-              <a class="dropdown-item" href="#">Venues</a>
+              <a class="dropdown-item" href="/services/locationservice">Venues</a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">Catering</a>
+              <a class="dropdown-item" href="/services">Catering</a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">Decor</a>
+              <a class="dropdown-item" href="/services/decorationservice">Decor</a>
             </li>
             <li>
               <a class="dropdown-item" href="#">Photography</a>

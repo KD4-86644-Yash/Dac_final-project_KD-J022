@@ -38,11 +38,11 @@ function App() {
         <Route path ='/about-us' element = {<AboutUs />} />
         <Route path ='/contact-us' element = {<ContactUs />} />
 
-        <Route path ='/LocationService' element = {<LocationService />} />  
-        <Route path='/DecorationService' element={<DecorationService/>} />
+        <Route path ='/services/locationservice' element = {<LocationService />} />  
+        <Route path='/services/decorationservice' element={<DecorationService/>} />
         <Route path ='/cart' element = {<Cart />} />
-        <Route path ='/vendor' element = {<VendorDeskboard />} />
-        <Route path ='/user' element = {<USerDeskboard />} />
+        <Route path ='/vendor_profile' element = {<VendorDeskboard />} />
+        <Route path ='/user_profile' element = {<USerDeskboard />} />
         <Route path ='/photographerprofile' element = {<PhotographerProfile />} />        
 
       </Routes>

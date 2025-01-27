@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom"; // Ensure react-router-dom is installed
-import "../../css/MainService.css";
+import "../../css/services/MainService.css";
 
 function MainServices() {
   const [visibleDropdown, setVisibleDropdown] = useState(null);
@@ -42,7 +42,7 @@ function MainServices() {
       description: "Banquet Halls, Marriage Garden / Lawn...",
       imageUrl: "https://via.placeholder.com/300x150",
       dropdownItems: [
-        { label: "Banquet Halls", path: "/venues/banquet-halls" },
+        { label: "Banquet Halls", path: "/services/locationservice" },
         { label: "Marriage Gardens", path: "/venues/marriage-gardens" },
         { label: "Open Lawns", path: "/venues/open-lawns" },
       ],

@@ -40,7 +40,9 @@ function LoginPage() {
           />
         </div>
 
-        <button type="submit" className="btn-login">
+        <button type="submit" className="btn-login"
+        onClick={() => window.location.href = "/user _profile"}
+        >
           Login
         </button>
       </form>
@@ -55,13 +57,13 @@ function LoginPage() {
         <h4>Create New Account</h4>
         <button
           className="btn-create-account vendor"
-          onClick={() => window.location.href = "/register-vendor"}
+          onClick={() => window.location.href = "/vendor"}
         >
           As Vendor
         </button>
         <button
           className="btn-create-account customer"
-          onClick={() => window.location.href = "/register-customer"}
+          onClick={() => window.location.href = "/user"}
         >
           As Customer
         </button>

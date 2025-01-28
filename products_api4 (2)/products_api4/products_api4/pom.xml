@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>products_api2</artifactId>
+	<artifactId>wedding</artifactId>
 	<version>0.0.1</version>
-	<name>products_api2</name>
+	<name>wedding</name>
 	<description>Products API with spring security db based details user details with JWT based authentication n authorization</description>
 	<properties>
 		<java.version>11</java.version>

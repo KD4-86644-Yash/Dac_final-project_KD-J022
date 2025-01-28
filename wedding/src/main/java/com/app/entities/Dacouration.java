@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "secure_users")
+@Table(name = "dacouration")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

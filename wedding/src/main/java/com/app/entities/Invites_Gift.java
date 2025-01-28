@@ -14,7 +14,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "secure_users")
+@Table(name = "gifts")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

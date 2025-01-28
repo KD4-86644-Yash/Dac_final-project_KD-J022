@@ -34,6 +34,7 @@ function App() {
         <Route path ='/login' element = {<Logins />} />
         <Route path ='/user' element = {<User />} />
         <Route path ='/vendor' element = {<Vendor />} />
+        
 
         <Route path ='/about-us' element = {<AboutUs />} />
         <Route path ='/contact-us' element = {<ContactUs />} />

@@ -62,7 +62,7 @@ function MainServices() {
       description: "Wedding Planners, Decorators",
       imageUrl: "https://via.placeholder.com/300x150",
       dropdownItems: [
-        { label: "Theme Decor", path: "/planning-decor/theme-decor" },
+        { label: "Theme Decor", path: "/services/decorationservice" },
         { label: "Lighting", path: "/planning-decor/lighting" },
         { label: "Floral Decoration", path: "/planning-decor/floral-decoration" },
       ],

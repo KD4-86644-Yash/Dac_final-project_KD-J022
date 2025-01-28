@@ -54,8 +54,7 @@ function NavBar() {
             role="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
-            to="/services"
-          >
+            to="/services">
             Services
           </Link>
           <ul class="dropdown-menu">

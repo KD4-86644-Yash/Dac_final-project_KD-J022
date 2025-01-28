@@ -31,7 +31,7 @@ public class Cart extends BaseEntity{
 	private int price;
 	
 	@OneToOne
-	@JoinColumn(name = "vandor_id")
-	private UserEntity userEntity;
+	@JoinColumn(name = "serrvice_id")
+	private Services service;
 
 }

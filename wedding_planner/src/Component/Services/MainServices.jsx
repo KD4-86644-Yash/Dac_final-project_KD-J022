@@ -39,12 +39,11 @@ function MainServices() {
   const categories = [
     {
       title: "Venues",
-      description: "Banquet Halls, Marriage Garden / Lawn...",
+      description: "Banquet Halls, Marriage Garden",
       imageUrl: "https://via.placeholder.com/300x150",
       dropdownItems: [
         { label: "Banquet Halls", path: "/services/locationservice" },
         { label: "Marriage Gardens", path: "/venues/marriage-gardens" },
-        { label: "Open Lawns", path: "/venues/open-lawns" },
       ],
     },
     {
@@ -52,9 +51,7 @@ function MainServices() {
       description: "Bridal Makeup, Family Makeup",
       imageUrl: "https://via.placeholder.com/300x150",
       dropdownItems: [
-        { label: "Bridal Makeup", path: "/makeup/bridal-makeup" },
-        { label: "Party Makeup", path: "/makeup/party-makeup" },
-        { label: "HD Makeup", path: "/makeup/hd-makeup" },
+        { label: "Makeup Services", path: "/makeup/bridal-makeup" },
       ],
     },
     {
@@ -63,8 +60,6 @@ function MainServices() {
       imageUrl: "https://via.placeholder.com/300x150",
       dropdownItems: [
         { label: "Theme Decor", path: "/services/decorationservice" },
-        { label: "Lighting", path: "/planning-decor/lighting" },
-        { label: "Floral Decoration", path: "/planning-decor/floral-decoration" },
       ],
     },
     {
@@ -72,39 +67,33 @@ function MainServices() {
       description: "Photographers",
       imageUrl: "https://via.placeholder.com/300x150",
       dropdownItems: [
-        { label: "Candid Photography", path: "/photographers/candid" },
-        { label: "Traditional Photography", path: "/photographers/traditional" },
-        { label: "Videography", path: "/photographers/videography" },
+        { label: "Wedding Shoot", path: "/photographers/candid" },
+        { label: "PreWedding Shoot", path: "/photographers/traditional" },
       ],
     },
     {
-      title: "Pre Wedding Shoot",
-      description: "Pre Wedding Shoot Locations, Pre Wed...",
+      title: "Food",
+      description: "Food Services",
       imageUrl: "https://via.placeholder.com/300x150",
       dropdownItems: [
-        { label: "Outdoor Locations", path: "/pre-wedding-shoot/outdoor" },
-        { label: "Studio Shoots", path: "/pre-wedding-shoot/studio" },
-        { label: "Destination Shoots", path: "/pre-wedding-shoot/destination" },
+        { label: "Food Services", path: "/pre-wedding-shoot/outdoor" },
       ],
     },
     {
-      title: "Bridal Wear",
-      description: "Bridal Lehengas, Kanjeevaram / Silk Sa...",
+      title: "Sound System",
+      description: "Sound System & Bands",
       imageUrl: "https://via.placeholder.com/300x150",
       dropdownItems: [
-        { label: "Lehengas", path: "/bridal-wear/lehengas" },
-        { label: "Silk Sarees", path: "/bridal-wear/silk-sarees" },
-        { label: "Designer Gowns", path: "/bridal-wear/designer-gowns" },
+        { label: "Sound System", path: "/bridal-wear/lehengas" },
       ],
     },
     {
-      title: "Groom Wear",
-      description: "Sherwani, Wedding Suits / Tuxes, Sher...",
+      title: "Invites & Gifts",
+      description: "Invites & Gifts",
       imageUrl: "https://via.placeholder.com/300x150",
       dropdownItems: [
-        { label: "Sherwani", path: "/groom-wear/sherwani" },
-        { label: "Suits", path: "/groom-wear/suits" },
-        { label: "Indo-Western Outfits", path: "/groom-wear/indo-western" },
+        { label: "Invites", path: "/groom-wear/sherwani" },
+        { label: "Gifts", path: "/groom-wear/suits" },
       ],
     },
     {
@@ -112,9 +101,7 @@ function MainServices() {
       description: "Mehendi Artist",
       imageUrl: "https://via.placeholder.com/300x150",
       dropdownItems: [
-        { label: "Bridal Mehndi", path: "/mehndi/bridal" },
-        { label: "Arabic Mehndi", path: "/mehndi/arabic" },
-        { label: "Minimal Mehndi", path: "/mehndi/minimal" },
+        { label: "Mehndi", path: "/mehndi/bridal" },
       ],
     },
   ];

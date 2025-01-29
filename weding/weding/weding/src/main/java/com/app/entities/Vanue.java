@@ -16,7 +16,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "secure_users")
+@Table(name = "venue")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

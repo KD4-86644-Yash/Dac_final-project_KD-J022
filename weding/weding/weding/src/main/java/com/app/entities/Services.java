@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "secure_users")
+@Table(name = "service")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -30,7 +30,7 @@ public class Services extends BaseEntity{
 	
 	@OneToOne
 	@JoinColumn(name = "dacouration_id",nullable = true)
-	private Dacouration dacourationId;
+	private Decoration dacourationId;
 	
 	@OneToOne
 	@JoinColumn(name = "food_id",nullable = true)
@@ -46,7 +46,7 @@ public class Services extends BaseEntity{
 	
 	@OneToOne
 	@JoinColumn(name = "gift_id",nullable = true)
-	private Invites_Gift giftId;
+	private InvitesGift giftId;
 	
 	@OneToOne
 	@JoinColumn(name = "mehandi_id",nullable = true)

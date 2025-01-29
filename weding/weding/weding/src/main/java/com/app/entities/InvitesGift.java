@@ -11,18 +11,21 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
-@Table(name = "secure_users")
+@Table(name = "inviteGift")
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-@Data
-public class Dacouration extends BaseEntity{
+public class InvitesGift extends BaseEntity{
 	
 	@Column(length = 20)
 	private String Name;
+	@Column(length = 20)
+	private String type;
 	@Column(length = 300)
 	private String city;
 	@Column(length = 100)

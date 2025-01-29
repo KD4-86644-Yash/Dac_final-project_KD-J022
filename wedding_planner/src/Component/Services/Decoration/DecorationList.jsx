@@ -4,7 +4,7 @@ import Location2 from  "../../../image/location2.png";
 import location1 from "../../../image/location1.jpeg";
 import Location3  from  "../../../image/location3.png";
 
-// import "../css/services/DecorationCards.css";
+import "../../../css/services/DecorationCard.css";
 
 import DecorationHeader from "./DecorationHeader";
 
@@ -42,9 +42,11 @@ const DecorationList = () => {
                 </div>
               </div>
               <p className="card-text">
-                <span className="badge bg-secondary">100 Rooms</span>
-                <span className="badge bg-secondary">Indoor</span>
-                <span className="badge bg-secondary">Outdoor</span>
+                ₹ 15,00,000 Rental cost
+              </p>
+              <p className="card-text">
+                  ⭐ 4.5 / 5 <br />
+                  <span className="badge bg-success">Available</span>
               </p>
               <p className="card-description">
                 Rajhans Greens, a luscious venue based in Bangalore, is perfect
@@ -82,13 +84,11 @@ const DecorationList = () => {
                 </div>
               </div>
               <p className="card-text">
-                Veg: ₹ 2,100 per plate<br />
-                Non-Veg: ₹ 2,399 per plate
+                ₹ 15,00,000 Rental cost
               </p>
               <p className="card-text">
-                <span className="badge bg-secondary">64 Rooms</span>
-                <span className="badge bg-secondary">Indoor</span>
-                <span className="badge bg-secondary">Outdoor</span>
+                  ⭐ 4.5 / 5 <br />
+                  <span className="badge bg-success">Available</span>
               </p>
               <p className="card-description">
                 Bravura Gold Resort is one of the largest and most beautiful
@@ -130,9 +130,8 @@ const DecorationList = () => {
                 ₹ 15,00,000 Rental cost
               </p>
               <p className="card-text">
-                <span className="badge bg-secondary">150 Rooms</span>
-                <span className="badge bg-secondary">Indoor</span>
-                <span className="badge bg-secondary">Outdoor</span>
+                  ⭐ 4.5 / 5 <br />
+                  <span className="badge bg-success">Available</span>
               </p>
               <p className="card-description">
                 The Lalit Ashok offers one of the most prestigious venues in

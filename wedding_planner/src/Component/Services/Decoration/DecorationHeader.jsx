@@ -31,7 +31,7 @@ const HeaderBar = () => {
           <input type="text" placeholder="Search Wedding Venues..." />
         </div>
 
-        {/* View Options */}
+        {/* View Options
         <div className="view-options">
           <button
             className={`view-btn ${view === "List" ? "active" : ""}`}
@@ -49,7 +49,7 @@ const HeaderBar = () => {
               <i className="bi bi-grid-3x3-gap"></i> Grid
             </Link>
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

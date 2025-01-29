@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom"; // Ensure react-router-dom is installed
 import "../../css/services/MainService.css";
+import SoundMainImage from "../../image/SoundMainImage.jpg";
+import VenueMainImage from "../../image/MainVenue.jpg";
+import MakeupMainImage from "../../image/MainMakeup.jpg";
+import DecorationMainImage from "../../image/MainDecoration.jpg";
+import PhotographerMainImage from "../../image/MainPhotography.jpg";
+import FoodMainImage from "../../image/MainFood.jpg";
+import InvitationMainImage from "../../image/MainGiftAndInvitation.jpg";
+import MehndiMainImage from "../../image/MainMehndi.jpg";
+
 
 function MainServices() {
   const [visibleDropdown, setVisibleDropdown] = useState(null);
@@ -39,82 +48,71 @@ function MainServices() {
   const categories = [
     {
       title: "Venues",
-      description: "Banquet Halls, Marriage Garden / Lawn...",
-      imageUrl: "https://via.placeholder.com/300x150",
+      description: "Banquet Halls, Marriage Garden",
+      imageUrl: VenueMainImage,
       dropdownItems: [
         { label: "Banquet Halls", path: "/services/locationservice" },
         { label: "Marriage Gardens", path: "/venues/marriage-gardens" },
-        { label: "Open Lawns", path: "/venues/open-lawns" },
       ],
     },
     {
       title: "Makeup",
       description: "Bridal Makeup, Family Makeup",
-      imageUrl: "https://via.placeholder.com/300x150",
+      imageUrl: MakeupMainImage,
       dropdownItems: [
-        { label: "Bridal Makeup", path: "/makeup/bridal-makeup" },
-        { label: "Party Makeup", path: "/makeup/party-makeup" },
-        { label: "HD Makeup", path: "/makeup/hd-makeup" },
+        { label: "Makeup Services", path: "/services/MakeUp },
       ],
     },
     {
       title: "Planning & Decor",
       description: "Wedding Planners, Decorators",
-      imageUrl: "https://via.placeholder.com/300x150",
+      imageUrl: DecorationMainImage,
       dropdownItems: [
-        { label: "Theme Decor", path: "/planning-decor/theme-decor" },
-        { label: "Lighting", path: "/planning-decor/lighting" },
-        { label: "Floral Decoration", path: "/planning-decor/floral-decoration" },
+        { label: "Theme Decor", path: "/services/decorationservice" },
       ],
     },
     {
       title: "Photographers",
       description: "Photographers",
-      imageUrl: "https://via.placeholder.com/300x150",
+      imageUrl: PhotographerMainImage,
       dropdownItems: [
-        { label: "Candid Photography", path: "/photographers/candid" },
-        { label: "Traditional Photography", path: "/photographers/traditional" },
-        { label: "Videography", path: "/photographers/videography" },
+
+        { label: "Wedding Shoot", path: "/services/Photography" },
+        { label: "PreWedding Shoot", path: "/photographers/traditional" },
       ],
     },
     {
-      title: "Pre Wedding Shoot",
-      description: "Pre Wedding Shoot Locations, Pre Wed...",
-      imageUrl: "https://via.placeholder.com/300x150",
+      title: "Food",
+      description: "Food Services",
+      imageUrl: FoodMainImage,
       dropdownItems: [
-        { label: "Outdoor Locations", path: "/pre-wedding-shoot/outdoor" },
-        { label: "Studio Shoots", path: "/pre-wedding-shoot/studio" },
-        { label: "Destination Shoots", path: "/pre-wedding-shoot/destination" },
+        { label: "Food Services", path: "/services/food" },
       ],
     },
     {
-      title: "Bridal Wear",
-      description: "Bridal Lehengas, Kanjeevaram / Silk Sa...",
-      imageUrl: "https://via.placeholder.com/300x150",
+      title: "Sound System",
+      description: "Sound System & Bands",
+      imageUrl: SoundMainImage,
       dropdownItems: [
-        { label: "Lehengas", path: "/bridal-wear/lehengas" },
-        { label: "Silk Sarees", path: "/bridal-wear/silk-sarees" },
-        { label: "Designer Gowns", path: "/bridal-wear/designer-gowns" },
+        { label: "Sound System", path: "/services/sound-system-service" },
       ],
     },
     {
-      title: "Groom Wear",
-      description: "Sherwani, Wedding Suits / Tuxes, Sher...",
-      imageUrl: "https://via.placeholder.com/300x150",
+      title: "Invites & Gifts",
+      description: "Invites & Gifts",
+      imageUrl: InvitationMainImage,
       dropdownItems: [
-        { label: "Sherwani", path: "/groom-wear/sherwani" },
-        { label: "Suits", path: "/groom-wear/suits" },
-        { label: "Indo-Western Outfits", path: "/groom-wear/indo-western" },
+        { label: "Invites", path: "/groom-wear/sherwani" },
+        { label: "Gifts", path: "/groom-wear/suits" },
+
       ],
     },
     {
       title: "Mehndi",
       description: "Mehendi Artist",
-      imageUrl: "https://via.placeholder.com/300x150",
+      imageUrl: MehndiMainImage,
       dropdownItems: [
-        { label: "Bridal Mehndi", path: "/mehndi/bridal" },
-        { label: "Arabic Mehndi", path: "/mehndi/arabic" },
-        { label: "Minimal Mehndi", path: "/mehndi/minimal" },
+        { label: "Mehndi", path: "/services/mehndi-service" },
       ],
     },
   ];

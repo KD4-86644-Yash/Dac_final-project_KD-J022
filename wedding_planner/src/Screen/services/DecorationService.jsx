@@ -3,9 +3,7 @@ import NavBar from "../../Component/NavBar";
 import DecorationList from "../../Component/Services/Decoration/DecorationList";
 
 
-
-
-function DecorationService(){
+function Decorationservice(){
     return(
         <div>
         <NavBar/>       
@@ -15,6 +13,6 @@ function DecorationService(){
 
     );
 }
-export default DecorationService;
+export default Decorationservice;
 
 

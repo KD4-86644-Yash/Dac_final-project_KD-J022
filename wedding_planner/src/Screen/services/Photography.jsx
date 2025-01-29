@@ -1,18 +1,22 @@
 import Footer from "../../Component/Footer";
 import NavBar from "../../Component/NavBar";
-import DecorationList from "../../Component/Services/Decoration/DecorationList";
+
+import PhotographyService from "../../Component/Services/Photography/PhotographyService";
 
 
-function Decorationservice(){
+
+
+
+function Photography(){
     return(
         <div>
         <NavBar/>       
-        <DecorationList/>        
+        <PhotographyService/>        
         <Footer/>
         </div>
 
     );
 }
-export default Decorationservice;
+export default Photography;
 
 

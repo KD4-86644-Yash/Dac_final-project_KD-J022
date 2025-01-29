@@ -1,18 +1,20 @@
 import Footer from "../../Component/Footer";
 import NavBar from "../../Component/NavBar";
-import DecorationList from "../../Component/Services/Decoration/DecorationList";
+
+import InvitesServices from "../../Component/Services/InvitesAndGifts.jsx/InvitesServices";
 
 
-function Decorationservice(){
+function Invites(){
     return(
         <div>
         <NavBar/>       
-        <DecorationList/>        
+        
+        <InvitesServices/>
         <Footer/>
         </div>
 
     );
 }
-export default Decorationservice;
+export default Invites;
 
 

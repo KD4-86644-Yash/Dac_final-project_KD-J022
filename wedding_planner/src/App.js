@@ -21,6 +21,11 @@ import VendorDeskboard from './Screen/VendorDeskboard';
 import USerDeskboard from './Screen/UserDeskboard';
 import PhotographerProfile from './Screen/services/Subservices/PhotographerProfile';
 
+import MakeUp from './Screen/services/MakeUp';
+import Photography from './Screen/services/Photography';
+import Invites from './Screen/services/Invites';
+import Food from './Screen/services/Food';
+
 function App() {
   return (
     <div className="container--fluid">
@@ -39,8 +44,15 @@ function App() {
         <Route path ='/contact-us' element = {<ContactUs />} />
 
         <Route path ='/services/locationservice' element = {<LocationService />} />  
-        <Route path='/services/decorationservice' element={<DecorationService/>} />
+        <Route path ='/services/decorationservice' element={<DecorationService/>} />
+                
+        <Route path='/services/food' element ={<Food/>}/>
+        <Route path='/services/MakeUp' element ={<MakeUp/>}/>
+        <Route path='/services/Invites' element ={<Invites/>}/>
+        <Route path='/services/Photography' element ={<Photography/>}/>
+        
         <Route path ='/cart' element = {<Cart />} />
+
         <Route path ='/vendor_profile' element = {<VendorDeskboard />} />
         <Route path ='/user_profile' element = {<USerDeskboard />} />
         <Route path ='/photographerprofile' element = {<PhotographerProfile />} />        

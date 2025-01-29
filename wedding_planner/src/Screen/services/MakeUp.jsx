@@ -1,18 +1,18 @@
 import Footer from "../../Component/Footer";
 import NavBar from "../../Component/NavBar";
-import DecorationList from "../../Component/Services/Decoration/DecorationList";
 
+import MakeupService from './../../Component/Services/MakeUp/MakeUpService';
 
-function Decorationservice(){
+function MakeUp(){
     return(
         <div>
         <NavBar/>       
-        <DecorationList/>        
+        <MakeupService/>        
         <Footer/>
         </div>
 
     );
 }
-export default Decorationservice;
+export default MakeUp;
 
 

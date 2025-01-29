@@ -52,7 +52,7 @@ function MainServices() {
       description: "Bridal Makeup, Family Makeup",
       imageUrl: "https://via.placeholder.com/300x150",
       dropdownItems: [
-        { label: "Bridal Makeup", path: "/makeup/bridal-makeup" },
+        { label: "Bridal Makeup", path: "/services/MakeUp" },
         { label: "Party Makeup", path: "/makeup/party-makeup" },
         { label: "HD Makeup", path: "/makeup/hd-makeup" },
       ],
@@ -62,7 +62,7 @@ function MainServices() {
       description: "Wedding Planners, Decorators",
       imageUrl: "https://via.placeholder.com/300x150",
       dropdownItems: [
-        { label: "Theme Decor", path: "/planning-decor/theme-decor" },
+        { label: "Theme Decor", path: "/services/decorationservice" },
         { label: "Lighting", path: "/planning-decor/lighting" },
         { label: "Floral Decoration", path: "/planning-decor/floral-decoration" },
       ],
@@ -72,7 +72,7 @@ function MainServices() {
       description: "Photographers",
       imageUrl: "https://via.placeholder.com/300x150",
       dropdownItems: [
-        { label: "Candid Photography", path: "/photographers/candid" },
+        { label: "Candid Photography", path: "/services/Photography" },
         { label: "Traditional Photography", path: "/photographers/traditional" },
         { label: "Videography", path: "/photographers/videography" },
       ],
@@ -88,23 +88,21 @@ function MainServices() {
       ],
     },
     {
-      title: "Bridal Wear",
+      title: "Invites and Gifts",
       description: "Bridal Lehengas, Kanjeevaram / Silk Sa...",
       imageUrl: "https://via.placeholder.com/300x150",
       dropdownItems: [
-        { label: "Lehengas", path: "/bridal-wear/lehengas" },
+        { label: "Lehengas", path: "/services/Invites" },
         { label: "Silk Sarees", path: "/bridal-wear/silk-sarees" },
         { label: "Designer Gowns", path: "/bridal-wear/designer-gowns" },
       ],
     },
     {
-      title: "Groom Wear",
-      description: "Sherwani, Wedding Suits / Tuxes, Sher...",
-      imageUrl: "https://via.placeholder.com/300x150",
+      title: "Food",
+      description: "Food Catering services...",
+      imageUrl: "/wedding_planner/src/image/food1.jpg",
       dropdownItems: [
-        { label: "Sherwani", path: "/groom-wear/sherwani" },
-        { label: "Suits", path: "/groom-wear/suits" },
-        { label: "Indo-Western Outfits", path: "/groom-wear/indo-western" },
+        { label: "Indian Food", path: "/services/food" },
       ],
     },
     {

@@ -20,6 +20,8 @@ import Cart from './Component/Cart/Cart';
 import VendorDeskboard from './Screen/VendorDeskboard';
 import USerDeskboard from './Screen/UserDeskboard';
 import PhotographerProfile from './Screen/services/Subservices/PhotographerProfile';
+import SoundSystemService from './Screen/services/SoundSystemService';
+import MehndiService from './Screen/services/MehndiService';
 
 import MakeUp from './Screen/services/MakeUp';
 import Photography from './Screen/services/Photography';
@@ -39,6 +41,7 @@ function App() {
         <Route path ='/login' element = {<Logins />} />
         <Route path ='/user' element = {<User />} />
         <Route path ='/vendor' element = {<Vendor />} />
+        
 
         <Route path ='/about-us' element = {<AboutUs />} />
         <Route path ='/contact-us' element = {<ContactUs />} />
@@ -51,6 +54,11 @@ function App() {
         <Route path='/services/Invites' element ={<Invites/>}/>
         <Route path='/services/Photography' element ={<Photography/>}/>
         
+
+        <Route path='/services/decorationservice' element={<DecorationService/>} />
+        <Route path='/services/sound-system-service' element={<SoundSystemService/>} />
+        <Route path='/services/mehndi-service' element={<MehndiService/>} />
+
         <Route path ='/cart' element = {<Cart />} />
 
         <Route path ='/vendor_profile' element = {<VendorDeskboard />} />

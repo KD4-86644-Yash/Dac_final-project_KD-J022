@@ -60,7 +60,7 @@ function MainServices() {
       description: "Bridal Makeup, Family Makeup",
       imageUrl: MakeupMainImage,
       dropdownItems: [
-        { label: "Makeup Services", path: "/makeup/bridal-makeup" },
+        { label: "Makeup Services", path: "/services/MakeUp },
       ],
     },
     {
@@ -76,7 +76,8 @@ function MainServices() {
       description: "Photographers",
       imageUrl: PhotographerMainImage,
       dropdownItems: [
-        { label: "Wedding Shoot", path: "/photographers/candid" },
+
+        { label: "Wedding Shoot", path: "/services/Photography" },
         { label: "PreWedding Shoot", path: "/photographers/traditional" },
       ],
     },
@@ -85,7 +86,7 @@ function MainServices() {
       description: "Food Services",
       imageUrl: FoodMainImage,
       dropdownItems: [
-        { label: "Food Services", path: "/pre-wedding-shoot/outdoor" },
+        { label: "Food Services", path: "/services/food" },
       ],
     },
     {
@@ -103,6 +104,7 @@ function MainServices() {
       dropdownItems: [
         { label: "Invites", path: "/groom-wear/sherwani" },
         { label: "Gifts", path: "/groom-wear/suits" },
+
       ],
     },
     {

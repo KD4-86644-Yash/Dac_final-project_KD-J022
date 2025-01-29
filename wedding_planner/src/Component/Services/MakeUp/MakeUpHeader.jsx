@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom"; // Add this import if using React Router
 import "../../../css/services/HeaderBar.css";
+// import MakeUp from './../../../Screen/services/MakeUp';
 
 
-const HeaderBar = () => {
+const MakeUpHeader = () => {
   const [view, setView] = useState("List");
 
   return (
@@ -17,7 +18,7 @@ const HeaderBar = () => {
 
       {/* Title Section */}
       <div className="title-section">
-        <h1 className="animated-title">Wedding Decoration</h1>
+        <h1 className="animated-title">Wedding MakeUp Service</h1>
         <p>
           Showing <strong>35,110 results</strong> as per your search criteria
         </p>
@@ -55,4 +56,4 @@ const HeaderBar = () => {
   );
 };
 
-export default HeaderBar;
+export default MakeUpHeader;

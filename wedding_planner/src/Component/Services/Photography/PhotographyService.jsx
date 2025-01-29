@@ -1,18 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom"; // React Router for navigation
-import Location2 from  "../../../image/location2.png";
-import location1 from "../../../image/location1.jpeg";
-import Location3  from  "../../../image/location3.png";
 
-import "../../../css/services/DecorationCard.css";
+import  photography1 from "../../../image/photography1.jpg";
+import  photography2 from "../../../image/photography2.jpg";
+import  photography3 from "../../../image/photography3.jpg";
 
-import DecorationHeader from "./DecorationHeader";
+import "../../../css/services/food.css";
 
-const DecorationList = () => {
+
+import PhotographyHeader from './PhotographyHeader';
+
+const PhotographyService = () => {
   return (
     <div className="container my-4">
 
-        <DecorationHeader/>
+        <PhotographyHeader/>
 
       {/* Page Header */}
       {/* <h1 class="text-center page-title">Decoration Services</h1>
@@ -25,7 +27,7 @@ const DecorationList = () => {
         <div className="row g-0">
           <div className="col-md-4">
             <img
-              src={location1}
+              src={photography1}
               className="img-fluid rounded-start decoration-img"
               alt="Rajhans Greens"
             />
@@ -38,16 +40,17 @@ const DecorationList = () => {
                   <p className="card-location">
                     <i className="bi bi-geo-alt"></i> Kanakapura Road, Bangalore
                   </p>
-                  <p className="card-text">Banquet Halls, Marriage Garden</p>
+                  
                 </div>
               </div>
               <p className="card-text">
-                ₹ 15,00,000 Rental cost
+                ₹ 1,50,000 per day
               </p>
               <p className="card-text">
                   ⭐ 4.5 / 5 <br />
                   <span className="badge bg-success">Available</span>
               </p>
+
               <p className="card-description">
                 Rajhans Greens, a luscious venue based in Bangalore, is perfect
                 for the grand affair like your wedding.
@@ -65,7 +68,7 @@ const DecorationList = () => {
         <div className="row g-0">
           <div className="col-md-4">
             <img
-              src={Location2}
+              src={photography2}
               className="img-fluid rounded-start decoration-img"
               alt="Bravura Gold Resort"
             />
@@ -78,13 +81,11 @@ const DecorationList = () => {
                   <p className="card-location">
                     <i className="bi bi-geo-alt"></i> Partapur, Meerut
                   </p>
-                  <p className="card-text">
-                    4-Star & Above Wedding Hotels
-                  </p>
+                  
                 </div>
               </div>
               <p className="card-text">
-                ₹ 15,00,000 Rental cost
+                ₹ 1,50,000 per day
               </p>
               <p className="card-text">
                   ⭐ 4.5 / 5 <br />
@@ -110,7 +111,7 @@ const DecorationList = () => {
         <div className="row g-0">
           <div className="col-md-4">
             <img
-              src={Location3}
+              src={photography3}
               className="img-fluid rounded-start decoration-img"
               alt="The Lalit Ashok"
             />
@@ -123,11 +124,11 @@ const DecorationList = () => {
                   <p className="card-location">
                     <i className="bi bi-geo-alt"></i> Seshadripuram, Bangalore
                   </p>
-                  <p className="card-text">5-Star Banquet</p>
+                  
                 </div>
               </div>
               <p className="card-text">
-                ₹ 15,00,000 Rental cost
+                ₹ 1,50,000 per day
               </p>
               <p className="card-text">
                   ⭐ 4.5 / 5 <br />
@@ -148,4 +149,4 @@ const DecorationList = () => {
   );
 };
 
-export default DecorationList;
+export default PhotographyService;

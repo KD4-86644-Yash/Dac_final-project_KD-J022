@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"; // Add this import if using React Route
 import "../../../css/services/HeaderBar.css";
 
 
-const HeaderBar = () => {
+const FoodHeader = () => {
   const [view, setView] = useState("List");
 
   return (
@@ -17,7 +17,7 @@ const HeaderBar = () => {
 
       {/* Title Section */}
       <div className="title-section">
-        <h1 className="animated-title">Wedding Decoration</h1>
+        <h1 className="animated-title">Wedding Catering Service</h1>
         <p>
           Showing <strong>35,110 results</strong> as per your search criteria
         </p>
@@ -55,4 +55,4 @@ const HeaderBar = () => {
   );
 };
 
-export default HeaderBar;
+export default FoodHeader;

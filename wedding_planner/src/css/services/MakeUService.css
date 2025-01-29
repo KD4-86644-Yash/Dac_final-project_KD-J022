@@ -1,0 +1,151 @@
+.makeup-service-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    width: 90%;
+    max-width: 1200px; /* Adjusts width for large screens */
+    margin: auto;
+    min-height: 100vh; /* Ensures full-screen coverage */
+}
+
+
+  
+.makeup-card {
+  display: flex;
+  flex-direction: row;  /* Horizontal layout */
+  align-items: center;
+  width: 100%;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.makeup-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Ensure responsiveness for smaller screens */
+@media (max-width: 768px) {
+  .makeup-card {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+  }
+}
+
+/* 
+.makeup-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+  
+  .makeup-card:hover {
+    transform: translateY(-5px);
+  } */
+  
+  .image-container img {
+    width: 150px;  
+    height: 150px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .image-container img {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 10px;
+    }
+}
+
+
+
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.details h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.location, .price, .rating, .type {
+  font-size: 16px;
+  color: #555;
+  margin: 3px 0;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #e91e63;
+}
+
+.rating {
+  color: #ff9800;
+  font-weight: bold;
+}
+
+  .star-icon {
+    margin-right: 5px;
+  }
+  
+  .type {
+    font-size: 14px;
+    font-style: italic;
+    color: #555;
+    margin-top: 5px;
+  }
+  
+  .contact-btn {
+    background: #e91e63;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    align-self: flex-start;
+}
+
+.contact-btn:hover {
+    background: #c2185b;
+}
+
+/* Center the button on smaller screens */
+@media (max-width: 768px) {
+    .contact-btn {
+        align-self: center;
+    }
+}
+
+  
+  /* .makeup-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Adds space between items */
+  /* } */
+   
+
+  /* .makeup-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-right: 20px;
+  }
+   */
+

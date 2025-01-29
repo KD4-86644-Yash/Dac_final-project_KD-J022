@@ -1,18 +1,19 @@
 import Footer from "../../Component/Footer";
 import NavBar from "../../Component/NavBar";
-import DecorationList from "../../Component/Services/Decoration/DecorationList";
+import FoodList from "../../Component/Services/Food/FoodList";
 
 
-function Decorationservice(){
+function Food(){
     return(
         <div>
         <NavBar/>       
-        <DecorationList/>        
+        {/* <FoodList/>         */}
+        <FoodList/>
         <Footer/>
         </div>
 
     );
 }
-export default Decorationservice;
+export default Food;
 
 

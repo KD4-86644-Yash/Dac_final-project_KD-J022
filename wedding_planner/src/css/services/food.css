@@ -1,0 +1,103 @@
+/* General Container Styling */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+
+  /* Header Styling */
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ff4c61;
+  }
+  
+  .page-description {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 2rem;
+  }
+  
+  /* Card Styling */
+  .decoration-card {
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .decoration-card {
+    overflow: hidden; /* Ensure content stays inside */
+}
+
+.decoration-card:hover {
+    transform: scale(1.01); /* Reduce scaling */
+}
+
+  
+  /* Card Images */
+  .decoration-img {
+    height: 250px; /* Set a fixed height */
+    width: 100%;   /* Maintain full width */
+    object-fit: cover;
+    border-radius: 0.25rem;
+}
+
+  
+  /* Card Titles and Locations */
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .card-location {
+    font-size: 0.9rem;
+    color: #888;
+  }
+  
+  /* Description Styling */
+  .card-description {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  /* Buttons */
+  .btn-pink {
+    background-color: #ff4c61;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .btn-pink:hover {
+    background-color: #e43b50;
+    transform: scale(1.05);
+    text-decoration: none;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .decoration-card .row {
+      flex-direction: column;
+    }
+  
+    .decoration-img {
+      border-radius: 0;
+    }
+  }
+
+  .card-body {
+    padding: 20px 25px; /* Add extra padding */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* .decoration-card .row {
+  flex-direction: row;
+  align-items: center;
+  gap: 15px; /* Add space between image and content */
+/* } */ 
+
+  

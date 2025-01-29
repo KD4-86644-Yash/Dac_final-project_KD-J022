@@ -20,6 +20,8 @@ import Cart from './Component/Cart/Cart';
 import VendorDeskboard from './Screen/VendorDeskboard';
 import USerDeskboard from './Screen/UserDeskboard';
 import PhotographerProfile from './Screen/services/Subservices/PhotographerProfile';
+import SoundSystemService from './Screen/services/SoundSystemService';
+import MehndiService from './Screen/services/MehndiService';
 
 function App() {
   return (
@@ -41,6 +43,8 @@ function App() {
 
         <Route path ='/services/locationservice' element = {<LocationService />} />  
         <Route path='/services/decorationservice' element={<DecorationService/>} />
+        <Route path='/services/sound-system-service' element={<SoundSystemService/>} />
+        <Route path='/services/mehndi-service' element={<MehndiService/>} />
         <Route path ='/cart' element = {<Cart />} />
         <Route path ='/vendor_profile' element = {<VendorDeskboard />} />
         <Route path ='/user_profile' element = {<USerDeskboard />} />

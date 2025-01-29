@@ -68,7 +68,11 @@ function NavBar() {
               <a class="dropdown-item" href="/services/decorationservice">Decor</a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">Photography</a>
+              <a class="dropdown-item" href="/services/sound-system-service">Sound System</a>
+            </li>
+
+            <li>
+              <a class="dropdown-item" href="/services/mehndi-service">Mehndi</a>
             </li>
           </ul>
         </li>

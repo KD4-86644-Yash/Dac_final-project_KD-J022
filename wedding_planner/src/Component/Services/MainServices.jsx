@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom"; // Ensure react-router-dom is installed
 import "../../css/services/MainService.css";
+import SoundMainImage from "../../image/SoundMainImage.jpg";
+import VenueMainImage from "../../image/MainVenue.jpg";
+import MakeupMainImage from "../../image/MainMakeup.jpg";
+import DecorationMainImage from "../../image/MainDecoration.jpg";
+import PhotographerMainImage from "../../image/MainPhotography.jpg";
+import FoodMainImage from "../../image/MainFood.jpg";
+import InvitationMainImage from "../../image/MainGiftAndInvitation.jpg";
+import MehndiMainImage from "../../image/MainMehndi.jpg";
+
 
 function MainServices() {
   const [visibleDropdown, setVisibleDropdown] = useState(null);
@@ -40,7 +49,7 @@ function MainServices() {
     {
       title: "Venues",
       description: "Banquet Halls, Marriage Garden",
-      imageUrl: "https://via.placeholder.com/300x150",
+      imageUrl: VenueMainImage,
       dropdownItems: [
         { label: "Banquet Halls", path: "/services/locationservice" },
         { label: "Marriage Gardens", path: "/venues/marriage-gardens" },
@@ -49,7 +58,7 @@ function MainServices() {
     {
       title: "Makeup",
       description: "Bridal Makeup, Family Makeup",
-      imageUrl: "https://via.placeholder.com/300x150",
+      imageUrl: MakeupMainImage,
       dropdownItems: [
         { label: "Makeup Services", path: "/makeup/bridal-makeup" },
       ],
@@ -57,7 +66,7 @@ function MainServices() {
     {
       title: "Planning & Decor",
       description: "Wedding Planners, Decorators",
-      imageUrl: "https://via.placeholder.com/300x150",
+      imageUrl: DecorationMainImage,
       dropdownItems: [
         { label: "Theme Decor", path: "/services/decorationservice" },
       ],
@@ -65,7 +74,7 @@ function MainServices() {
     {
       title: "Photographers",
       description: "Photographers",
-      imageUrl: "https://via.placeholder.com/300x150",
+      imageUrl: PhotographerMainImage,
       dropdownItems: [
         { label: "Wedding Shoot", path: "/photographers/candid" },
         { label: "PreWedding Shoot", path: "/photographers/traditional" },
@@ -74,7 +83,7 @@ function MainServices() {
     {
       title: "Food",
       description: "Food Services",
-      imageUrl: "https://via.placeholder.com/300x150",
+      imageUrl: FoodMainImage,
       dropdownItems: [
         { label: "Food Services", path: "/pre-wedding-shoot/outdoor" },
       ],
@@ -82,15 +91,15 @@ function MainServices() {
     {
       title: "Sound System",
       description: "Sound System & Bands",
-      imageUrl: "https://via.placeholder.com/300x150",
+      imageUrl: SoundMainImage,
       dropdownItems: [
-        { label: "Sound System", path: "/bridal-wear/lehengas" },
+        { label: "Sound System", path: "/services/sound-system-service" },
       ],
     },
     {
       title: "Invites & Gifts",
       description: "Invites & Gifts",
-      imageUrl: "https://via.placeholder.com/300x150",
+      imageUrl: InvitationMainImage,
       dropdownItems: [
         { label: "Invites", path: "/groom-wear/sherwani" },
         { label: "Gifts", path: "/groom-wear/suits" },
@@ -99,9 +108,9 @@ function MainServices() {
     {
       title: "Mehndi",
       description: "Mehendi Artist",
-      imageUrl: "https://via.placeholder.com/300x150",
+      imageUrl: MehndiMainImage,
       dropdownItems: [
-        { label: "Mehndi", path: "/mehndi/bridal" },
+        { label: "Mehndi", path: "/services/mehndi-service" },
       ],
     },
   ];

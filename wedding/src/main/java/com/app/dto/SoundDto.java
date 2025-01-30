@@ -1,44 +1,30 @@
-package com.app.entities;
+package com.app.dto;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+
+import com.app.entities.UserEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
-@Entity
-@Table(name = "gifts")
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class Invites_Gift extends BaseEntity{
-	
-	@Column(length = 20)
+@Data
+public class SoundDto {
 	private String Name;
-	@Column(length = 20)
 	private String type;
-	@Column(length = 300)
 	private String city;
-	@Column(length = 100)
+	private String duration;
 	private Boolean status;
-	@Column(length = 500)
 	private String discription;
-	@Column(length = 500)
 	private int rating;
-	@Column(length = 500)
 	private int price;
-	
-	@ManyToOne
-	@JoinColumn(name = "vandor_id")
 	private UserEntity userEntity;
-
 }

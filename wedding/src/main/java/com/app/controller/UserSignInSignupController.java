@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.SigninRequest;
 import com.app.dto.SigninResponse;
+import com.app.entities.UserEntity;
 import com.app.security.JwtUtils;
 import com.app.service.UserService;
 
@@ -56,6 +57,12 @@ public class UserSignInSignupController {
 				"Successful Auth!!!!");
 		return ResponseEntity.
 				status(HttpStatus.CREATED).body(resp);
+	}
+	
+	@PostMapping("/signup")
+	public  ResponseEntity<?> addUser(@RequestBody UserEntity u) {
+		return ResponseEntity.status(HttpStatus.CREATED)
+				.body(userService.addU(u));
 	}
 
 }

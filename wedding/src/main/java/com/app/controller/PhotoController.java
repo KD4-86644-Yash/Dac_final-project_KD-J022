@@ -29,7 +29,7 @@ public class PhotoController {
 		return ResponseEntity.ok(photodto);
 	}
 	
-	@PostMapping("/photo/add")
+	@PostMapping("/add-photo")
 	public ResponseEntity<?> addSound(@RequestBody PhotoDto photodto){
 		
 		return ResponseEntity.status(HttpStatus.CREATED).body(photoservice.addPhotoService(photodto));

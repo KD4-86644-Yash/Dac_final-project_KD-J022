@@ -3,11 +3,12 @@ package com.app.service;
 import java.util.List;
 
 import com.app.dto.PhotoDto;
+import com.app.responseapi.ApiResponse;
 
 public interface PhotoService {
 
 	List<PhotoDto> getAllPhoto();
 
-	Object addPhotoService(PhotoDto photodto);
+	ApiResponse addPhotoService(PhotoDto photodto);
 
 }

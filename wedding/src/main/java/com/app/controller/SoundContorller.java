@@ -28,12 +28,12 @@ public class SoundContorller {
 		return ResponseEntity.ok(sounddto);	
 	}
 	
-	@PostMapping("/sound-system/add")
-	public ResponseEntity<?> addSound(@RequestBody SoundDto sounddto){
-		
-		return ResponseEntity.status(HttpStatus.CREATED).body(soundservice.addSoundService(sounddto));
-		
-	}
+//	@PostMapping("/sound-system/add")
+//	public ResponseEntity<?> addSound(@RequestBody SoundDto sounddto){
+//		
+//		return ResponseEntity.status(HttpStatus.CREATED).body(soundservice.addSoundService(sounddto));
+//		
+//	}
 	
 
 }

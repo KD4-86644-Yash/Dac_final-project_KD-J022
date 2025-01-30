@@ -6,20 +6,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.service.DecorationService;
 import com.app.service.VenueService;
 
 @RestController
 @RequestMapping("/services")
-public class SearchController {
+public class VenueController {
 	
 	@Autowired
-	private VenueService venueService;
+	private VenueService venueService;	
 	
-	@GetMapping("/Vanue")
-	public ResponseEntity<?> viewVenue(){
+	@GetMapping("/Venue")
+	public ResponseEntity<?> viewAllVenue(){
 		return ResponseEntity.ok(venueService.getAllVenue());
-				
 	}
+	
+	
 	
 
 }

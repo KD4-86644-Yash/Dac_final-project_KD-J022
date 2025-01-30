@@ -58,8 +58,6 @@ public class MehndiServiceImpl  implements MehndiService{
 		}
 		else 
 			return new ApiResponse("Cannot add service" );
-
-		
 	}
 
 }

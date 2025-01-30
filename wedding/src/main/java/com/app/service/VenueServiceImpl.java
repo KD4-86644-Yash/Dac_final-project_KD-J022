@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.app.dto.ApiResponse;
 import com.app.dto.VenueDto;
 import com.app.entities.Vanue;
 import com.app.repository.VenueRepository;
+import com.app.responseapi.ApiResponse;
 
 @Service
 @Transactional

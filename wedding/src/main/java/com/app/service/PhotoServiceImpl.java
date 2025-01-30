@@ -8,34 +8,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.app.dto.ApiResponse;
-import com.app.dto.SoundDto;
-import com.app.repository.SoundRepository;
+import com.app.dto.PhotoDto;
+import com.app.repository.PhotoRepository;
+
 
 @Service
-@Transactional
-public class SoundServiceImpl implements SoundServices {
-
-	@Autowired
-	private SoundRepository sound;
+public class PhotoServiceImpl implements PhotoService {
 	
+	@Autowired
+	private PhotoRepository photoRepository;
+
 	@Autowired
 	private ModelMapper mapper;
 	
 	@Override
-	public List<SoundDto> getAllSound() {
-		return sound.findAll().stream()
-				.map(sound -> mapper
-				.map(sound, SoundDto.class))
+	public List<PhotoDto> getAllPhoto() {
+		return photoRepository.findAll().stream()
+				.map(photo -> mapper
+				.map(photo, PhotoDto.class))
 				.collect(Collectors.toList());
+		
 	}
 
 	@Override
-	public ApiResponse addSoundService(SoundDto sounddto) {
-		
+	public Object addPhotoService(PhotoDto photodto) {
+		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
 
 }

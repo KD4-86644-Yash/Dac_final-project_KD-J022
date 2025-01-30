@@ -99,7 +99,7 @@ function DeshMain() {
                                         <th>Category</th>
                                         <th>Description</th>
                                         <th>Details</th>
-                                        { <th>Actions</th> }
+                                        {/* <th>Actions</th> */}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -110,10 +110,10 @@ function DeshMain() {
                                             <td>{service.category}</td>
                                             <td>{service.description}</td>
                                             <td>{Object.entries(service.details).map(([key, value]) => `${key}: ${value}`).join(", ")}</td>
-                                            { <td>
+                                            {/* <td>
                                                 <button className="btn btn-warning btn-sm me-2" onClick={() => setEditingIndex(index)}>Edit</button>
                                                 <button className="btn btn-danger btn-sm" onClick={() => setServices(services.filter((_, i) => i !== index))}>Delete</button>
-                                            </td> }
+                                            </td> */}
                                         </tr>
                                     ))}
                                 </tbody>

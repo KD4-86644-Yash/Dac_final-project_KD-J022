@@ -10,30 +10,29 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.dto.SoundDto;
-import com.app.service.SoundServices;
+import com.app.dto.PhotoDto;
+import com.app.service.PhotoService;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
-@RequestMapping
-public class SoundContorller {
+@RequestMapping("/photo")
+public class PhotoController {
 	
 	@Autowired
-	private SoundServices soundservice;
+	private PhotoService photoservice;
 	
-	@GetMapping("/sound-system")
-	public ResponseEntity<?> getAllSound(){
-		List<SoundDto> sounddto = soundservice.getAllSound();
-		return ResponseEntity.ok(sounddto);	
+	@GetMapping("/get")
+	public ResponseEntity<?> getPhoto(){
+		List<PhotoDto> photodto = photoservice.getAllPhoto();
+		
+		return ResponseEntity.ok(photodto);
 	}
 	
-	@PostMapping("/sound-system/add")
-	public ResponseEntity<?> addSound(@RequestBody SoundDto sounddto){
+	@PostMapping("/photo/add")
+	public ResponseEntity<?> addSound(@RequestBody PhotoDto photodto){
 		
-		return ResponseEntity.status(HttpStatus.CREATED).body(soundservice.addSoundService(sounddto));
-		
+		return ResponseEntity.status(HttpStatus.CREATED).body(photoservice.addPhotoService(photodto));
 	}
-	
 
 }

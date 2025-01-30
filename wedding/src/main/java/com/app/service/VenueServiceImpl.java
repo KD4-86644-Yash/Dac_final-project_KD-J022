@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.app.dto.ApiResponse;
+import com.app.dto.VenueDto;
 import com.app.entities.Vanue;
 import com.app.repository.VenueRepository;
 
@@ -26,6 +28,16 @@ public class VenueServiceImpl implements VenueService  {
 	public List<Vanue> getAllVenue() {
 		
 		return venueRepository.findAll();
+	}
+
+	@Override
+	public ApiResponse addProduct(VenueDto dto) {
+		
+		Vanue venue = mapper.map(dto, Vanue.class);
+		venueRepository.save(venue);
+		return new ApiResponse("Added new Venue with id" + venue.getId());
+		// TODO Auto-generated method stub
+//		return null;
 	}
 
 }

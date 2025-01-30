@@ -1,23 +1,20 @@
 package com.app.responseapi;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
-import org.springframework.http.HttpStatus;
+import lombok.*;
 
-import com.app.dto.ServicesDTO;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
+
 public class ApiResponse {
 	
-	private ServicesDTO serviceDto;
-	private List<ServicesDTO> serviceDtos;
-	private HttpStatus status;
+	private LocalDateTime timeStamp;
 	private String message;
-	private boolean error;
+	public ApiResponse(String message) {
+		super();
+		this.message = message;
+		this.timeStamp=LocalDateTime.now();
+	}
 }

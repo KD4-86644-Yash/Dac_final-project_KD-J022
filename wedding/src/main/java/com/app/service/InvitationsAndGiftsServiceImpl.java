@@ -10,8 +10,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.app.dto.InvitesGiftDto;
 import com.app.dto.MehandiDto;
+import com.app.entities.InvitesGift;
+import com.app.entities.Mehandi;
+import com.app.entities.UserEntity;
 import com.app.repository.InvitationsAndGiftsRepository;
 import com.app.repository.MehandiRepository;
+import com.app.repository.UserEntityRepository;
+import com.app.responseapi.ApiResponse;
 
 @Service
 @Transactional
@@ -24,6 +29,9 @@ public class InvitationsAndGiftsServiceImpl implements InvitationsAndGiftsServic
 	@Autowired
 	private ModelMapper mapper;
 	
+	@Autowired
+	private UserEntityRepository userEntityRepository;
+	
 	
 	@Override
 	public List<InvitesGiftDto> getAllList() {
@@ -32,6 +40,27 @@ public class InvitationsAndGiftsServiceImpl implements InvitationsAndGiftsServic
 				.stream()
 				.map(invitations -> mapper.map(invitations, InvitesGiftDto.class))
 				.collect(Collectors.toList());
+	}
+
+
+	@Override
+	public ApiResponse addInvitationAndGiftService(InvitesGiftDto invitesAndGifts) {
+	
+		InvitesGift newInvitesAndGifts = mapper.map(invitesAndGifts, InvitesGift.class);
+		
+		String emailValidation = invitesAndGifts.getVendorEmail();
+		UserEntity VendorObject = userEntityRepository.findByEmail(emailValidation).orElseThrow();
+		
+		if(VendorObject.getEmail().equalsIgnoreCase(emailValidation)) {
+		
+			newInvitesAndGifts.setUserEntity(VendorObject);
+			InvitesGift persistentEntity =  invitationsAndGiftsRepository.save(newInvitesAndGifts);
+		return new ApiResponse("Added new Mehandi Service with ID " + persistentEntity.getId());
+		}
+		else 
+			return new ApiResponse("Cannot add service" );
+		
+		
 	}
 
 }

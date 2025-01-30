@@ -1,9 +1,8 @@
 package com.app.responseapi;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
-import org.springframework.http.HttpStatus;
+import lombok.*;
 
 import com.app.dto.ServicesDTO;
 
@@ -16,7 +15,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
+
 public class ApiResponse {
+	
 	private LocalDateTime timeStamp;
 	private String message;
 	public ApiResponse(String message) {

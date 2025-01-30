@@ -23,5 +23,5 @@ public class InvitesGiftDto {
 	private int rating;
 	private int price;
 	
-	private UserEntity userEntity;
+	private String vendorEmail;
 }

@@ -26,5 +26,5 @@ public class MehandiDto {
 	private int rating;
 	private int price;
 	
-	private UserEntity userEntity;
+	private String vendorEmail;
 }

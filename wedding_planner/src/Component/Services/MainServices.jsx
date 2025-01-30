@@ -60,7 +60,7 @@ function MainServices() {
       description: "Bridal Makeup, Family Makeup",
       imageUrl: MakeupMainImage,
       dropdownItems: [
-        { label: "Makeup Services", path: "/services/MakeUp },
+        { label: "Makeup Services", path: "/services/MakeUp "},
       ],
     },
     {

@@ -7,33 +7,41 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.SoundDto;
+import com.app.dto.SoundUpdateDTO;
 import com.app.service.SoundServices;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
-@RequestMapping
+@RequestMapping("/sound-system")
 public class SoundContorller {
 	
 	@Autowired
 	private SoundServices soundservice;
 	
-	@GetMapping("/sound-system")
+	@GetMapping("/get")
 	public ResponseEntity<?> getAllSound(){
 		List<SoundDto> sounddto = soundservice.getAllSound();
 		return ResponseEntity.ok(sounddto);	
 	}
 	
-//	@PostMapping("/sound-system/add")
-//	public ResponseEntity<?> addSound(@RequestBody SoundDto sounddto){
-//		
-//		return ResponseEntity.status(HttpStatus.CREATED).body(soundservice.addSoundService(sounddto));
-//		
-//	}
+	@PostMapping("/add")
+	public ResponseEntity<?> addSound(@RequestBody SoundDto sounddto){
+		
+		return ResponseEntity.status(HttpStatus.CREATED).body(soundservice.addSoundService(sounddto));
+		
+	}
+	
+	@PutMapping("/update")
+	public ResponseEntity<?> updateSound(@RequestBody SoundUpdateDTO updateDto){
+		return ResponseEntity.ok(soundservice.updateSoundService(updateDto));
+	}
 	
 
 }

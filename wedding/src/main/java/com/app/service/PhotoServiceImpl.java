@@ -39,27 +39,20 @@ public class PhotoServiceImpl implements PhotoService {
 
 	@Override
 	public ApiResponse addPhotoService(PhotoDto photodto) {
-	    if (photodto == null || photodto.getVendorEmail() == null) {
-	        return new ApiResponse("Vendor email is missing in the request!");
-	    }
-	    
-	    String email = photodto.getVendorEmail();
-	    
-	    // Fetch the user by email, throw an error if not found
-	    UserEntity user = userRepository.findByEmail(email)
-	        .orElseThrow(() -> new RuntimeException("User with email " + email + " not found!"));
-
-	    // Map DTO to Entity
-	    Photo photo = mapper.map(photodto, Photo.class);
-	    
-	    if (email.equalsIgnoreCase(user.getEmail())) {
-	        photo.setUserEntity(user);
-	        Photo persistUser = photoRepository.save(photo);
-	        return new ApiResponse("Added New Service With Id: " + persistUser.getId());
-	    } else {    
-	        return new ApiResponse("Cannot add service, email mismatch!");
-	    }
+		
+		Photo newPhoto = mapper.map(photodto, Photo.class);
+		
+		String email = photodto.getVendorEmail();
+		UserEntity user = userRepository.findByEmail(email).orElseThrow();
+		
+		if(user.getEmail().equalsIgnoreCase(email)) {
+			
+			newPhoto.setUserEntity(user);
+			Photo persistUser =  photoRepository.save(newPhoto);
+			return new ApiResponse("Added New Service With Id:"+ persistUser.getId());
+		}
+		else	
+			return new ApiResponse("Can not add service");
 	}
-
 
 }

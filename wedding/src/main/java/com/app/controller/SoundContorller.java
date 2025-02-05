@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -14,12 +15,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.SoundDto;
+import com.app.dto.SoundReqDTO;
 import com.app.dto.SoundUpdateDTO;
 import com.app.service.SoundServices;
 
 
 @RestController
-@RequestMapping("/sound-system")
+@RequestMapping("services/sound-system-service")
+@CrossOrigin(origins  = "*")
 public class SoundContorller {
 	
 	@Autowired
@@ -27,7 +30,7 @@ public class SoundContorller {
 	
 	@GetMapping("/get")
 	public ResponseEntity<?> getAllSound(){
-		List<SoundDto> sounddto = soundservice.getAllSound();
+		List<SoundReqDTO> sounddto = soundservice.getAllSound();
 		return ResponseEntity.ok(sounddto);	
 	}
 	
@@ -38,10 +41,10 @@ public class SoundContorller {
 		
 	}
 	
-	@PutMapping("/update")
+	/*@PutMapping("/update")
 	public ResponseEntity<?> updateSound(@RequestBody SoundUpdateDTO updateDto){
 		return ResponseEntity.ok(soundservice.updateSoundService(updateDto));
-	}
+	}*/
 	
 
 }

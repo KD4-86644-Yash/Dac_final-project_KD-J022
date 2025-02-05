@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.app.dto.SoundDto;
+import com.app.dto.SoundReqDTO;
 import com.app.dto.SoundUpdateDTO;
-import com.app.entities.Photo;
 import com.app.entities.Services;
 import com.app.entities.Sound;
 import com.app.entities.UserEntity;
@@ -36,10 +36,10 @@ public class SoundServiceImpl implements SoundServices {
 	private ServiceRepository serviceRepository;
 	
 	@Override
-	public List<SoundDto> getAllSound() {
+	public List<SoundReqDTO> getAllSound() {
 		return sound.findAll().stream()
 				.map(sound -> mapper
-				.map(sound, SoundDto.class))
+				.map(sound, SoundReqDTO.class))
 				.collect(Collectors.toList());
 	}
 
@@ -64,9 +64,30 @@ public class SoundServiceImpl implements SoundServices {
 	}
 
 	@Override
-	public ApiResponse updateSoundService(SoundUpdateDTO updateDto) {
-//		Sound newSound = sound.findByName()
+	public ApiResponse updateSoundService(SoundDto updateDto) {
+		// TODO Auto-generated method stub
 		return null;
 	}
+
+//	@Override
+//	public ApiResponse updateSoundService(SoundDto updateDto) {
+//	    // Find existing sound entry
+//	    Sound existingSound = sound.findById(updateDto.getId())
+//	            .orElseThrow(() -> new RuntimeException("Sound service not found with ID: " + updateDto.getId()));
+//
+//	    // Update only non-null fields
+//	    if (updateDto.getName() != null) {
+//	        existingSound.setName(updateDto.getName());
+//	    }
+//	    if (updateDto.getDiscription() != null) {
+//	        existingSound.setDiscription(updateDto.getDiscription());
+//	    }
+//
+//	    // Save updated sound entity
+//	    Sound updatedSound = sound.save(existingSound);
+//
+//	    return new ApiResponse("Updated Sound Service with ID: " + updatedSound.getId());
+//	}
+
 	
 }

@@ -10,8 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.app.dto.PhotoDto;
 import com.app.entities.Photo;
+import com.app.entities.Services;
 import com.app.entities.UserEntity;
 import com.app.repository.PhotoRepository;
+import com.app.repository.ServiceRepository;
 import com.app.repository.UserEntityRepository;
 import com.app.responseapi.ApiResponse;
 
@@ -28,6 +30,9 @@ public class PhotoServiceImpl implements PhotoService {
 	
 	@Autowired
 	private UserEntityRepository userRepository;
+	
+	@Autowired
+	private ServiceRepository serviceRepository;
 	
 	@Override
 	public List<PhotoDto> getAllPhoto() {
@@ -49,6 +54,9 @@ public class PhotoServiceImpl implements PhotoService {
 			
 			newPhoto.setUserEntity(user);
 			Photo persistUser =  photoRepository.save(newPhoto);
+			Services service = new Services();
+		    service.setPhotoId(newPhoto);
+		    serviceRepository.save(service);
 			return new ApiResponse("Added New Service With Id:"+ persistUser.getId());
 		}
 		else	

@@ -12,57 +12,101 @@ function DeshMain() {
     const [newService, setNewService] = useState({
         Name: "",
         category: "",
-        description: "", // New field added
+        description: "",
         details: {}
     });
 
     const serviceFields = {
-        Venue: ["Location","Type", "Capacity","Room","Address", "Price"],
+        Venue: ["Location", "Type", "Capacity", "Room", "Address", "Price"],
         Food: ["Cuisine Type", "City", "Price per Plate"],
         Decoration: ["Location", "Price"],
-        Sound: ["Type", "Duration", "City","Price"],
+        Sound: ["Type", "Duration", "City", "Price"],
         Makeup: ["Type", "City", "Price"],
         Mehndi: ["Type", "City", "Price"],
-        Photography: ["Type", "Duration","City", "Price"]
+        Photography: ["Type", "Duration", "City", "Price"]
     };
 
-    // Handle input change
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setNewService((prevService) => ({
-            ...prevService,
-            details: { ...prevService.details, [name]: value }
-        }));
+    const serviceApiUrls = {
+        Venue: "http://localhost:5000/api/services/venue",
+        Food: "http://localhost:5000/api/services/food",
+        Decoration: "http://localhost:5000/api/services/decoration",
+        Sound: "http://localhost:5000/api/services/sound",
+        Makeup: "http://localhost:5000/api/services/makeup",
+        Mehndi: "http://localhost:5000/api/services/mehndi",
+        Photography: "http://localhost:5000/api/services/photography"
     };
 
-    // Handle description change
-    const handleDescriptionChange = (e) => {
-        setNewService({ ...newService, description: e.target.value });
-    };
-
-    // Handle service category change
+    // Handle input change for category dropdown
     const handleCategoryChange = (e) => {
-        setNewService({ Name: "", category: e.target.value, description: "", details: {} });
+        setNewService({
+            ...newService,
+            category: e.target.value,
+            details: {} // Reset details when category changes
+        });
     };
 
-    // Handle Save Service
-    const handleSaveService = () => {
+    // Handle input change for description
+    const handleDescriptionChange = (e) => {
+        setNewService({
+            ...newService,
+            description: e.target.value
+        });
+    };
+
+    // Handle input change for details fields
+    const handleChange = (e) => {
+        setNewService({
+            ...newService,
+            details: {
+                ...newService.details,
+                [e.target.name]: e.target.value
+            }
+        });
+    };
+
+    const handleSaveService = async () => {
         if (!newService.Name || !newService.category || !newService.description) {
             alert("Please fill in all fields.");
             return;
         }
 
-        if (editingIndex !== null) {
-            const updatedServices = [...services];
-            updatedServices[editingIndex] = newService;
-            setServices(updatedServices);
-        } else {
-            setServices([...services, newService]);
+        const apiUrl = serviceApiUrls[newService.category];
+
+        if (!apiUrl) {
+            alert("Invalid service category.");
+            return;
         }
 
-        setShowModal(false);
-        setNewService({ Name: "", category: "", description: "", details: {} });
-        setEditingIndex(null);
+        try {
+            const response = await fetch(apiUrl, {
+                method: editingIndex !== null ? "PUT" : "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(newService),
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to save service");
+            }
+
+            const savedService = await response.json();
+
+            if (editingIndex !== null) {
+                const updatedServices = [...services];
+                updatedServices[editingIndex] = savedService;
+                setServices(updatedServices);
+            } else {
+                setServices([...services, savedService]);
+            }
+
+            setShowModal(false);
+            setNewService({ Name: "", category: "", description: "", details: {} });
+            setEditingIndex(null);
+        } catch (error) {
+            console.error("Error saving service:", error);
+            alert("Error saving service. Please try again.");
+        }
     };
 
     return (
@@ -99,7 +143,7 @@ function DeshMain() {
                                         <th>Category</th>
                                         <th>Description</th>
                                         <th>Details</th>
-                                        {/* <th>Actions</th> */}
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -110,10 +154,10 @@ function DeshMain() {
                                             <td>{service.category}</td>
                                             <td>{service.description}</td>
                                             <td>{Object.entries(service.details).map(([key, value]) => `${key}: ${value}`).join(", ")}</td>
-                                            {/* <td>
+                                            <td>
                                                 <button className="btn btn-warning btn-sm me-2" onClick={() => setEditingIndex(index)}>Edit</button>
                                                 <button className="btn btn-danger btn-sm" onClick={() => setServices(services.filter((_, i) => i !== index))}>Delete</button>
-                                            </td> */}
+                                            </td>
                                         </tr>
                                     ))}
                                 </tbody>
@@ -133,33 +177,16 @@ function DeshMain() {
                                 <button type="button" className="btn-close" onClick={() => setShowModal(false)}></button>
                             </div>
                             <div className="modal-body">
-                                <div className="mb-3">
-                                    <label className="form-label"> Name</label>
-                                    <input type="text" className="form-control" name="Name" value={newService.Name} onChange={(e) => setNewService({ ...newService, Name: e.target.value })} />
-                                </div>
-                                <div className="mb-3">
-                                    <label className="form-label">Category</label>
-                                    <select className="form-control" value={newService.category} onChange={handleCategoryChange}>
-                                        <option value="">Select Category</option>
-                                        {Object.keys(serviceFields).map((category) => (
-                                            <option key={category} value={category}>{category}</option>
-                                        ))}
-                                    </select>
-                                </div>
-                                <div className="mb-3">
-                                    <label className="form-label">Description</label>
-                                    <textarea className="form-control" rows="3" value={newService.description} onChange={handleDescriptionChange} />
-                                </div>
-                                {newService.category && serviceFields[newService.category].map((field) => (
-                                    <div className="mb-3" key={field}>
-                                        <label className="form-label">{field}</label>
-                                        <input type="text" className="form-control" name={field} value={newService.details[field] || ""} onChange={handleChange} />
-                                    </div>
-                                ))}
+                                <input type="text" className="form-control" name="Name" value={newService.Name} onChange={(e) => setNewService({ ...newService, Name: e.target.value })} />
+                                <select className="form-control" value={newService.category} onChange={handleCategoryChange}>
+                                    <option value="">Select Category</option>
+                                    {Object.keys(serviceFields).map((category) => (
+                                        <option key={category} value={category}>{category}</option>
+                                    ))}
+                                </select>
                             </div>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" onClick={() => setShowModal(false)}>Close</button>
-                                <button type="button" className="btn btn-primary" onClick={handleSaveService}>{editingIndex !== null ? "Update Service" : "Add Service"}</button>
+                                <button className="btn btn-primary" onClick={handleSaveService}>{editingIndex !== null ? "Update Service" : "Add Service"}</button>
                             </div>
                         </div>
                     </div>

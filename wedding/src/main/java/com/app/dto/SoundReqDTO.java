@@ -18,7 +18,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Data
-public class SoundDto{
+public class SoundReqDTO{
 	private int id;
 	private String Name;
 	private String type;

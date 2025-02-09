@@ -1,10 +1,13 @@
 package com.app.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,7 +19,9 @@ import com.app.dto.FoodDto;
 import com.app.dto.InvitesGiftDto;
 import com.app.dto.MakeUpDto;
 import com.app.dto.PhotoDto;
+import com.app.dto.ServicesDTO;
 import com.app.dto.SoundDto;
+import com.app.dto.SoundReqDTO;
 import com.app.dto.VenueDto;
 import com.app.responseapi.DecorationApiResponce;
 import com.app.responseapi.FoodApiResponce;
@@ -36,6 +41,12 @@ import lombok.extern.slf4j.Slf4j;
 public class VendorController {
 	@Autowired
 	public VendorService vendorService;
+	
+	@GetMapping("/get/{vendorId}")
+	public ResponseEntity<?> getAllServices(@PathVariable Long vendorId){
+		ServicesDTO servicedto = vendorService.getAllServices(vendorId);
+		return ResponseEntity.ok(servicedto);	
+	}
 
 	@PostMapping("/Venueadd/{vendorId}")
 //	@PreAuthorize("hasAuthority('ROLE_Vendor')")
@@ -117,6 +128,4 @@ public class VendorController {
 		return responceEntity;
 	}
 	
-	
-
 }

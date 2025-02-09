@@ -25,7 +25,7 @@ import com.app.entities.Vanue;
 import com.app.repository.DecorationRepository;
 import com.app.repository.FoodRepository;
 import com.app.repository.InvitesGiftsRepository;
-import com.app.repository.MakeupRepository;
+import com.app.repository.MakeUpRepository;
 import com.app.repository.PhotoRepository;
 import com.app.repository.SoundRepository;
 import com.app.repository.UserEntityRepository;
@@ -61,7 +61,7 @@ public class VendorServiceImpl implements VendorService {
 	@Autowired
 	public InvitesGiftsRepository invitesGiftsRepository;
 	@Autowired
-	public MakeupRepository makeupRepository;
+	public MakeUpRepository makeupRepository;
 
 	@Autowired
 	public UserEntityRepository userEntityRepository;
@@ -258,8 +258,4 @@ public class VendorServiceImpl implements VendorService {
 	        return new VenueApiResponce(null, null, HttpStatus.INTERNAL_SERVER_ERROR, "Error occurred", true);
 	    }
 	}
-	
-	
-
-	
 }

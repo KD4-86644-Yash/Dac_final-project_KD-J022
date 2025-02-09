@@ -12,8 +12,8 @@ import com.app.dto.ApiResponse;
 import com.app.dto.MakeUpDto;
 import com.app.entities.MakeUp;
 import com.app.entities.UserEntity;
+import com.app.repository.MakeUpRepository;
 //import com.app.repository.MakeUpRepository;
-import com.app.repository.MakeupRepository;
 import com.app.repository.UserEntityRepository;
 
 @Service
@@ -21,7 +21,7 @@ import com.app.repository.UserEntityRepository;
 public class MakeUpServiceImpl implements MakeUpService {
 	
 	@Autowired
-	private MakeupRepository makeUpRepository;
+	private MakeUpRepository makeUpRepository;
 	
 	@Autowired
 	private ModelMapper mapper;

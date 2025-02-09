@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.app.dto.CartDTO;
 import com.app.dto.VenueDto;
 import com.app.entities.Cart;
+import com.app.entities.Mehandi;
 import com.app.entities.UserEntity;
 import com.app.entities.Venue;
 import com.app.repository.CartRepository;
@@ -81,6 +82,23 @@ public class VenueServiceImpl implements VenueService {
 		Cart savingToCart = cartRepository.save(cartObject);
 		
 		return new ApiResponse("Add service" + savingToCart.getName() + " having id");
+	}
+
+	@Override
+	public Venue getSingleMehandiRecord(Long serviceId) {
+
+		Venue venueObject = venueRepository.findById(serviceId).orElseThrow();
+		
+		Venue anotherObject = new Venue();
+		
+		anotherObject.setName(venueObject.getName());
+		anotherObject.setCity(venueObject.getCity());
+		anotherObject.setDiscription(venueObject.getDiscription());
+		anotherObject.setPrice(venueObject.getPrice());
+		anotherObject.setRating(venueObject.getRating());
+		
+		 
+		return  anotherObject;
 	}
 
 }

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.CartDTO;
+import com.app.entities.Mehandi;
+import com.app.entities.Venue;
 import com.app.service.DecorationService;
 import com.app.service.VenueService;
 
@@ -32,6 +34,12 @@ public class VenueController {
 		
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(venueService.addVenueServiceToCart(cartDto, id, userId));
+	}
+	
+	@GetMapping("services/venue/{user-id}/{service-id}")
+	public ResponseEntity<?> getSingleInvitationObject(@PathVariable ("service-id") Long id){
+		Venue venueObject = venueService.getSingleMehandiRecord(id);
+		return ResponseEntity.ok(venueObject);
 	}
 	
 	

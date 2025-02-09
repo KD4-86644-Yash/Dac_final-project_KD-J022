@@ -2,6 +2,7 @@ package com.app.service;
 
 import java.util.List;
 
+import com.app.dto.ApiResponse;
 import com.app.dto.DecorationDto;
 import com.app.dto.VenueDto;
 
@@ -9,7 +10,8 @@ import com.app.dto.VenueDto;
 
 public interface DecorationService {
 
-//	List<DecorationDto> getAllVenue();
 	List<DecorationDto> getAllDecoration();
+	ApiResponse addDecorationService(DecorationDto dto);
+	
 
 }

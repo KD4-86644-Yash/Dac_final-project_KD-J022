@@ -28,5 +28,7 @@ public class MakeUpDto {
 	private int rating;
 	private int price;
 	
-	private UserEntity userEntity;
+//	private UserEntity userEntity;
+	
+	private String vendorEmail; 
 }

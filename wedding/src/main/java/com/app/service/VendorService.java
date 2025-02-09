@@ -8,4 +8,5 @@ import com.app.responseapi.VenueApiResponce;
 public interface VendorService {
 
 	public VenueApiResponce addVenue( VenueDto venueDto, Long vendorId);
+	
 }

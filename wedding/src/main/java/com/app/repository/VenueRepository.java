@@ -12,8 +12,5 @@ import com.app.responseapi.ApiResponse;
 public interface VenueRepository extends JpaRepository<Venue, Long> {
 
 	Venue findAllById(String name);
-	
-	
-
 
 }

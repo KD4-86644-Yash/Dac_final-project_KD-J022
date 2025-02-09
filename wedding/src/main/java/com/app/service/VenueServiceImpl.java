@@ -23,6 +23,7 @@ import com.app.responseapi.ApiResponse;
 
 
 public class VenueServiceImpl implements VenueService  {
+
 	
 	@Autowired
 	private VenueRepository venueRepository;
@@ -84,7 +85,4 @@ public class VenueServiceImpl implements VenueService  {
 		
 		return new ApiResponse("Add service" + savingToCart.getName() + " having id");
 	}
-
-	
-
 }

@@ -12,9 +12,6 @@ import lombok.*;
 public class CartDTO {
 	
 	private String name;
-	private int price;
 	private int quantity;
-	private Long service_Id;
-	
 
 }

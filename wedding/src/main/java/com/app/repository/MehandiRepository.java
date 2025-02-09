@@ -8,6 +8,4 @@ import com.app.responseapi.ApiResponse;
 
 public interface MehandiRepository extends JpaRepository<Mehandi, Long>{
 
-	
-	
 }

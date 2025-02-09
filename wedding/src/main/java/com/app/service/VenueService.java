@@ -13,7 +13,6 @@ public interface VenueService {
 	List<Venue> getAllVenue();
 	ApiResponse addProduct(VenueDto dto);
 	
-	
 	ApiResponse addMehandiServiceToCart(CartDTO cartDto,Long serviceId, Long UserId);
 	
 }

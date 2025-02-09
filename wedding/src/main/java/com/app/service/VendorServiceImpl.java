@@ -58,6 +58,6 @@ public class VendorServiceImpl implements VendorService{
 			// TODO: handle exception
 		}
 		return new VenueApiResponce(null,null,HttpStatus.INTERNAL_SERVER_ERROR, "error",true);
-
+		
 	}
 }

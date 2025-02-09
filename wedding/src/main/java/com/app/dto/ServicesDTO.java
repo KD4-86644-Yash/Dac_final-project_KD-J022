@@ -10,7 +10,7 @@ import com.app.entities.MakeUp;
 import com.app.entities.Mehandi;
 import com.app.entities.Photo;
 import com.app.entities.Sound;
-import com.app.entities.Vanue;
+import com.app.entities.Venue;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,7 +25,7 @@ import lombok.Setter;
 @Data
 public class ServicesDTO {
 	
-	private Vanue vanueId;
+	private Venue vanueId;
 	private MakeUp makeUpId;
 	private Decoration dacourationId;
 	private Food foodId;

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.app.dto.VenueDto;
 import com.app.entities.UserEntity;
-import com.app.entities.Vanue;
+import com.app.entities.Venue;
 import com.app.repository.UserEntityRepository;
 import com.app.repository.VenueRepository;
 import com.app.responseapi.VenueApiResponce;
@@ -34,7 +34,7 @@ public class VendorServiceImpl implements VendorService{
 		try {
 			Optional<UserEntity> userEntity = userEntityRepository.findById(vendorId);
 			log.info( userEntity.get().getFirstName());
-			Vanue vanue = mapper.map(venueDto, Vanue.class);
+			Venue vanue = mapper.map(venueDto, Venue.class);
 			log.info("vv2="+venueDto.getName());
 			vanue.setName(venueDto.getName());
 			vanue.setAddress(venueDto.getAddress());

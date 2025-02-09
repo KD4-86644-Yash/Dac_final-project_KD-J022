@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.app.dto.CartDTO;
 import com.app.dto.MehandiDto;
 import com.app.entities.Cart;
+import com.app.entities.InvitesGift;
 import com.app.entities.Mehandi;
 import com.app.entities.UserEntity;
 import com.app.repository.CartRepository;
@@ -100,6 +101,25 @@ public class MehndiServiceImpl  implements MehndiService{
 		Cart savingToCart = cartRepository.save(cartObject);
 		
 		return new ApiResponse("Add service" + savingToCart.getName() + " having id" );
+	}
+
+
+
+	@Override
+	public Mehandi getSingleMehandiRecord(Long serviceId) {
+		
+		Mehandi mehandiObject = mehandiRepository.findById(serviceId).orElseThrow();
+		
+		Mehandi anotherObject = new Mehandi();
+		
+		anotherObject.setName(mehandiObject.getName());
+		anotherObject.setCity(mehandiObject.getCity());
+		anotherObject.setDiscription(mehandiObject.getDiscription());
+		anotherObject.setPrice(mehandiObject.getPrice());
+		anotherObject.setRating(mehandiObject.getRating());
+		
+		 
+		return  anotherObject;
 	}
 	
 	

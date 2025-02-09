@@ -15,8 +15,9 @@ import com.app.entities.Cart;
 import com.app.entities.MakeUp;
 import com.app.entities.UserEntity;
 import com.app.repository.CartRepository;
-//import com.app.repository.MakeUpRepository;
+
 import com.app.repository.MakeupRepository;
+//import com.app.repository.MakeUpRepository;
 import com.app.repository.UserEntityRepository;
 
 @Service

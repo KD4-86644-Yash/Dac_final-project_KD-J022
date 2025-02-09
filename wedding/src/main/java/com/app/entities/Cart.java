@@ -1,5 +1,7 @@
 package com.app.entities;
 
+import java.security.Provider.Service;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -25,13 +27,17 @@ public class Cart extends BaseEntity{
 	
 	@Column(length = 20)
 	private String Name;
-	@Column(length = 500)
+	
 	private int quantity;
-	@Column(length = 500)
+	
 	private int price;
 	
-	@OneToOne
-	@JoinColumn(name = "serrvice_id")
-	private Services service;
+	@Column(name = "user_id")
+	private Long userId;
+
+	@Column(name = "serrvice_id")
+	private Long service;
+
+
 
 }

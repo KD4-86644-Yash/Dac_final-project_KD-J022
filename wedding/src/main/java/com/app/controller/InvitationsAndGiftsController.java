@@ -1,6 +1,7 @@
 package com.app.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.dto.CartDTO;
 import com.app.dto.InvitesGiftDto;
 import com.app.dto.MehandiDto;
+import com.app.entities.InvitesGift;
 import com.app.service.InvitationsAndGiftsService;
 
 @RestController
@@ -28,7 +30,7 @@ public class InvitationsAndGiftsController {
 	private InvitationsAndGiftsService invitationsAndGiftsService;
 	
 	@GetMapping
-	ResponseEntity<?> getList(){
+	public ResponseEntity<?> getList(){
 		
 		List<InvitesGiftDto> invitesList = invitationsAndGiftsService.getAllList();
 		if(invitesList.isEmpty())
@@ -50,5 +52,12 @@ public class InvitationsAndGiftsController {
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(invitationsAndGiftsService.addInvitationAndGiftServiceToCart(cartDto, id, userId));
 	}
+	
+	@GetMapping("services/invitations/{user-id}/{service-id}")
+	public ResponseEntity<?> getSingleInvitationObject(@PathVariable ("service-id") Long id){
+		InvitesGift inviteObject = invitationsAndGiftsService.getSingleInvitationRecord(id);
+		return ResponseEntity.ok(inviteObject);
+	}
+	
 
 }

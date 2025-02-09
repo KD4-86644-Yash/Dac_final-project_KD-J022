@@ -23,7 +23,7 @@ public class Services extends BaseEntity{
 
 	@OneToOne
 	@JoinColumn(name = "vanue_id",nullable = true)
-	private Vanue vanueId;
+	private Venue vanueId;
 	
 	@OneToOne
 	@JoinColumn(name = "makeup_id",nullable = true)

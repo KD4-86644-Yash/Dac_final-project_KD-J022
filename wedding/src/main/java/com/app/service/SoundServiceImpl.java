@@ -42,6 +42,14 @@ public class SoundServiceImpl implements SoundServices {
 				.map(sound, SoundReqDTO.class))
 				.collect(Collectors.toList());
 	}
+	
+	@Override
+	public List<SoundReqDTO> getbyId(Long vandor_id) {
+		return sound.findByUserEntityId(vandor_id).stream()
+				.map(sound -> mapper
+				.map(sound, SoundReqDTO.class))
+				.collect(Collectors.toList());
+	}
 
 	@Override
 	public ApiResponse addSoundService(SoundDto sounddto) {

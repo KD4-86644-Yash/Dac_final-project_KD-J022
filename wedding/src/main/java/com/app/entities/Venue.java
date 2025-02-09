@@ -23,7 +23,7 @@ import lombok.ToString;
 @Setter
 @Data
 @ToString
-public class Vanue extends BaseEntity{
+public class Venue extends BaseEntity{
 
 	@Column(length = 20)
 	private String Name;

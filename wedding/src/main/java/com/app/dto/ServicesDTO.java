@@ -1,5 +1,7 @@
 package com.app.dto;
 
+import java.util.List;
+
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
@@ -10,7 +12,7 @@ import com.app.entities.MakeUp;
 import com.app.entities.Mehandi;
 import com.app.entities.Photo;
 import com.app.entities.Sound;
-import com.app.entities.Vanue;
+import com.app.entities.Venue;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,13 +27,15 @@ import lombok.Setter;
 @Data
 public class ServicesDTO {
 	
-	private Vanue vanueId;
-	private MakeUp makeUpId;
-	private Decoration dacourationId;
-	private Food foodId;
-	private Photo photoId;
-	private Sound soundId;
-	private InvitesGift giftId;
-	private Mehandi mehandiId;
+	private List<Venue> venueId;
+	private List<MakeUp> makeUpId;
+	private List<Decoration> dacourationId;
+	private List<Food> foodId;
+	private List<Photo> photoId;
+	private List<Sound> soundId;
+	private List<InvitesGift> giftId;
+	private List<Mehandi> mehandiId;
+	
+	
 	
 }

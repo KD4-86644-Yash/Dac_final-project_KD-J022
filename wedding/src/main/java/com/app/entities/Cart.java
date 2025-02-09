@@ -37,7 +37,4 @@ public class Cart extends BaseEntity{
 
 	@Column(name = "serrvice_id")
 	private Long service;
-
-
-
 }

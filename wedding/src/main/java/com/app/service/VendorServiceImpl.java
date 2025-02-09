@@ -1,5 +1,6 @@
 package com.app.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
@@ -12,20 +13,24 @@ import com.app.dto.FoodDto;
 import com.app.dto.InvitesGiftDto;
 import com.app.dto.MakeUpDto;
 import com.app.dto.PhotoDto;
+import com.app.dto.ServicesDTO;
 import com.app.dto.SoundDto;
 import com.app.dto.VenueDto;
 import com.app.entities.Decoration;
 import com.app.entities.Food;
 import com.app.entities.InvitesGift;
 import com.app.entities.MakeUp;
+import com.app.entities.Mehandi;
 import com.app.entities.Photo;
 import com.app.entities.Sound;
 import com.app.entities.UserEntity;
-import com.app.entities.Vanue;
+import com.app.entities.Venue;
 import com.app.repository.DecorationRepository;
 import com.app.repository.FoodRepository;
 import com.app.repository.InvitesGiftsRepository;
-import com.app.repository.MakeUpRepository;
+
+import com.app.repository.MakeupRepository;
+import com.app.repository.MehandiRepository;
 import com.app.repository.PhotoRepository;
 import com.app.repository.SoundRepository;
 import com.app.repository.UserEntityRepository;
@@ -58,16 +63,23 @@ public class VendorServiceImpl implements VendorService {
 
 	@Autowired
 	public PhotoRepository photoRepository;
+	
+	@Autowired
+	public MehandiRepository mehandiRepository;
+	
 	@Autowired
 	public InvitesGiftsRepository invitesGiftsRepository;
+	
 	@Autowired
-	public MakeUpRepository makeupRepository;
+	public MakeupRepository makeupRepository;
 
 	@Autowired
 	public UserEntityRepository userEntityRepository;
 
 	@Autowired
 	public ModelMapper mapper;
+	
+	
 
 	@Override
 	public VenueApiResponce addVenue(VenueDto venueDto, Long vendorId) {
@@ -75,7 +87,7 @@ public class VendorServiceImpl implements VendorService {
 		try {
 			Optional<UserEntity> userEntity = userEntityRepository.findById(vendorId);
 			log.info(userEntity.get().getFirstName());
-			Vanue vanue = mapper.map(venueDto, Vanue.class);
+			Venue vanue = mapper.map(venueDto, Venue.class);
 			log.info("vv2=" + venueDto.getName());
 			vanue.setName(venueDto.getName());
 			vanue.setAddress(venueDto.getAddress());
@@ -236,26 +248,57 @@ public class VendorServiceImpl implements VendorService {
 	
 	@Override
 	public VenueApiResponce deleteVenueById( Long vanueId,Long vendor_id) {
-	    try {
-	        Optional<Vanue> vanueDb = venueRepository.findBy(vanueId,vendor_id);
-	        if (vanueDb.isPresent()) {
-	            Vanue vanueFromDb = vanueDb.get();
-
-	            // Setting the status to false instead of deleting
-	            vanueFromDb.setStatus(false);
-	            venueRepository.save(vanueFromDb);
-
-	            // Mapping entity to DTO
-	            VenueDto saveToVanue = mapper.map(vanueFromDb, VenueDto.class);
-	            log.info("Venue Deleted: " + saveToVanue.getName());
-
-	            return new VenueApiResponce(saveToVanue, null, HttpStatus.OK, "Venue deleted successfully", false);
-	        } else {
-	            return new VenueApiResponce(null, null, HttpStatus.NOT_FOUND, "Venue not present", true);
-	        }
-	    } catch (Exception e) {
-	        log.error("Error while deleting venue: ", e);
-	        return new VenueApiResponce(null, null, HttpStatus.INTERNAL_SERVER_ERROR, "Error occurred", true);
-	    }
+		return null;
+//	    try {
+//	        Optional<Venue> vanueDb = venueRepository.findBy(vanueId,vendor_id);
+//	        if (vanueDb.isPresent()) {
+//	            Venue vanueFromDb = vanueDb.get();
+//
+//	            // Setting the status to false instead of deleting
+//	            vanueFromDb.setStatus(false);
+//	            venueRepository.save(vanueFromDb);
+//
+//	            // Mapping entity to DTO
+//	            VenueDto saveToVanue = mapper.map(vanueFromDb, VenueDto.class);
+//	            log.info("Venue Deleted: " + saveToVanue.getName());
+//
+//	            return new VenueApiResponce(saveToVanue, null, HttpStatus.OK, "Venue deleted successfully", false);
+//	        } else {
+//	            return new VenueApiResponce(null, null, HttpStatus.NOT_FOUND, "Venue not present", true);
+//	        }
+//	    } catch (Exception e) {
+//	        log.error("Error while deleting venue: ", e);
+//	        return new VenueApiResponce(null, null, HttpStatus.INTERNAL_SERVER_ERROR, "Error occurred", true);
+//	    }
 	}
-}
+
+
+	@Override
+	public ServicesDTO getAllServices(Long vendorId) {
+		
+		List<Venue> venue = venueRepository.findByUserEntityId(vendorId);
+		
+		List<Decoration> decoration = decorationRepository.findByUserEntityId(vendorId);
+
+		List<Food> food = foodRepository.findByUserEntityId(vendorId);
+
+		List<Mehandi> mehandi = mehandiRepository.findByUserEntityId(vendorId);
+
+		List<InvitesGift> invitesgifts = invitesGiftsRepository.findByUserEntityId(vendorId);
+		
+		List<Photo> Photo = photoRepository.findByUserEntityId(vendorId);
+		
+		List<Sound> sound = soundRepository.findByUserEntityId(vendorId);
+		
+		List<MakeUp> makeUp = makeupRepository.findByUserEntityId(vendorId);
+
+		return new ServicesDTO(venue, makeUp, decoration, food, Photo, sound, invitesgifts, mehandi);
+	}
+
+//	@Override
+//	public List<ServicesDTO> getAllServices(Long vendorId) {
+//		
+//		return null;
+//	}
+	
+	}

@@ -25,6 +25,7 @@ function DeshMain() {
         Mehndi: ["Type", "City", "Price"],
         Photography: ["Type", "Duration", "City", "Price"]
     };
+    
 
     const serviceApiUrls = {
         Venue: "http://localhost:5000/api/services/venue",

@@ -17,9 +17,9 @@ import lombok.ToString;
 //@AllArgsConstructor
 public class CartDTO {
 	private String name;
-	private int price;
+//	private int price;
 	private int quantity;
-	private Long serrviceId;
+//	private Long serrviceId;
 	
 	
 

@@ -9,9 +9,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.app.dto.ApiResponse;
+import com.app.dto.CartDTO;
 import com.app.dto.MakeUpDto;
+import com.app.entities.Cart;
 import com.app.entities.MakeUp;
 import com.app.entities.UserEntity;
+import com.app.repository.CartRepository;
 //import com.app.repository.MakeUpRepository;
 import com.app.repository.MakeupRepository;
 import com.app.repository.UserEntityRepository;
@@ -28,6 +31,9 @@ public class MakeUpServiceImpl implements MakeUpService {
 	
 	@Autowired
 	private UserEntityRepository userEntityRepository;
+	
+	@Autowired
+	private CartRepository cartRepository;
 	
 	@Override
 	public List<MakeUpDto> getAllMakeUp() {
@@ -59,6 +65,30 @@ public class MakeUpServiceImpl implements MakeUpService {
 	public ApiResponse deleteMakeUpService() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public ApiResponse addMakeUpToCart(CartDTO dto, Long makeUpId, Long userId) {
+		
+		MakeUp makeUp = makeUpRepository.findById(makeUpId).orElseThrow();
+		Cart cartObject = mapper.map(dto, Cart.class);
+		cartObject.setName(makeUp.getName());
+		
+		if(makeUp.getType().equalsIgnoreCase("Family MakeUp")) {
+			cartObject.setQuantity(dto.getQuantity());
+		}
+		else {
+			cartObject.setQuantity(1);
+		}
+		int totalPrice = cartObject.getQuantity() * makeUp.getPrice();
+		cartObject.setPrice(totalPrice);
+		cartObject.setService(makeUpId);
+		cartObject.setUserId(userId);
+	
+		Cart saveToCart = cartRepository.save(cartObject);
+		// TODO Auto-generated method stub
+		return new ApiResponse("MakeUp servie added to the cart successfully!!");
+		
 	}
 
 	

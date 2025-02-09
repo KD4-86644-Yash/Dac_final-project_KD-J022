@@ -1,6 +1,7 @@
 package com.app.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -101,5 +102,94 @@ public class InvitationsAndGiftsServiceImpl implements InvitationsAndGiftsServic
 		
 		return new ApiResponse("Add service" + savingToCart.getName() + " having id" );
 	}
+
+
+	@Override
+	public InvitesGift getSingleInvitationRecord(Long serviceId) {
+		
+		InvitesGift invitationObject = invitationsAndGiftsRepository.findById(serviceId).orElseThrow();
+		
+		InvitesGift anotherObject = new InvitesGift();
+		
+		anotherObject.setName(invitationObject.getName());
+		anotherObject.setCity(invitationObject.getCity());
+		anotherObject.setDiscription(invitationObject.getDiscription());
+		anotherObject.setPrice(invitationObject.getPrice());
+		anotherObject.setRating(invitationObject.getRating());
+		
+		 
+		return  anotherObject;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

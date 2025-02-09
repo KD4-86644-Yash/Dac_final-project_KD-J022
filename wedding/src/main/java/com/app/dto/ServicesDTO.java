@@ -25,5 +25,13 @@ import lombok.Setter;
 @Data
 public class ServicesDTO {
 	
+	private List<Venue> venueId;
+	private List<MakeUp> makeUpId;
+	private List<Decoration> dacourationId;
+	private List<Food> foodId;
+	private List<Photo> photoId;
+	private List<Sound> soundId;
+	private List<InvitesGift> giftId;
+	private List<Mehandi> mehandiId;
 	
 }

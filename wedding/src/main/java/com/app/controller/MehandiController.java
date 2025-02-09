@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.CartDTO;
 import com.app.dto.MehandiDto;
+import com.app.entities.InvitesGift;
+import com.app.entities.Mehandi;
 import com.app.service.MehndiService;
 
 @RestController
@@ -50,6 +52,12 @@ public class MehandiController {
 		
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(mehndiService.addMehandiServiceToCart(cartDto, id,userId));
+	}
+	
+	@GetMapping("services/mehandi/{user-id}/{service-id}")
+	public ResponseEntity<?> getSingleInvitationObject(@PathVariable ("service-id") Long id){
+		Mehandi mehandiObject = mehndiService.getSingleMehandiRecord(id);
+		return ResponseEntity.ok(mehandiObject);
 	}
 
 }

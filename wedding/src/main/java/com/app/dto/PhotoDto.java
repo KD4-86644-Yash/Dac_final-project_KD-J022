@@ -12,6 +12,7 @@ import lombok.Setter;
 @Setter
 @Data
 public class PhotoDto {
+	private int id;
 	private String Name;
 	private String type;
 	private String city;

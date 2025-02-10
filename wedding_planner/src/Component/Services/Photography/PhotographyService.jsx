@@ -51,16 +51,16 @@ const PhotographyService = () => {
                     <div>
                       <h5 className="card-title">{service.name}</h5>
                       <p className="card-location">
-                        <i className="bi bi-geo-alt"></i> {service.location}
+                        <i className="bi bi-geo-alt"></i> {service.city}
                       </p>
-                      <p className="card-text">{service.description}</p>
+                      <p className="card-text">{service.discription}</p>
                     </div>
                   </div>
                   <p className="card-text">
                     <span className="badge bg-secondary">Rating: {service.rating}</span>
                     <span className="badge bg-secondary">₹ {service.price} per day</span>
                   </p>
-                  <Link to={`/photography/${service.id}`} className="btn btn-pink">
+                  <Link to={`/services/photography/photographerprofile/${service.id}`} className="btn btn-pink">
                     View Details
                   </Link>
                 </div>

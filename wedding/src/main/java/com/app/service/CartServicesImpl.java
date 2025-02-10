@@ -36,19 +36,31 @@ public class CartServicesImpl implements CartService {
         			.collect(Collectors.toList());
 	}
 
-		@Override
-		public ApiResponse deleteCartIten(String name, Long userId) {
-//			System.out.println("Delete product with id = "+productId);
-			List<Cart> cartList = cartRepository.findByUserId(userId);
-			Optional<Cart> cartItemToRemove = cartList.stream()
-		            .filter(cart -> cart.getName().equalsIgnoreCase(name))
-		            .findFirst();
+        @Override
+        public ApiResponse deleteCartIten(String name, Long userId) {
+            // Fetch the cart item directly instead of fetching all and filtering in-memory
+            Cart cartItem = cartRepository.findByUserIdAndName(userId, name);
 
-		    if (cartItemToRemove.isPresent()) {
-		        cartRepository.delete(cartItemToRemove.get()); // Remove the item from the database
-		        return new ApiResponse("Item '" + name + "' removed successfully");
-		    } else {
-		        return new ApiResponse("Item '" + name + "' not found in cart");
-		    }
-		}
+            if (cartItem == null) {
+                return new ApiResponse("Item '" + name + "' not found in cart");
+            }
+
+            cartRepository.delete(cartItem); // Remove from DB
+            return new ApiResponse("Item '" + name + "' removed successfully");
+        }
+//		@Override
+//		public ApiResponse deleteCartIten(String name, Long userId) {
+////			System.out.println("Delete product with id = "+productId);
+//			List<Cart> cartList = cartRepository.findByUserId(userId);
+//			Optional<Cart> cartItemToRemove = cartList.stream()
+//		            .filter(cart -> cart.getName().equalsIgnoreCase(name))
+//		            .findFirst();
+//
+//		    if (cartItemToRemove.isPresent()) {
+//		        cartRepository.delete(cartItemToRemove.get()); // Remove the item from the database
+//		        return new ApiResponse("Item '" + name + "' removed successfully");
+//		    } else {
+//		        return new ApiResponse("Item '" + name + "' not found in cart");
+//		    }
+//		}
 }

@@ -432,89 +432,89 @@ public class VendorServiceImpl implements VendorService {
 
 
 
-
-public ByteArrayInputStream downloadExcel(Long vendor_id) {
-   try (Workbook workbook = new XSSFWorkbook(); ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
-       Sheet sheet = workbook.createSheet("Service Details");
-       Row headerRow = sheet.createRow(0);
-       String[] columns = {"VendorId", "Service Type", "Service Name", "Status","Discription"};
-
-       // Create header row
-       for (int i = 0; i < columns.length; i++) {
-           Cell cell = headerRow.createCell(i);
-           cell.setCellValue(columns[i]);
-           CellStyle style = workbook.createCellStyle();
-           org.apache.poi.ss.usermodel.Font font = workbook.createFont();
-           font.setBold(true);
-           style.setFont(font);
-           cell.setCellStyle(style);
-       }
-//       Optional<Venue> venue = venueRepository.findById(vendor_id);
-       // Adding service details by vendor_id
-       int rowIdx = 1;
-       rowIdx = addServiceRow(sheet, rowIdx, vendor_id, "Venue", venueRepository.findById(vendor_id));
-       rowIdx = addServiceRow(sheet, rowIdx, vendor_id, "Decoration", decorationRepository.findById(vendor_id));
-       rowIdx = addServiceRow(sheet, rowIdx, vendor_id, "Food", foodRepository.findById(vendor_id));
-       rowIdx = addServiceRow(sheet, rowIdx, vendor_id, "Invites & Gifts", invitesGiftsRepository.findById(vendor_id));
-       rowIdx = addServiceRow(sheet, rowIdx, vendor_id, "Photography", photoRepository.findById(vendor_id));
-       rowIdx = addServiceRow(sheet, rowIdx, vendor_id, "Sound", soundRepository.findById(vendor_id));
-       rowIdx = addServiceRow(sheet, rowIdx, vendor_id, "Makeup", makeupRepository.findById(vendor_id));
-
-       workbook.write(outputStream);
-       return new ByteArrayInputStream(outputStream.toByteArray());
-   } catch (IOException e) {
-       e.printStackTrace();
-       return null;
-   }
-}
-
-
-
-private int addServiceRow(Sheet sheet, int rowIdx, Long vendor_id, String serviceType, Optional<?> service) {
-    if (service.isPresent()) {
-        Object serviceObj = service.get(); // Extract the object from Optional
-        Row row = sheet.createRow(rowIdx++);
-        row.createCell(0).setCellValue("Vendor-" + vendor_id);
-        row.createCell(1).setCellValue(serviceType);
-//        row.createCell(2).setCellValue(getServiceName(serviceObj));
-        row.createCell(2).setCellValue(serviceObj.getClass().getName());
-   // Fetch description dynamically
-        String description = getFieldValue(serviceObj, "description");
-        row.createCell(3).setCellValue(description);
-
-        // Fetch status dynamically and set the value
-        String status = "Unknown";
-        String statusValue = getFieldValue(serviceObj, "status");
-        if (statusValue != null && statusValue.equals("1")) {
-            status = "Active";
-        } else {
-            status = "Not Active";
-        }
-        row.createCell(4).setCellValue(status);
-    }
-    return rowIdx;
-}
-
-/**
- * Generic method to fetch field values dynamically.
- */
-private String getFieldValue(Object obj, String fieldName) {
-    try {
-        return String.valueOf(obj.getClass().getMethod("get" + capitalize(fieldName)).invoke(obj));
-    } catch (Exception e) {
-        return "N/A"; // Return default value if field not found
-    }
-}
-
-/**
- * Capitalizes the first letter of a field name to match getter method conventions.
- */
-private String capitalize(String str) {
-    if (str == null || str.isEmpty()) {
-        return str;
-    }
-    return str.substring(0, 1).toUpperCase() + str.substring(1);
-}
+//
+//public ByteArrayInputStream downloadExcel(Long vendor_id) {
+//   try (Workbook workbook = new XSSFWorkbook(); ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
+//       Sheet sheet = workbook.createSheet("Service Details");
+//       Row headerRow = sheet.createRow(0);
+//       String[] columns = {"VendorId", "Service Type", "Service Name", "Status","Discription"};
+//
+//       // Create header row
+//       for (int i = 0; i < columns.length; i++) {
+//           Cell cell = headerRow.createCell(i);
+//           cell.setCellValue(columns[i]);
+//           CellStyle style = workbook.createCellStyle();
+//           org.apache.poi.ss.usermodel.Font font = workbook.createFont();
+//           font.setBold(true);
+//           style.setFont(font);
+//           cell.setCellStyle(style);
+//       }
+////       Optional<Venue> venue = venueRepository.findById(vendor_id);
+//       // Adding service details by vendor_id
+//       int rowIdx = 1;
+//       rowIdx = addServiceRow(sheet, rowIdx, vendor_id, "Venue", venueRepository.findById(vendor_id));
+//       rowIdx = addServiceRow(sheet, rowIdx, vendor_id, "Decoration", decorationRepository.findById(vendor_id));
+//       rowIdx = addServiceRow(sheet, rowIdx, vendor_id, "Food", foodRepository.findById(vendor_id));
+//       rowIdx = addServiceRow(sheet, rowIdx, vendor_id, "Invites & Gifts", invitesGiftsRepository.findById(vendor_id));
+//       rowIdx = addServiceRow(sheet, rowIdx, vendor_id, "Photography", photoRepository.findById(vendor_id));
+//       rowIdx = addServiceRow(sheet, rowIdx, vendor_id, "Sound", soundRepository.findById(vendor_id));
+//       rowIdx = addServiceRow(sheet, rowIdx, vendor_id, "Makeup", makeupRepository.findById(vendor_id));
+//
+//       workbook.write(outputStream);
+//       return new ByteArrayInputStream(outputStream.toByteArray());
+//   } catch (IOException e) {
+//       e.printStackTrace();
+//       return null;
+//   }
+//}
+//
+//
+//
+//private int addServiceRow(Sheet sheet, int rowIdx, Long vendor_id, String serviceType, Optional<?> service) {
+//    if (service.isPresent()) {
+//        Object serviceObj = service.get(); // Extract the object from Optional
+//        Row row = sheet.createRow(rowIdx++);
+//        row.createCell(0).setCellValue("Vendor-" + vendor_id);
+//        row.createCell(1).setCellValue(serviceType);
+////        row.createCell(2).setCellValue(getServiceName(serviceObj));
+//        row.createCell(2).setCellValue(serviceObj.getClass().getName());
+//   // Fetch description dynamically
+//        String description = getFieldValue(serviceObj, "description");
+//        row.createCell(3).setCellValue(description);
+//
+//        // Fetch status dynamically and set the value
+//        String status = "Unknown";
+//        String statusValue = getFieldValue(serviceObj, "status");
+//        if (statusValue != null && statusValue.equals("1")) {
+//            status = "Active";
+//        } else {
+//            status = "Not Active";
+//        }
+//        row.createCell(4).setCellValue(status);
+//    }
+//    return rowIdx;
+//}
+//
+///**
+// * Generic method to fetch field values dynamically.
+// */
+//private String getFieldValue(Object obj, String fieldName) {
+//    try {
+//        return String.valueOf(obj.getClass().getMethod("get" + capitalize(fieldName)).invoke(obj));
+//    } catch (Exception e) {
+//        return "N/A"; // Return default value if field not found
+//    }
+//}
+//
+///**
+// * Capitalizes the first letter of a field name to match getter method conventions.
+// */
+//private String capitalize(String str) {
+//    if (str == null || str.isEmpty()) {
+//        return str;
+//    }
+//    return str.substring(0, 1).toUpperCase() + str.substring(1);
+//}
 
 	@Override
 	public ServicesDTO getAllServices(Long vendorId) {
@@ -536,6 +536,12 @@ private String capitalize(String str) {
 		List<MakeUp> makeUp = makeupRepository.findByUserEntityId(vendorId);
 
 		return new ServicesDTO(venue, makeUp, decoration, food, Photo, sound, invitesgifts, mehandi);
+	}
+
+	@Override
+	public ByteArrayInputStream downloadExcel(Long vendor_id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 //	@Override

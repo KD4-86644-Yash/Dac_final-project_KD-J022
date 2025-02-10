@@ -126,6 +126,25 @@
 			<scope>runtime</scope>
 		</dependency>
 		
+ <!-- Apache POI for Excel -->
+    <dependency>
+        <groupId>org.apache.poi</groupId>
+        <artifactId>poi-ooxml</artifactId>
+        <version>5.2.3</version>  <!-- Use the latest version -->
+    </dependency>
+
+    <!-- Required for working with XML and compressed files -->
+    <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-compress</artifactId>
+        <version>1.21</version>
+    </dependency>
+    
+    <dependency>
+        <groupId>org.apache.xmlbeans</groupId>
+        <artifactId>xmlbeans</artifactId>
+        <version>5.1.1</version>
+    </dependency>
 
 
 

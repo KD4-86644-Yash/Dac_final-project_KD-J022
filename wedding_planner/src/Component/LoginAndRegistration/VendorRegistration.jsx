@@ -1,14 +1,18 @@
-import React, { useState } from "react";
 
-function VendorRegistration() {
+// export default VendorRegistration;
+import React, { useState } from "react";
+import navigate from "../../Component/NavBar.jsx";
+
+export default function VendorRegistration() {
   const [formData, setFormData] = useState({
-    companyName: "",
-    contactPerson: "",
+    firstName: "",
+    lastName: "",
     email: "",
-    phone: "",
-    address: "",
-    gstNumber: "",
+    password: "",
+    role: "VENDOR", // Default to Vendor role
   });
+
+  const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,97 +22,78 @@ function VendorRegistration() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Vendor Details:", formData);
-    alert("Vendor Registration Successful!");
-    setFormData({ companyName: "", contactPerson: "", email: "", phone: "", address: "", gstNumber: "" });
+    setMessage("Processing...");
+
+    try {
+      const response = await fetch("http://localhost:7070/users/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      console.log("Signup Response:", data);
+      
+
+      if (response.ok) {
+        setMessage("Vendor Registration Successful!");
+        alert("Vendor Registered Successfully!");
+        
+        navigate("/login");
+
+      } else {
+        setMessage(data.message || "Registration Failed.");
+      }
+    } catch (error) {
+      console.error("Signup Error:", error);
+      setMessage("Error connecting to the server.");
+    }
+
+    // Reset form
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      role: "VENDOR",
+    });
   };
 
   return (
     <div style={{ maxWidth: "400px", margin: "0 auto", padding: "20px", fontFamily: "Arial, sans-serif" }}>
       <h2>Vendor Registration</h2>
       <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: "15px" }}>
-          <label htmlFor="companyName" style={{ display: "block", marginBottom: "5px" }}>Company Name:</label>
-          <input
-            type="text"
-            id="companyName"
-            name="companyName"
-            value={formData.companyName}
-            onChange={handleChange}
-            required
-            style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
-          />
-        </div>
-        <div style={{ marginBottom: "15px" }}>
-          <label htmlFor="contactPerson" style={{ display: "block", marginBottom: "5px" }}>Contact Person:</label>
-          <input
-            type="text"
-            id="contactPerson"
-            name="contactPerson"
-            value={formData.contactPerson}
-            onChange={handleChange}
-            required
-            style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
-          />
-        </div>
-        <div style={{ marginBottom: "15px" }}>
-          <label htmlFor="email" style={{ display: "block", marginBottom: "5px" }}>Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
-          />
-        </div>
-        <div style={{ marginBottom: "15px" }}>
-          <label htmlFor="phone" style={{ display: "block", marginBottom: "5px" }}>Phone Number:</label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            required
-            style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
-          />
-        </div>
-        <div style={{ marginBottom: "15px" }}>
-          <label htmlFor="address" style={{ display: "block", marginBottom: "5px" }}>Address:</label>
-          <textarea
-            id="address"
-            name="address"
-            value={formData.address}
-            onChange={handleChange}
-            required
-            style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
-          ></textarea>
-        </div>
-        <div style={{ marginBottom: "15px" }}>
-          <label htmlFor="gstNumber" style={{ display: "block", marginBottom: "5px" }}>GST Number:</label>
-          <input
-            type="text"
-            id="gstNumber"
-            name="gstNumber"
-            value={formData.gstNumber}
-            onChange={handleChange}
-            required
-            style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
-          />
-        </div>
-        <button
-          type="submit"
-          style={{ padding: "10px 20px", backgroundColor: "#4CAF50", color: "white", border: "none", cursor: "pointer" }}
-        >
-          Register
-        </button>
+        {/* First Name */}
+        <label>First Name:</label>
+        <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required />
+
+        {/* Last Name */}
+        <label>Last Name:</label>
+        <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required />
+
+        {/* Email */}
+        <label>Email:</label>
+        <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+
+        {/* Password */}
+        <label>Password:</label>
+        <input type="password" name="password" value={formData.password} onChange={handleChange} required />
+
+       
+        {/* Role Selection (Hidden, since users should always be USER) */}
+        <input type="hidden" name="role" value="VENDAR" />
+
+
+        {/* Submit Button */}
+        <button type="submit">Register</button>
+
+        {/* Message */}
+        {message && <p>{message}</p>}
       </form>
     </div>
   );
 }
-
-export default VendorRegistration;

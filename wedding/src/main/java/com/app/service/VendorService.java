@@ -1,6 +1,6 @@
 package com.app.service;
 
-import java.util.List;
+import java.io.ByteArrayInputStream;
 
 import org.springframework.stereotype.Service;
 
@@ -33,5 +33,18 @@ public interface VendorService {
 	public VenueApiResponce deleteVenueById( Long vanueId,Long vendor_id);
 	
 	public ServicesDTO getAllServices(Long vendorId);
+	public SoundApiResponce deleteSound(Long soundId, Long vendorId);
+
+	public FoodApiResponce deleteFood(Long foodId, Long vendorId);
+
+	public DecorationApiResponce deleteDecoration(Long decorationid, Long vendorId);
+
+	public InvitesGiftsApiResponce deleteInvitesGifts(Long invitesGiftId, Long vendorId);
+
+	public MakeUpApiResponce deleteMakeUp(Long makeUpId, Long vendorId);
+
+	public PhotoApiResponce deletePhoto(Long PhotoId, Long vendorId);
+
+	public ByteArrayInputStream downloadExcel(Long vendor_id);
 
 }

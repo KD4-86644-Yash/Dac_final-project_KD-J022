@@ -1,5 +1,5 @@
 package com.app.entities;
 
 public enum UserRole {
-	VENDOR, USER
+	ROLE_VENDAR, ROLE_USER
 }

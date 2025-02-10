@@ -57,11 +57,12 @@ public class SecurityConfig {
 		.antMatchers("/users/view","/users/signup","/users/signin",
 				"/v*/api-doc*/**","/swagger-ui/**","/vendor_services//Venueadd/{vendorId}/**","/services/sound-system-service/**"
 				,"/services/photo/get","/cart/{userId}	"
+
 				).permitAll()
 		// only required for JS clnts (react / angular) : for the pre flight requests
 		.antMatchers(HttpMethod.OPTIONS).permitAll()
-//		.antMatchers("/vendor_services/add").hasRole("VENDAR")
-//		.antMatchers("/users/add").hasRole("USER")
+		.antMatchers("/vendor_services/**").hasRole("VENDAR")
+		.antMatchers("/users/**").hasRole("USER")
 		.anyRequest().authenticated()
 		.and()
 		//to tell spring sec : not to use HttpSession to store user's auth details

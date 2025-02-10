@@ -60,11 +60,11 @@ function App() {
         <Route path='/services/sound-system-service' element={<SoundSystemService/>} />
         <Route path='/services/mehndi-service' element={<MehndiService/>} />
 
-        <Route path ='/cart' element = {<Cart />} />
+        <Route path ='/cart/:userId' element = {<Cart />} />
 
         <Route path ='/vendor_profile' element = {<VendorDeskboard />} />
         <Route path ='/user_profile' element = {<USerDeskboard />} />
-        <Route path ='/photographerprofile' element = {<PhotographerProfile />} />        
+        <Route path ='/services/Photography/photographerprofile' element = {<PhotographerProfile />} />        
 
       </Routes>
 

@@ -1,12 +1,19 @@
-import React, { useState } from "react";
 
-function UserRegistration() {
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // ✅ Import useNavigate
+
+export default function UserRegistration() {
+  const navigate = useNavigate(); // ✅ Initialize navigation
+
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
-    phone: "",
+    role: "USER", // ✅ Default to USER role
   });
+
+  const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,74 +23,75 @@ function UserRegistration() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("User Details:", formData);
-    alert("Registration Successful!");
-    setFormData({ name: "", email: "", password: "", phone: "" });
+    setMessage("Processing...");
+
+    try {
+      const response = await fetch("http://localhost:7070/users/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      console.log("Signup Response:", data);
+
+      if (response.ok) {
+        setMessage("User Registration Successful!");
+        alert("User Registered Successfully!");
+
+        // ✅ Navigate to login page after successful registration
+        navigate("/login");
+      } else {
+        setMessage(data.message || "Registration Failed.");
+      }
+    } catch (error) {
+      console.error("Signup Error:", error);
+      setMessage("Error connecting to the server.");
+    }
+
+    // Reset form
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      role: "USER",
+    });
   };
 
   return (
     <div style={{ maxWidth: "400px", margin: "0 auto", padding: "20px", fontFamily: "Arial, sans-serif" }}>
       <h2>User Registration</h2>
       <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: "15px" }}>
-          <label htmlFor="name" style={{ display: "block", marginBottom: "5px" }}>Name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
-          />
-        </div>
-        <div style={{ marginBottom: "15px" }}>
-          <label htmlFor="email" style={{ display: "block", marginBottom: "5px" }}>Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
-          />
-        </div>
-        <div style={{ marginBottom: "15px" }}>
-          <label htmlFor="password" style={{ display: "block", marginBottom: "5px" }}>Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-            style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
-          />
-        </div>
-        <div style={{ marginBottom: "15px" }}>
-          <label htmlFor="phone" style={{ display: "block", marginBottom: "5px" }}>Phone Number:</label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            required
-            style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
-          />
-        </div>
-        <button
-          type="submit"
-          style={{ padding: "10px 20px", backgroundColor: "#4CAF50", color: "white", border: "none", cursor: "pointer" }}
-        >
-          Register
-        </button>
+        {/* First Name */}
+        <label>First Name:</label>
+        <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required />
+
+        {/* Last Name */}
+        <label>Last Name:</label>
+        <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required />
+
+        {/* Email */}
+        <label>Email:</label>
+        <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+
+        {/* Password */}
+        <label>Password:</label>
+        <input type="password" name="password" value={formData.password} onChange={handleChange} required />
+
+        {/* Role Selection (Hidden, since users should always be USER) */}
+        <input type="hidden" name="role" value="USER" />
+
+        {/* Submit Button */}
+        <button type="submit">Register</button>
+
+        {/* Message */}
+        {message && <p>{message}</p>}
       </form>
     </div>
   );
 }
-
-export default UserRegistration;

@@ -69,9 +69,6 @@ public class SoundServiceImpl implements SoundServices {
 			
 			newSound.setUserEntity(user);
 			Sound persistUser =  sound.save(newSound);
-			Services service = new Services();
-		    service.setSoundId(persistUser);
-		    serviceRepository.save(service);
 			return new ApiResponse("Added New Service With Id:"+ persistUser.getId());
 		}
 		else	

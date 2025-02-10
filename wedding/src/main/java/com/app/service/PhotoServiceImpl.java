@@ -61,9 +61,6 @@ public class PhotoServiceImpl implements PhotoService {
 			
 			newPhoto.setUserEntity(user);
 			Photo persistUser =  photoRepository.save(newPhoto);
-			Services service = new Services();
-		    service.setPhotoId(newPhoto);
-		    serviceRepository.save(service);
 			return new ApiResponse("Added New Service With Id:"+ persistUser.getId());
 		}
 		else	

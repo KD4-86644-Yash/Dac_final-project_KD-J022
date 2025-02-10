@@ -1,75 +1,84 @@
-import React, { useState } from "react";
-import "../../css/LoginAndRegistration/Login.css"; // Optional: Add your CSS file for styling
-// "C:\Users\Acer\OneDrive\Desktop\cdac_p\Dac_final-project_KD-J022\wedding_planner\src\Component\LoginAndRegistration"
-function LoginPage() {
+import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // ✅ Import for navigation
+import "../../css/LoginAndRegistration/Login.css"; 
+// import { jwtDecode } from "jwt-decode";
+
+export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate(); // ✅ Hook for navigation
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Handle login logic here (e.g., API call)
-    console.log("Email:", email);
-    console.log("Password:", password);
+    setMessage("");
+
+    try {
+      const response = await fetch("http://localhost:7070/users/signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const text = await response.text();
+      console.log("Raw Response:", text);
+
+      const data = JSON.parse(text);
+
+      if (response.ok && data.jwt) {
+        localStorage.setItem("token", data.jwt);
+        localStorage.setItem("id", data.id);
+        localStorage.setItem("firstName", data.firstName);
+        localStorage.setItem("lastName", data.lastName);
+        localStorage.setItem("email", data.email);
+        localStorage.setItem("role", data.role);
+
+        // ✅ Redirect based on role
+        if (data.role === "ROLE_VENDAR") {
+          navigate("/vendor_profile");
+        } else if (data.role === "USER") {
+          navigate("/user_profile");
+        } else {
+          navigate("/dashboard");
+        }
+      } else {
+        setMessage(data.message || "Invalid credentials");
+      }
+    } catch (error) {
+      console.error("Login Error:", error);
+      setMessage("Error connecting to the server.");
+    }
   };
 
   return (
     <div className="login-container">
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter your password"
-            required
-          />
-        </div>
-
-        <button type="submit" className="btn-login"
-        onClick={() => window.location.href = "/user _profile"}
-        >
-          Login
-        </button>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <button type="submit">Login</button>
       </form>
+      <p>{message}</p>
 
-      <div className="additional-options">
-        <a href="/forgot-password" className="forgot-password-link">
-          Forgot Password?
-        </a>
-      </div>
-
-      <div className="create-account-buttons">
-        <h4>Create New Account</h4>
-        <button
-          className="btn-create-account vendor"
-          onClick={() => window.location.href = "/vendor"}
-        >
-          As Vendor
-        </button>
-        <button
-          className="btn-create-account customer"
-          onClick={() => window.location.href = "/user"}
-        >
-          As Customer
-        </button>
+      {/* ✅ Registration Buttons */}
+      <div className="registration-buttons">
+        <button onClick={() => navigate("/vendor")}>Register as Vendor</button>
+        <button onClick={() => navigate("/user")}>Register as User</button>
       </div>
     </div>
   );
 }
-
-export default LoginPage;

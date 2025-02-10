@@ -26,7 +26,7 @@ import lombok.ToString;
 public class Cart extends BaseEntity{
 	
 	@Column(length = 20)
-	private String Name;
+	private String name;
 	
 	private int quantity;
 	
@@ -35,6 +35,6 @@ public class Cart extends BaseEntity{
 	@Column(name = "user_id")
 	private Long userId;
 
-	@Column(name = "serrvice_id")
+	@Column(name = "service_id")
 	private Long service;
 }

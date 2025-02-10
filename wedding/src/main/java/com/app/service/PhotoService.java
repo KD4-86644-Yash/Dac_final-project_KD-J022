@@ -12,7 +12,7 @@ public interface PhotoService {
 
 	ApiResponse addPhotoService(PhotoDto photodto);
 	
-	ApiResponse addPhotoServiceToCart(CartDTO cartDto,Long service_id);
+	ApiResponse addPhotoServiceToCart(CartDTO cartDto,Long service_id,Long userId);
 	
 
 }

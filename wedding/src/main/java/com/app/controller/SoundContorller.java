@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.dto.CartDTO;
 import com.app.dto.SoundDto;
 import com.app.dto.SoundReqDTO;
 import com.app.dto.SoundUpdateDTO;
@@ -41,10 +43,11 @@ public class SoundContorller {
 		
 	}
 	
-	/*@PutMapping("/update")
-	public ResponseEntity<?> updateSound(@RequestBody SoundUpdateDTO updateDto){
-		return ResponseEntity.ok(soundservice.updateSoundService(updateDto));
-	}*/
+	@PostMapping("/cart/{vendorId}/{userId}")
+	public ResponseEntity<?> addCart(@RequestBody CartDTO photodto, @PathVariable("vendorId") Long vendorId, @PathVariable("userId") Long userId){
+		
+		return ResponseEntity.status(HttpStatus.CREATED).body(soundservice.addSoundServiceToCart(photodto, vendorId,userId));
+	}
 	
 
 }

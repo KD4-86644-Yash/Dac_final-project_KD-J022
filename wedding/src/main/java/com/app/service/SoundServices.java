@@ -14,7 +14,6 @@ public interface SoundServices {
 	ApiResponse addSoundService(SoundDto sounddto);
 
 	ApiResponse updateSoundService(SoundDto updateDto);
-
 	List<SoundReqDTO> getbyId(Long vandor_id);
 
 }

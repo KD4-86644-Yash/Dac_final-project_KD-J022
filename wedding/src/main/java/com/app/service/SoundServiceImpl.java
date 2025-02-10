@@ -77,25 +77,7 @@ public class SoundServiceImpl implements SoundServices {
 		return null;
 	}
 
-//	@Override
-//	public ApiResponse updateSoundService(SoundDto updateDto) {
-//	    // Find existing sound entry
-//	    Sound existingSound = sound.findById(updateDto.getId())
-//	            .orElseThrow(() -> new RuntimeException("Sound service not found with ID: " + updateDto.getId()));
-//
-//	    // Update only non-null fields
-//	    if (updateDto.getName() != null) {
-//	        existingSound.setName(updateDto.getName());
-//	    }
-//	    if (updateDto.getDiscription() != null) {
-//	        existingSound.setDiscription(updateDto.getDiscription());
-//	    }
-//
-//	    // Save updated sound entity
-//	    Sound updatedSound = sound.save(existingSound);
-//
-//	    return new ApiResponse("Updated Sound Service with ID: " + updatedSound.getId());
-//	}
+
 
 	
 }

@@ -254,6 +254,8 @@ public class VendorServiceImpl implements VendorService {
 //	        if (vanueDb.isPresent()) {
 //	            Venue vanueFromDb = vanueDb.get();
 //
+		
+		
 //	            // Setting the status to false instead of deleting
 //	            vanueFromDb.setStatus(false);
 //	            venueRepository.save(vanueFromDb);

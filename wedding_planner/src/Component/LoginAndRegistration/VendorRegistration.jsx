@@ -9,7 +9,7 @@ export default function VendorRegistration() {
     lastName: "",
     email: "",
     password: "",
-    role: "VENDOR", // Default to Vendor role
+    role: "ROLE_VENDAR", // Default to Vendor role
   });
 
   const [message, setMessage] = useState("");
@@ -59,7 +59,7 @@ export default function VendorRegistration() {
       lastName: "",
       email: "",
       password: "",
-      role: "VENDOR",
+      role: "ROLE_VENDAR",
     });
   };
 
@@ -85,7 +85,7 @@ export default function VendorRegistration() {
 
        
         {/* Role Selection (Hidden, since users should always be USER) */}
-        <input type="hidden" name="role" value="VENDAR" />
+        <input type="hidden" name="role" value="ROLE_VENDAR" />
 
 
         {/* Submit Button */}

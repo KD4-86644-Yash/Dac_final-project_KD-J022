@@ -17,9 +17,9 @@
 //     });
 
 //     const serviceFields = {
-//         Venue: ["Location","Type", "Capacity","Room","Address", "Price"],
+//         Venue: ["City","Type", "Capacity","Room","Address", "Price"],
 //         Food: ["Cuisine Type", "City", "Price per Plate"],
-//         Decoration: ["Location", "Price"],
+//         Decoration: ["City", "Price"],
 //         Sound: ["Type", "Duration", "City","Price"],
 //         Makeup: ["Type", "City", "Price"],
 //         Mehndi: ["Type", "City", "Price"],
@@ -254,14 +254,14 @@
 //     const [newService, setNewService] = useState({
 //         Name: "",
 //         category: "",
-//         discription: "",Location:"", Type:"", Capacity:"", Room:"", Address:"", Price:"",city:"",City:"",
+//         discription: "",City:"", Type:"", Capacity:"", Room:"", Address:"", Price:"",city:"",City:"",
 //         details: {} // Ensure details is always an object
 //     });
 
 //     const serviceFields = {
-//         Venue: ["Location", "Type", "Capacity", "Room", "Address", "Price"],
+//         Venue: ["City", "Type", "Capacity", "Room", "Address", "Price"],
 //         Food: ["Cuisine Type", "City", "Price"],
-//         Decoration: ["Location", "Price"],
+//         Decoration: ["City", "Price"],
 //         Sound: ["Type", "Duration", "City", "Price"],
 //         Makeup: ["Type", "City", "Price"],
 //         Mehndi: ["Type", "City", "Price"],
@@ -314,7 +314,7 @@
 //             name: newService.Name,
 //         discription: newService.discription,
 //         category: newService.category,
-//         location: newService.details.Location || "",  // Ensuring values are mapped correctly
+//         City: newService.details.City || "",  // Ensuring values are mapped correctly
 //         type: newService.details.Type || "",
 //         capacity: newService.details.Capacity || "",
 //         room: newService.details.Room || "",
@@ -353,7 +353,7 @@
 
 //             setShowModal(false);
 //             // setNewService({ Name: "", category: "", discription: "", details: {} });
-//             setNewService({ Name: "",City:"",city:"", category: "", discription: "",Location:"", Type:"", Capacity:"", Room:"", Address:"", Price:"",details: {} });
+//             setNewService({ Name: "",City:"",city:"", category: "", discription: "",City:"", Type:"", Capacity:"", Room:"", Address:"", Price:"",details: {} });
 
 //             setEditingIndex(null);
 //         } catch (error) {
@@ -384,13 +384,13 @@ function DeshMain() {
         Name: "",
         category: "",
 
-        discription: "",Location:"", Type:"", Capacity:"", Room:"", Address:"", Price:"",city:"",City:"",
+        discription: "",City:"", Type:"", Capacity:"", Room:"", Address:"", Price:"",city:"",City:"",
         details: {} // Ensure details is always an object
     });
 
     const serviceFields = {
 
-        Venue: ["Location", "Type", "Capacity", "Room", "Address", "Price"],
+        Venue: ["City", "Type", "Capacity", "Room", "Address", "Price"],
         Food: ["Cuisine Type", "City", "Price"],
         Decoration: [ "City","Price"],
         Sound: ["Type", "Duration", "City", "Price"],
@@ -416,77 +416,7 @@ function DeshMain() {
 
     const handleCategoryChange = (e) => {
         setNewService({ Name: "", category: e.target.value, discription: "", details: {} });
-// <<<<<<< HEAD
-//     };
 
-//     const handleSaveService = async () => {
-//         if (!newService.Name || !newService.category || !newService.discription) {
-//             alert("Please fill in all fields.");
-//             return;
-//         }
-    
-//         const apiEndpoints = {
-//             Venue: `http://localhost:7070/vendor_services/Venueadd/${vendorId}`,
-//             Sound: `http://localhost:7070/vendor_services/soundServiceadd/${vendorId}`,
-//             Food: `http://localhost:7070/vendor_services/FoodServiceadd/${vendorId}`,
-//             Decoration: `http://localhost:7070/vendor_services/DecorationServiceadd/${vendorId}`,
-//             Makeup: `http://localhost:7070/vendor_services/MakeUpDtoServiceadd/${vendorId}`,
-//             Photography: `http://localhost:7070/vendor_services/PhotoServiceadd/${vendorId}`,
-//         };
-    
-//         if (!vendorId) {
-//             alert("Vendor ID is missing. Please log in again.");
-//             return;
-//         }
-    
-//         const apiUrl = apiEndpoints[newService.category];
-    
-//         if (!apiUrl) {
-//             alert("Invalid service category selected.");
-//             return;
-//         }
-    
-//         if (!token) {
-//             alert("Authentication token is missing. Please log in again.");
-//             return;
-//         }
-    
-//         const requestBody = {
-//             name: newService.Name,
-//             discription: newService.discription,
-//             ...newService.details,
-//             userEntity: { id: vendorId }
-//         };
-    
-//         try {
-//             console.log("Sending request to:", apiUrl);
-//             console.log("Request Headers:", {
-//                 "Content-Type": "application/json",
-//                 Authorization: `Bearer ${token}`,
-//             });
-//             console.log("Request Body:", requestBody);
-    
-//             const response = await axios.post(apiUrl, requestBody, {
-//                 headers: {
-//                     "Content-Type": "application/json",
-//                     Authorization: `Bearer ${token}`,
-//                 },
-//             });
-    
-//             console.log("Service added successfully:", response.data);
-    
-//             setServices([...services, newService]);
-    
-//             setShowModal(false);
-//             setNewService({ Name: "", category: "", discription: "", details: {} });
-//             setEditingIndex(null);
-//         } catch (error) {
-//             console.error("Error adding service:", error.response ? error.response.data : error.message);
-//             alert(`Failed to add service: ${error.response ? error.response.data.message : error.message}`);
-//         }
-//     };
-    
-// =======
     };
 
     
@@ -531,7 +461,7 @@ const handleSaveService = async () => {
     // Add category-specific fields
     switch (newService.category) {
         case "Venue":
-            requestBody.location = newService.details.Location || "";
+            requestBody.City = newService.details.City || "";
             requestBody.type = newService.details.Type || "";
             requestBody.capacity = newService.details.Capacity || "";
             requestBody.room = newService.details.Room || "";
@@ -548,7 +478,7 @@ const handleSaveService = async () => {
             break;
 
         case "Decoration":
-            requestBody.location = newService.details.Location || "";
+            requestBody.City = newService.details.City || "";
             requestBody.price = newService.details.Price || "";
             requestBody.city = newService.details.City || "";
             requestBody.status= newService.details.status || 1;
@@ -606,8 +536,7 @@ const handleSaveService = async () => {
         setNewService({ 
             Name: "", 
             category: "", 
-            discription: "", 
-            Location: "", 
+            discription: "",
             Type: "", 
             Capacity: "", 
             Room: "", 
@@ -623,33 +552,6 @@ const handleSaveService = async () => {
         alert("Failed to add service. Please try again.");
     }
 };
-// Remove service from API and UI
-// const handleRemoveService = async (vanueId) => {
-//     // const apiUrl = `http://localhost:7070/vendor_services/DeleteVenue/${vanueId}/${vendorId}`;
-//     const apiEndpoints = {
-//         Venue: `http://localhost:7070/vendor_services/Venueadd/${vanueId}/${vendorId}`,
-//         Sound: `http://localhost:7070/vendor_services/soundServicedelete/${soundId}/${vendorId}`,
-//         Food: `http://localhost:7070/vendor_services/FoodServicedelete/${foodId}/${vendorId}`,
-//         Decoration: `http://localhost:7070/vendor_services/DecorationServicedelete/${decorationId}/${vendorId}`,
-//         Makeup: `http://localhost:7070/vendor_services/MakeUpDtoServicedelete/${makeUpId}/${vendorId}`,
-//         Photography: `http://localhost:7070/vendor_services/PhotoServicedelete/${photoId}/${vendorId}`,
-//     };
-//     try {
-//         const response = await axios.delete(apiUrl, {
-//             headers: { Authorization: `Bearer ${token}` }
-//         });
-
-//         if (response.status === 200) {
-//             alert("Service removed successfully!");
-//             setServices(services.filter(service => service.id !== vanueId));
-//         } else {
-//             alert("Failed to remove service.");
-//         }
-//     } catch (error) {
-//         console.error("Error removing service:", error);
-//         alert("An error occurred while removing the service.");
-//     }
-// };
 
 const handleRemoveService = async (service) => {
     const { id, category } = service;
@@ -815,9 +717,9 @@ export default DeshMain;
 //     });
 
 //     const serviceFields = {
-//         Venue: ["Location", "Type", "Capacity", "Room", "Address", "Price"],
+//         Venue: ["City", "Type", "Capacity", "Room", "Address", "Price"],
 //         Food: ["Cuisine Type", "City", "Price per Plate"],
-//         Decoration: ["Location", "Price"],
+//         Decoration: ["City", "Price"],
 //         Sound: ["Type", "Duration", "City", "Price"],
 //         Makeup: ["Type", "City", "Price"],
 //         Mehndi: ["Type", "City", "Price"],

@@ -12,7 +12,7 @@ function Profile() {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const response = await axios.get(`http://localhost:7070/api/profile/${userId}`, {
+                const response = await axios.get(`http://localhost:7070/profile/${userId}`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setUser(response.data);

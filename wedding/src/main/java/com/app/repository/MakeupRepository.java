@@ -13,6 +13,7 @@ import com.app.entities.MakeUp;
 public interface MakeupRepository extends JpaRepository<MakeUp, Long>{
 	
 	List<MakeUp> findByUserEntityId(Long vendorId);
+	
 	@Query("SELECT v FROM MakeUp v WHERE v.id = :makeUpId AND v.userEntity.id = :vendorId")
 	Optional<MakeUp> findBy(Long makeUpId, Long vendorId);
 

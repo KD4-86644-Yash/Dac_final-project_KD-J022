@@ -16,7 +16,7 @@ import com.app.dto.MakeUpDto;
 import com.app.service.MakeUpService;
 
 
-//import io.swagger.v3.oas.annotations.parameters.RequestBody;
+
 
 @RestController
 @RequestMapping("/makeup")

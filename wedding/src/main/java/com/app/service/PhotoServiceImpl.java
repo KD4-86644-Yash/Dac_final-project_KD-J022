@@ -71,7 +71,7 @@ public class PhotoServiceImpl implements PhotoService {
 	}
 
 	@Override
-	public ApiResponse addPhotoServiceToCart(CartDTO cartDto,Long service_id) {
+	public ApiResponse addPhotoServiceToCart(CartDTO cartDto,Long service_id,Long userId) {
 			
 			Photo photoAddToCart = photoRepository.findById(service_id).orElseThrow();
 			
@@ -84,17 +84,16 @@ public class PhotoServiceImpl implements PhotoService {
 			
 			int requiredQuantity = cartObject.getQuantity();
 			
-			int totalPrice = requiredQuantity * cartObject.getPrice();
+			int totalPrice = requiredQuantity * photoAddToCart.getPrice();
 			
 			cartObject.setService(photoAddToCart.getId());
 			
 			cartObject.setPrice(totalPrice);
 			
+			cartObject.setUserId(userId);
+			
 			Cart savingToCart = cartRepository.save(cartObject);
 			
 			return new ApiResponse("Add sucessfull");
 	}
-	
-	
-
 }

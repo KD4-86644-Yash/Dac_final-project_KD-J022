@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,4 +40,10 @@ public class FoodController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(foodService.addFoodToCart(dto, id, userId));
 	}
 
+	@GetMapping("food/getDetail/{userId}/{serviceId}")
+	public ResponseEntity<?> viewFood(@PathVariable("serviceId") Long id){
+		
+		return ResponseEntity.ok(foodService.getSingleFoodItem(id));
+//		return ResponseEntity.ok(foodService.getSingleFoodItem(serviceId));
+	}
 }

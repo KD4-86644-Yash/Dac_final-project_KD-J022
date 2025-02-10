@@ -85,6 +85,26 @@ public class FoodServiceImpl implements FoodService {
 		// TODO Auto-generated method stub
 		return new ApiResponse("Food service successfully added to the cart !!");
 	}
+
+
+
+	@Override
+	public Food getSingleFoodItem(Long serviceId) {
+		
+		Food foodObject = foodRepository.findById(serviceId).orElseThrow();
+		Food newFoodObject = new Food();
+		System.out.println("hello");
+		newFoodObject.setName(foodObject.getName());
+		newFoodObject.setDiscription(foodObject.getDiscription());
+		newFoodObject.setRating(foodObject.getRating());
+		newFoodObject.setPrice(foodObject.getPrice());
+		newFoodObject.setStatus(foodObject.getStatus());
+		newFoodObject.setUserEntity(foodObject.getUserEntity());
+
+		
+		// TODO Auto-generated method stub
+		return newFoodObject;
+	}
 	
 	
 	

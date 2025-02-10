@@ -25,5 +25,6 @@ public class FoodDto {
 	private int rating;
 	private int price;
 	
-	private UserEntity userEntity;
+	private String vendorEmail;
+//	private UserEntity userEntity;
 }

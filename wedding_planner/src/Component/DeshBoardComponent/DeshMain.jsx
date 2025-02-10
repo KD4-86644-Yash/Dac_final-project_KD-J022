@@ -396,6 +396,7 @@ function DeshMain() {
         Mehndi: ["Type", "City", "Price"],
         Photography: ["Type", "Duration", "City", "Price"]
     };
+    
 
     const handleChange = (e) => {
         const { name, value } = e.target;

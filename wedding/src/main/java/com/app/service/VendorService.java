@@ -31,6 +31,7 @@ public interface VendorService {
 	public MakeUpApiResponce addMakeUp( MakeUpDto makeUpDto,Long vendorId);
 	public PhotoApiResponce addPhoto( PhotoDto PhotoDto,Long vendorId);
 	public VenueApiResponce deleteVenueById( Long vanueId,Long vendor_id);
+	
 	public ServicesDTO getAllServices(Long vendorId);
 	public SoundApiResponce deleteSound(Long soundId, Long vendorId);
 

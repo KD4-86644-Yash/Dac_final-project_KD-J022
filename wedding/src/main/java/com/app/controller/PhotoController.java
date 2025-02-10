@@ -39,10 +39,10 @@ public class PhotoController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(photoservice.addPhotoService(photodto));
 	}
 	
-	@PostMapping("/cart/{vendorId}")
-	public ResponseEntity<?> addCart(@RequestBody CartDTO photodto, @PathVariable("vendorId") Long vendorId){
+	@PostMapping("/cart/{vendorId}/{userId}")
+	public ResponseEntity<?> addCart(@RequestBody CartDTO photodto, @PathVariable("vendorId") Long vendorId, @PathVariable("userId") Long userId){
 		
-		return ResponseEntity.status(HttpStatus.CREATED).body(photoservice.addPhotoServiceToCart(photodto, vendorId));
+		return ResponseEntity.status(HttpStatus.CREATED).body(photoservice.addPhotoServiceToCart(photodto, vendorId,userId));
 	}
 
 }

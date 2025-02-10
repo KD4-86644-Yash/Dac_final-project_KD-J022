@@ -1,6 +1,7 @@
 package com.app.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -8,11 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.app.dto.CartDTO;
 import com.app.dto.InvitesGiftDto;
 import com.app.dto.MehandiDto;
+import com.app.entities.Cart;
 import com.app.entities.InvitesGift;
 import com.app.entities.Mehandi;
 import com.app.entities.UserEntity;
+import com.app.repository.CartRepository;
 import com.app.repository.InvitationsAndGiftsRepository;
 import com.app.repository.MehandiRepository;
 import com.app.repository.UserEntityRepository;
@@ -31,6 +35,9 @@ public class InvitationsAndGiftsServiceImpl implements InvitationsAndGiftsServic
 	
 	@Autowired
 	private UserEntityRepository userEntityRepository;
+	
+	@Autowired
+	private CartRepository cartRepository;
 	
 	
 	@Override
@@ -62,5 +69,127 @@ public class InvitationsAndGiftsServiceImpl implements InvitationsAndGiftsServic
 		
 		
 	}
+	
+	
+	@Override
+	public ApiResponse addInvitationAndGiftServiceToCart(CartDTO cartDto, Long serviceId, Long userId) {
+		InvitesGift invitationAndGiftsAddingToCart = invitationsAndGiftsRepository.findById(serviceId).orElseThrow();
+		
+		UserEntity user = userEntityRepository.findById(userId).orElseThrow();
+		
+
+		
+		
+		Cart cartObject = mapper.map(cartDto, Cart.class);
+		
+		cartObject.setName(invitationAndGiftsAddingToCart.getName());
+		
+		cartObject.setQuantity(cartDto.getQuantity());
+		
+		int requiredQuantity = cartObject.getQuantity();
+		
+		int totalPrice = requiredQuantity * invitationAndGiftsAddingToCart.getPrice();
+		
+		cartObject.setService(invitationAndGiftsAddingToCart.getId());
+		
+		cartObject.setPrice(totalPrice);
+		
+		cartObject.setUserId(user.getId());
+		
+		
+		
+		Cart savingToCart = cartRepository.save(cartObject);
+		
+		return new ApiResponse("Add service" + savingToCart.getName() + " having id" );
+	}
+
+
+	@Override
+	public InvitesGift getSingleInvitationRecord(Long serviceId) {
+		
+		InvitesGift invitationObject = invitationsAndGiftsRepository.findById(serviceId).orElseThrow();
+		
+		InvitesGift anotherObject = new InvitesGift();
+		
+		anotherObject.setName(invitationObject.getName());
+		anotherObject.setCity(invitationObject.getCity());
+		anotherObject.setDiscription(invitationObject.getDiscription());
+		anotherObject.setPrice(invitationObject.getPrice());
+		anotherObject.setRating(invitationObject.getRating());
+		
+		 
+		return  anotherObject;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

@@ -1,154 +1,245 @@
-import React from "react";
-import { Link } from "react-router-dom"; // React Router for navigation
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import MakeUpHeader from "./MakeUpHeader";
 
-import  makeup1 from "../../../image/makeup1.jpg";
-import  makeup2 from "../../../image/makeup2.png";
-import  makeup3 from "../../../image/makeup3.jpg";
+// Import default images
+import Makeup1 from "../../../image/makeup1.jpg";
+import Makeup2 from "../../../image/makeup2.png";
+import Makeup3 from "../../../image/makeup3.jpg";
 
-import "../../../css/services/food.css";
+const images = [Makeup1, Makeup2, Makeup3]; // Array of images
 
+const MakeupServiceList = () => {
+  const [makeupServices, setMakeupServices] = useState([]);
+  const [error, setError] = useState(null);
 
-import MakeUpHeader from './MakeUpHeader';
-// import MakeUp from './../../../Screen/services/MakeUp';
+  useEffect(() => {
+    axios
+      .get("http://localhost:7070/service/Makeup/get") // ✅ Ensure the correct endpoint
+      .then((response) => {
+        setMakeupServices(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching makeup services:", error);
+        setError("Failed to load makeup services. Please try again later.");
+      });
+  }, []);
 
-const MakeUpService = () => {
   return (
     <div className="container my-4">
+      <MakeUpHeader /> {/* ✅ Include Header */}
 
-        <MakeUpHeader/>
+      {error && <p className="text-center text-danger">{error}</p>}
 
-      {/* Page Header */}
-      {/* <h1 class="text-center page-title">Decoration Services</h1>
-      <p className="text-center page-description">
-        Explore our wide range of decoration services for weddings, parties, and grand events. Tailored to make your special moments unforgettable.
-      </p> */}
-
-      {/* Card 1 */}
-      <div className="card mb-4 decoration-card">
-        <div className="row g-0">
-          <div className="col-md-4">
-            <img
-              src={makeup1}
-              className="img-fluid rounded-start decoration-img"
-              alt="Rajhans Greens"
-            />
-          </div>
-          <div className="col-md-8">
-            <div className="card-body">
-              <div className="d-flex justify-content-between align-items-start">
-                <div>
-                  <h5 className="card-title">Rajhans Greens</h5>
-                  <p className="card-location">
-                    <i className="bi bi-geo-alt"></i> Kanakapura Road, Bangalore
+      {makeupServices.length === 0 && !error ? (
+        <p className="text-center">Loading makeup services...</p>
+      ) : (
+        makeupServices.map((service, index) => (
+          <div key={service.id} className="card mb-4 makeup-card">
+            <div className="row g-0">
+              <div className="col-md-4">
+                <img
+                  src={service.image ? `/image/${service.image}` : images[index % images.length]} // ✅ Use default images
+                  className="img-fluid rounded-start makeup-img"
+                  alt={service.name}
+                />
+              </div>
+              <div className="col-md-8">
+                <div className="card-body">
+                  <div className="d-flex justify-content-between align-items-start">
+                    <div>
+                      <h5 className="card-title">{service.name}</h5>
+                      <p className="card-location">
+                        <i className="bi bi-geo-alt"></i> {service.city}
+                      </p>
+                      <p className="card-text">{service.description}</p>
+                    </div>
+                  </div>
+                  <p className="card-text">
+                    <span className="badge bg-secondary">Rating: {service.rating}</span>
+                    <span className="badge bg-secondary">₹ {service.price} per session</span>
                   </p>
-                  <p className="card-text">Banquet Halls, Marriage Garden</p>
+                  <p className="card-text">
+                    <span className={`badge ${service.status === "Available" ? "bg-success" : "bg-danger"}`}>
+                      {service.status}
+                    </span>
+                  </p>
+                  <Link to={`/makeup/${service.id}`} className="btn btn-pink">
+                    View Details
+                  </Link>
                 </div>
               </div>
-              <p className="card-text">
-                ₹ 1,50,000 per head
-              </p>
-              <p className="card-text">
-                  ⭐ 4.5 / 5 <br />
-                  <span className="badge bg-success">Available</span>
-              </p>
-
-              <p className="card-description">
-                Rajhans Greens, a luscious venue based in Bangalore, is perfect
-                for the grand affair like your wedding.
-              </p>
-              <Link to="/decoration/rajhans-greens" className="btn btn-pink">
-                View Details
-              </Link>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Card 2 */}
-      <div className="card mb-4 decoration-card">
-        <div className="row g-0">
-          <div className="col-md-4">
-            <img
-              src={makeup2}
-              className="img-fluid rounded-start decoration-img"
-              alt="Bravura Gold Resort"
-            />
-          </div>
-          <div className="col-md-8">
-            <div className="card-body">
-              <div className="d-flex justify-content-between align-items-start">
-                <div>
-                  <h5 className="card-title">Bravura Gold Resort</h5>
-                  <p className="card-location">
-                    <i className="bi bi-geo-alt"></i> Partapur, Meerut
-                  </p>
-                  
-                </div>
-              </div>
-              <p className="card-text">
-                ₹ 1,50,000 per head
-              </p>
-              
-              <p className="card-text">
-                  ⭐ 4.5 / 5 <br />
-                  <span className="badge bg-success">Available</span>
-              </p>
-              <p className="card-description">
-                Bravura Gold Resort is one of the largest and most beautiful
-                venues located in Meerut.
-              </p>
-              <Link
-                to="/decoration/bravura-gold-resort"
-                className="btn btn-pink"
-              >
-                View Details
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Card 3 */}
-      <div className="card mb-4 decoration-card">
-        <div className="row g-0">
-          <div className="col-md-4">
-            <img
-              src={makeup3}
-              className="img-fluid rounded-start decoration-img"
-              alt="The Lalit Ashok"
-            />
-          </div>
-          <div className="col-md-8">
-            <div className="card-body">
-              <div className="d-flex justify-content-between align-items-start">
-                <div>
-                  <h5 className="card-title">The Lalit Ashok</h5>
-                  <p className="card-location">
-                    <i className="bi bi-geo-alt"></i> Seshadripuram, Bangalore
-                  </p>
-                  
-                </div>
-              </div>
-              <p className="card-text">
-                ₹ 1,50,000 per head
-              </p>
-              <p className="card-text">
-                  ⭐ 4.5 / 5 <br />
-                  <span className="badge bg-success">Available</span>
-              </p>
-              <p className="card-description">
-                The Lalit Ashok offers one of the most prestigious venues in
-                Bangalore with world-class facilities.
-              </p>
-              <Link to="/decoration/the-lalit-ashok" className="btn btn-pink">
-                View Details
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
+        ))
+      )}
     </div>
   );
 };
 
-export default MakeUpService;
+export default MakeupServiceList;
+
+
+
+
+
+
+
+
+
+
+// import React from "react";
+// import { Link } from "react-router-dom"; // React Router for navigation
+
+// import  makeup1 from "../../../image/makeup1.jpg";
+// import  makeup2 from "../../../image/makeup2.png";
+// import  makeup3 from "../../../image/makeup3.jpg";
+
+// import "../../../css/services/food.css";
+
+
+// import MakeUpHeader from './MakeUpHeader';
+// // import MakeUp from './../../../Screen/services/MakeUp';
+
+// const MakeUpService = () => {
+//   return (
+//     <div className="container my-4">
+
+//         <MakeUpHeader/>
+
+//       {/* Page Header */}
+//       {/* <h1 class="text-center page-title">Decoration Services</h1>
+//       <p className="text-center page-description">
+//         Explore our wide range of decoration services for weddings, parties, and grand events. Tailored to make your special moments unforgettable.
+//       </p> */}
+
+//       {/* Card 1 */}
+//       <div className="card mb-4 decoration-card">
+//         <div className="row g-0">
+//           <div className="col-md-4">
+//             <img
+//               src={makeup1}
+//               className="img-fluid rounded-start decoration-img"
+//               alt="Rajhans Greens"
+//             />
+//           </div>
+//           <div className="col-md-8">
+//             <div className="card-body">
+//               <div className="d-flex justify-content-between align-items-start">
+//                 <div>
+//                   <h5 className="card-title">Rajhans Greens</h5>
+//                   <p className="card-location">
+//                     <i className="bi bi-geo-alt"></i> Kanakapura Road, Bangalore
+//                   </p>
+//                   <p className="card-text">Banquet Halls, Marriage Garden</p>
+//                 </div>
+//               </div>
+//               <p className="card-text">
+//                 ₹ 1,50,000 per head
+//               </p>
+//               <p className="card-text">
+//                   ⭐ 4.5 / 5 <br />
+//                   <span className="badge bg-success">Available</span>
+//               </p>
+
+//               <p className="card-description">
+//                 Rajhans Greens, a luscious venue based in Bangalore, is perfect
+//                 for the grand affair like your wedding.
+//               </p>
+//               <Link to="/decoration/rajhans-greens" className="btn btn-pink">
+//                 View Details
+//               </Link>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* Card 2 */}
+//       <div className="card mb-4 decoration-card">
+//         <div className="row g-0">
+//           <div className="col-md-4">
+//             <img
+//               src={makeup2}
+//               className="img-fluid rounded-start decoration-img"
+//               alt="Bravura Gold Resort"
+//             />
+//           </div>
+//           <div className="col-md-8">
+//             <div className="card-body">
+//               <div className="d-flex justify-content-between align-items-start">
+//                 <div>
+//                   <h5 className="card-title">Bravura Gold Resort</h5>
+//                   <p className="card-location">
+//                     <i className="bi bi-geo-alt"></i> Partapur, Meerut
+//                   </p>
+                  
+//                 </div>
+//               </div>
+//               <p className="card-text">
+//                 ₹ 1,50,000 per head
+//               </p>
+              
+//               <p className="card-text">
+//                   ⭐ 4.5 / 5 <br />
+//                   <span className="badge bg-success">Available</span>
+//               </p>
+//               <p className="card-description">
+//                 Bravura Gold Resort is one of the largest and most beautiful
+//                 venues located in Meerut.
+//               </p>
+//               <Link
+//                 to="/decoration/bravura-gold-resort"
+//                 className="btn btn-pink"
+//               >
+//                 View Details
+//               </Link>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* Card 3 */}
+//       <div className="card mb-4 decoration-card">
+//         <div className="row g-0">
+//           <div className="col-md-4">
+//             <img
+//               src={makeup3}
+//               className="img-fluid rounded-start decoration-img"
+//               alt="The Lalit Ashok"
+//             />
+//           </div>
+//           <div className="col-md-8">
+//             <div className="card-body">
+//               <div className="d-flex justify-content-between align-items-start">
+//                 <div>
+//                   <h5 className="card-title">The Lalit Ashok</h5>
+//                   <p className="card-location">
+//                     <i className="bi bi-geo-alt"></i> Seshadripuram, Bangalore
+//                   </p>
+                  
+//                 </div>
+//               </div>
+//               <p className="card-text">
+//                 ₹ 1,50,000 per head
+//               </p>
+//               <p className="card-text">
+//                   ⭐ 4.5 / 5 <br />
+//                   <span className="badge bg-success">Available</span>
+//               </p>
+//               <p className="card-description">
+//                 The Lalit Ashok offers one of the most prestigious venues in
+//                 Bangalore with world-class facilities.
+//               </p>
+//               <Link to="/decoration/the-lalit-ashok" className="btn btn-pink">
+//                 View Details
+//               </Link>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default MakeUpService;

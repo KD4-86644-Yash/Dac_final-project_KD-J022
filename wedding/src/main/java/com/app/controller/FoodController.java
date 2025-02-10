@@ -18,14 +18,14 @@ import com.app.dto.FoodDto;
 import com.app.service.FoodService;
 
 @RestController
-@RequestMapping("/service")
-@CrossOrigin
+@RequestMapping("/services/food")
+@CrossOrigin(origins = "*")
 public class FoodController {
 	
 	@Autowired
 	private FoodService foodService;
 	
-	@GetMapping("/food")
+	@GetMapping("/get")
 	public ResponseEntity<?> getAllFoodList(){
 		return ResponseEntity.ok(foodService.getAllFoodService());
 	}

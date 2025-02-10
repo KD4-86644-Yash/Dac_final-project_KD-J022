@@ -2,6 +2,7 @@ package com.app.service;
 
 import java.util.List;
 
+import com.app.dto.CartDTO;
 import com.app.dto.SoundDto;
 import com.app.dto.SoundReqDTO;
 import com.app.dto.SoundUpdateDTO;
@@ -15,5 +16,7 @@ public interface SoundServices {
 
 	ApiResponse updateSoundService(SoundDto updateDto);
 	List<SoundReqDTO> getbyId(Long vandor_id);
+
+	ApiResponse addSoundServiceToCart(CartDTO cartDto, Long service_id, Long userId);
 
 }

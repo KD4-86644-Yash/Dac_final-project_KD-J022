@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.CartDTO;
 import com.app.dto.PhotoDto;
+import com.app.entities.InvitesGift;
+import com.app.entities.Photo;
 import com.app.service.PhotoService;
 
 
@@ -33,10 +35,10 @@ public class PhotoController {
 		return ResponseEntity.ok(photodto);
 	}
 	
-	@PostMapping("/add-photo")
-	public ResponseEntity<?> addSound(@RequestBody PhotoDto photodto){
+	@PostMapping("/add-photo/{vendorId}")
+	public ResponseEntity<?> addSound(@RequestBody PhotoDto photodto,@PathVariable Long vendorId){
 		
-		return ResponseEntity.status(HttpStatus.CREATED).body(photoservice.addPhotoService(photodto));
+		return ResponseEntity.status(HttpStatus.CREATED).body(photoservice.addPhotoService(photodto,vendorId));
 	}
 	
 	@PostMapping("/cart/{vendorId}/{userId}")
@@ -44,5 +46,14 @@ public class PhotoController {
 		
 		return ResponseEntity.status(HttpStatus.CREATED).body(photoservice.addPhotoServiceToCart(photodto, vendorId,userId));
 	}
+	
+	@GetMapping("photo-single/{userId}/{serviceId}")
+	public ResponseEntity<?> getSingleInvitationObject(
+	    @PathVariable("serviceId") Long id
+	) {
+	    Photo inviteObject = photoservice.getSinglePhotoRecord(id);
+	    return ResponseEntity.ok(inviteObject);
+	}
+
 
 }

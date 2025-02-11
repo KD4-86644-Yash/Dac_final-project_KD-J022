@@ -19,6 +19,8 @@ import com.app.dto.CartDTO;
 import com.app.dto.SoundDto;
 import com.app.dto.SoundReqDTO;
 import com.app.dto.SoundUpdateDTO;
+import com.app.entities.InvitesGift;
+import com.app.entities.Sound;
 import com.app.service.SoundServices;
 
 
@@ -47,6 +49,12 @@ public class SoundContorller {
 	public ResponseEntity<?> addCart(@RequestBody CartDTO photodto, @PathVariable("vendorId") Long vendorId, @PathVariable("userId") Long userId){
 		
 		return ResponseEntity.status(HttpStatus.CREATED).body(soundservice.addSoundServiceToCart(photodto, vendorId,userId));
+	}
+	
+	@GetMapping("sound-single/{user-id}/{service-id}")
+	public ResponseEntity<?> getSingleInvitationObject(@PathVariable ("service-id") Long id){
+		Sound inviteObject = soundservice.getSingleSoundRecord(id);
+		return ResponseEntity.ok(inviteObject);
 	}
 	
 

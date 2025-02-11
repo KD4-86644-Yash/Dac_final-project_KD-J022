@@ -39,10 +39,10 @@ public class InvitationsAndGiftsController {
 	}
 	
 	
-	@PostMapping("/add-invitations-and-gifts")
-	public  ResponseEntity<?> addProduct(@RequestBody   InvitesGiftDto invites) {
+	@PostMapping("/add-invitations-and-gifts/{vendorId}")
+	public  ResponseEntity<?> addProduct(@RequestBody InvitesGiftDto invites,@PathVariable Long vendorId) {
 		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(invitationsAndGiftsService.addInvitationAndGiftService(invites)); 	
+				.body(invitationsAndGiftsService.addInvitationAndGiftService(invites,vendorId)); 	
 	}
 	
 	@PostMapping("services/invitations/{user-id}/{service-id}")
@@ -54,10 +54,9 @@ public class InvitationsAndGiftsController {
 	}
 	
 	@GetMapping("/{user-id}/{service-id}")
+
 	public ResponseEntity<?> getSingleInvitationObject(@PathVariable ("service-id") Long id){
 		InvitesGift inviteObject = invitationsAndGiftsService.getSingleInvitationRecord(id);
 		return ResponseEntity.ok(inviteObject);
 	}
-	
-
 }

@@ -72,7 +72,7 @@ function Cart() {
         // Table Rows
         const data = cartItems.map(item => [
             item.name,
-            `$${item.price.toFixed(2)}`,
+            `₹${item.price.toFixed(2)}`,
             item.quantity,
             `$${(item.price * item.quantity).toFixed(2)}`
         ]);
@@ -85,7 +85,7 @@ function Cart() {
         });
 
         // Total Amount
-        doc.text(`Total: $${calculateTotal().toFixed(2)}`, 14, doc.lastAutoTable.finalY + 10);
+        doc.text(`Total: ₹${calculateTotal().toFixed(2)}`, 14, doc.lastAutoTable.finalY + 10);
 
         // Save the PDF
         doc.save("invoice.pdf");

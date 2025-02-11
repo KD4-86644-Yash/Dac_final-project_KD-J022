@@ -64,7 +64,7 @@ function App() {
 
         <Route path ='/vendor_profile' element = {<VendorDeskboard />} />
         <Route path ='/user_profile' element = {<USerDeskboard />} />
-        <Route path ='/services/Photography/photographerprofile' element = {<PhotographerProfile />} />        
+        <Route path ='/photo-single/:serviceId' element = {<PhotographerProfile />} />        
 
       </Routes>
 

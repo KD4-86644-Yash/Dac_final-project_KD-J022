@@ -51,16 +51,15 @@ public class MehndiServiceImpl  implements MehndiService{
 
 
 	@Override
-	public ApiResponse addMehandiService(MehandiDto mehandi) {
+	public ApiResponse addMehandiService(MehandiDto mehandi,Long vendorId) {
 		
 		Mehandi newMehandi = mapper.map(mehandi, Mehandi.class);
 		
-		String emailValidation = mehandi.getVendorEmail();
-		UserEntity VendorObject = userEntityRepository.findByEmail(emailValidation).orElseThrow();
+		UserEntity user = userEntityRepository.findById(vendorId).orElseThrow();
 		
-		if(VendorObject.getEmail().equalsIgnoreCase(emailValidation)) {
+		if(user!=null) {
 		
-			newMehandi.setUserEntity(VendorObject);
+			newMehandi.setUserEntity(user);
 		Mehandi persistentEntity =  mehandiRepository.save(newMehandi);
 		return new ApiResponse("Added new Mehandi Service with ID " + persistentEntity.getId());
 		}

@@ -39,10 +39,10 @@ public class MehandiController {
 		return ResponseEntity.ok(mehndi);
 	}
 	
-	@PostMapping("/add-mehandi")
-	public  ResponseEntity<?> addProduct(@RequestBody   MehandiDto mehandi) {
+	@PostMapping("/add-mehandi/{vendorId}")
+	public  ResponseEntity<?> addProduct(@RequestBody   MehandiDto mehandi,@PathVariable Long vendorId) {
 		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(mehndiService.addMehandiService(mehandi));
+				.body(mehndiService.addMehandiService(mehandi,vendorId));
 	}
 	
 	

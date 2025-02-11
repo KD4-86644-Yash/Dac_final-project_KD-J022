@@ -46,13 +46,12 @@ public class MakeUpServiceImpl implements MakeUpService {
 	}
 
 	@Override
-	public ApiResponse addMakeUpService(MakeUpDto dto) {
+	public ApiResponse addMakeUpService(MakeUpDto dto,Long vendorId) {
 		MakeUp makeup = mapper.map(dto, MakeUp.class);
 		
-		String emailValidation = dto.getVendorEmail();
-		UserEntity vendorObject = userEntityRepository.findByEmail(emailValidation).orElseThrow();
-		if(vendorObject.getEmail().equalsIgnoreCase(emailValidation)) {
-			makeup.setUserEntity(vendorObject);
+		UserEntity user = userEntityRepository.findById(vendorId).orElseThrow();
+		if(user!=null) {
+			makeup.setUserEntity(user);
 			MakeUp persistentEntity = makeUpRepository.save(makeup);
 			return new ApiResponse("Added new makeup with Id" + persistentEntity.getId());
 		}
@@ -92,5 +91,4 @@ public class MakeUpServiceImpl implements MakeUpService {
 		
 	}
 
-	
 }

@@ -53,10 +53,11 @@ function DeshMain() {
         category: "",
 
         discription: "",
-        City:"",
-        Type:"",
-        Address:"", 
-        Price:"",
+        city:"",
+        type:"",
+        address:"", 
+        price:"",
+
         details: {} // Ensure details is always an object
     });
 
@@ -84,7 +85,8 @@ function DeshMain() {
     };
 
     const handleCategoryChange = (e) => {
-        setNewService({ Name: "", category: e.target.value, discription: "",City: "",Type: "",Price: "", details: {} });
+        setNewService({ Name: "", category: e.target.value, discription: "",city: "",type: "",price: "", details: {} });
+
 
     };
 
@@ -102,6 +104,8 @@ const handleSaveService = async () => {
         Decoration: `http://localhost:7070/vendor_services/DecorationServiceadd/${vendorId}`,
         Makeup: `http://localhost:7070/vendor_services/MakeUpDtoServiceadd/${vendorId}`,
         Photography: `http://localhost:7070/vendor_services/PhotoServiceadd/${vendorId}`,
+        Mehandi : `http://localhost:7070/vendor_services/MehandiAdd/${vendorId}`,
+
     };
 
     if (!vendorId) {
@@ -206,9 +210,10 @@ const handleSaveService = async () => {
             Name: "", 
             category: "", 
             discription: "",
-            Type: "", 
-            Price: "", 
-            City: "", 
+            type: "", 
+            price: "", 
+            city: "", 
+
             details: {} 
         });
 
@@ -304,8 +309,9 @@ const handleRemoveService = async (service) => {
                 <td>{service.Name || service.name}</td> {/* Check both cases */}
                 <td>{service.category}</td>
                 <td>{service.discription || service.description}</td>
-                <td>{service.Price}</td>
-                <td>{service.City}</td>
+                <td>{service.price}</td>
+                <td>{service.city}</td>
+
                 <td>{service.details ? Object.entries(service.details).map(([key, value]) => `${key}: ${value}`).join(", ") : "City:Pune"}</td>
                 <td>
                     <button className="btn btn-danger" onClick={() => handleRemoveService(service)}>Remove</button>
@@ -642,6 +648,7 @@ export default DeshMain;
 //     const [showModal, setShowModal] = useState(false);
 //     const [editingIndex, setEditingIndex] = useState(null);
 
+
 //     const [newService, setNewService] = useState({
 //         Name: "",
 //         category: "",
@@ -753,6 +760,121 @@ export default DeshMain;
 //         }
 //     };
 
+
+
+
+
+
+//     const [newService, setNewService] = useState({
+//         Name: "",
+//         category: "",
+//         discription: "",City:"", Type:"", Capacity:"", Room:"", Address:"", Price:"",city:"",City:"",
+//         details: {} // Ensure details is always an object
+//     });
+
+//     const serviceFields = {
+//         Venue: ["City", "Type", "Capacity", "Room", "Address", "Price"],
+//         Food: ["Cuisine Type", "City", "Price"],
+//         Decoration: ["City", "Price"],
+//         Sound: ["Type", "Duration", "City", "Price"],
+//         Makeup: ["Type", "City", "Price"],
+//         Mehndi: ["Type", "City", "Price"],
+//         Photography: ["Type", "Duration", "City", "Price"]
+//     };
+
+//     const handleChange = (e) => {
+//         const { name, value } = e.target;
+//         setNewService((prevService) => ({
+//             ...prevService,
+//             details: { ...prevService.details, [name]: value }
+//         }));
+//     };
+
+//     const handleDescriptionChange = (e) => {
+//         setNewService({ ...newService, discription: e.target.value });
+//     };
+
+//     const vendorId = localStorage.getItem("id");
+//     const token = localStorage.getItem("token");
+
+//     const handleCategoryChange = (e) => {
+//         setNewService({ Name: "", category: e.target.value, discription: "", details: {} });
+//     };
+
+//     const handleSaveService = async () => {
+//         if (!newService.Name || !newService.category || !newService.discription) {
+//             alert("Please fill in all fields.");
+//             return;
+//         }
+
+//         const apiEndpoints = {
+//             Venue: `http://localhost:7070/vendor_services/Venueadd/${vendorId}`,
+//             Sound: `http://localhost:7070/vendor_services/soundServiceadd/${vendorId}`,
+//             Food: `http://localhost:7070/vendor_services/FoodServiceadd/${vendorId}`,
+//             Decoration: `http://localhost:7070/vendor_services/DecorationServiceadd/${vendorId}`,
+//             Makeup: `http://localhost:7070/vendor_services/MakeUpDtoServiceadd/${vendorId}`,
+//             Photography: `http://localhost:7070/vendor_services/PhotoServiceadd/${vendorId}`,
+//         };
+
+//         if (!vendorId) {
+//             alert("Vendor ID is missing. Please log in again.");
+//             return;
+//         }
+
+//         const apiUrl = apiEndpoints[newService.category];
+//         console.log("apiUrl is: ", apiUrl);
+
+//         const requestBody = {
+//             name: newService.Name,
+//         discription: newService.discription,
+//         category: newService.category,
+//         City: newService.details.City || "",  // Ensuring values are mapped correctly
+//         type: newService.details.Type || "",
+//         capacity: newService.details.Capacity || "",
+//         room: newService.details.Room || "",
+//         address: newService.details.Address || "",
+//         price: newService.details.Price || "",
+//          city: newService.details.city || "",
+//         status: newService.details.status || 1,
+//         Duration:newService.details.Duration || "",
+//         City: newService.details.City || "",
+        
+//             // name: newService.Name,
+//             // discription: newService.discription,
+//             // ...newService.details,
+//             userEntity: {
+//                 id: vendorId,
+//                 firstName: "Vendor First Name", // Customize as needed
+//                 lastName: "Vendor Last Name", // Customize as needed
+//                 email: "vendor@example.com", // Customize as needed
+//                 password: "password123", // Customize as needed
+//                 role: "ROLE_VENDAR", // Customize as needed
+//             }
+//         };
+
+//         try {
+//             const response = await axios.post(apiUrl, requestBody, {
+//                 headers: {
+//                     "Content-Type": "application/json",
+//                     Authorization: `Bearer ${token}`,
+//                 },
+//             });
+
+//             console.log("Service added successfully:", response.data);
+            
+//             // Add new service to the list after successful API response
+//             setServices([...services, newService]);
+
+//             setShowModal(false);
+//             // setNewService({ Name: "", category: "", discription: "", details: {} });
+//             setNewService({ Name: "",City:"",city:"", category: "", discription: "",City:"", Type:"", Capacity:"", Room:"", Address:"", Price:"",details: {} });
+
+//             setEditingIndex(null);
+//         } catch (error) {
+//             console.error("Error adding service:", error);
+//             alert("Failed to add service. Please try again.");
+//         }
+//     };
 
 
 

@@ -46,13 +46,12 @@ public class DecorationServiceImpl implements DecorationService{
 	}
 
 	@Override
-	public ApiResponse addDecorationService(DecorationDto dto) {
+	public ApiResponse addDecorationService(DecorationDto dto,Long vendorId) {
 		Decoration decoration = mapper.map(dto, Decoration.class);
-		String emailValidation = dto.getVendorEmail();
+		UserEntity user = userEntityRepository.findById(vendorId).orElseThrow();
 		
-		UserEntity vendorObject = userEntityRepository.findByEmail(emailValidation).orElseThrow();
-		if(vendorObject.getEmail().equalsIgnoreCase(emailValidation)) {
-			decoration.setUserEntity(vendorObject);
+		if(user!=null) {
+			decoration.setUserEntity(user);
 			Decoration persistentEntity = decorationRepository.save(decoration);
 			return new ApiResponse("Added new decoration Service with ID " + persistentEntity.getId());
 			

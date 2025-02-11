@@ -50,6 +50,7 @@ function App() {
         <Route path ='/services/decorationservice' element={<DecorationService/>} />
                 
         <Route path='/services/food' element ={<Food/>}/>
+        
         <Route path='/services/MakeUp' element ={<MakeUp/>}/>
         <Route path='/services/Invites' element ={<Invites/>}/>
         <Route path='/services/Photography' element ={<Photography/>}/>

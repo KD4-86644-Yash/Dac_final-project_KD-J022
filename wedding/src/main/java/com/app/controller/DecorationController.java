@@ -17,18 +17,18 @@ import com.app.dto.DecorationDto;
 import com.app.service.DecorationService;
 
 @RestController
-@RequestMapping("/service")
+@RequestMapping("/service/Decoration")
 @CrossOrigin
 public class DecorationController {
 	@Autowired
 	private DecorationService decorationService;
 	
 	
-	@GetMapping("/Decoration")
+	@GetMapping("/get")
 	public ResponseEntity<?> viewAllDecoration(){
 		return ResponseEntity.ok(decorationService.getAllDecoration());
 	}
-	
+		
 	
 	@PostMapping("/addDecoration")
 	public ResponseEntity<?> addDecoration(@RequestBody DecorationDto decoration){

@@ -18,21 +18,21 @@ import com.app.dto.FoodDto;
 import com.app.service.FoodService;
 
 @RestController
-@RequestMapping("/service")
-@CrossOrigin
+@RequestMapping("/services/food")
+@CrossOrigin(origins = "*")
 public class FoodController {
 	
 	@Autowired
 	private FoodService foodService;
 	
-	@GetMapping("/food")
+	@GetMapping("/get")
 	public ResponseEntity<?> getAllFoodList(){
 		return ResponseEntity.ok(foodService.getAllFoodService());
 	}
 	
-	@PostMapping("/addFood")
-	public ResponseEntity<?> addFoodService(@RequestBody FoodDto dto){
-		return ResponseEntity.status(HttpStatus.CREATED).body(foodService.addFoodService(dto));
+	@PostMapping("/addFood/{vendorId}")
+	public ResponseEntity<?> addFoodService(@RequestBody FoodDto dto,@PathVariable Long vendorId){
+		return ResponseEntity.status(HttpStatus.CREATED).body(foodService.addFoodService(dto,vendorId));
 	}
 	
 	@PostMapping("/addFoodTocart/{id}/{userId}")

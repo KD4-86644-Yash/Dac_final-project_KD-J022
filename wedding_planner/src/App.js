@@ -50,6 +50,7 @@ function App() {
         <Route path ='/services/decorationservice' element={<DecorationService/>} />
                 
         <Route path='/services/food' element ={<Food/>}/>
+        
         <Route path='/services/MakeUp' element ={<MakeUp/>}/>
         <Route path='/services/Invites' element ={<Invites/>}/>
         <Route path='/services/Photography' element ={<Photography/>}/>
@@ -63,7 +64,7 @@ function App() {
 
         <Route path ='/vendor_profile' element = {<VendorDeskboard />} />
         <Route path ='/user_profile' element = {<USerDeskboard />} />
-        <Route path ='/services/Photography/photographerprofile' element = {<PhotographerProfile />} />        
+        <Route path ='/photo-single/:serviceId' element = {<PhotographerProfile />} />        
 
       </Routes>
 

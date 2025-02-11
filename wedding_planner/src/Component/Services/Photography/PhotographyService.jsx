@@ -60,9 +60,10 @@ const PhotographyService = () => {
                     <span className="badge bg-secondary">Rating: {service.rating}</span>
                     <span className="badge bg-secondary">₹ {service.price} per day</span>
                   </p>
-                  <Link to={`/services/photography/photographerprofile/${service.id}`} className="btn btn-pink">
-                    View Details
+                  <Link to={`/photo-single/${service.id}`} className="btn btn-pink">
+                      View Details
                   </Link>
+
                 </div>
               </div>
             </div>

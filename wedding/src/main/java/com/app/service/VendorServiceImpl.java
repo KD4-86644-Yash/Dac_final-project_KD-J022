@@ -3,6 +3,7 @@ package com.app.service;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +22,7 @@ import com.app.dto.DecorationDto;
 import com.app.dto.FoodDto;
 import com.app.dto.InvitesGiftDto;
 import com.app.dto.MakeUpDto;
+import com.app.dto.MehandiDto;
 import com.app.dto.PhotoDto;
 import com.app.dto.ServicesDTO;
 import com.app.dto.SoundDto;
@@ -43,6 +45,7 @@ import com.app.repository.PhotoRepository;
 import com.app.repository.SoundRepository;
 import com.app.repository.UserEntityRepository;
 import com.app.repository.VenueRepository;
+import com.app.responseapi.ApiResponse;
 import com.app.responseapi.DecorationApiResponce;
 import com.app.responseapi.FoodApiResponce;
 import com.app.responseapi.InvitesGiftsApiResponce;
@@ -120,38 +123,88 @@ public class VendorServiceImpl implements VendorService {
 		return new VenueApiResponce(null, null, HttpStatus.INTERNAL_SERVER_ERROR, "error", true);
 
 	}
-
+	
 	@Override
-	public SoundApiResponce addSound(SoundDto soundDto, Long vendorId) {
-		log.info("vv1=" + soundDto.getName());
-		try {
-			Optional<UserEntity> userEntity = userEntityRepository.findById(vendorId);
-
-			Sound sound = mapper.map(soundDto, Sound.class);
-			log.info("vv2=" + soundDto.getName());
-			sound.setName(soundDto.getName());
-			sound.setStatus(soundDto.getStatus());
-			sound.setDuration(soundDto.getDuration());
-			sound.setCity(soundDto.getCity());
-			sound.setDiscription(soundDto.getDiscription());
-			sound.setPrice(soundDto.getPrice());
-			sound.setRating(soundDto.getRating());
-			sound.setType(soundDto.getType());
-			sound.getUserEntity().setId(vendorId);
-			log.info(sound.getName());
-			soundRepository.save(sound);
-			SoundDto saveToVenueDto = mapper.map(sound, SoundDto.class);
-			log.info(saveToVenueDto.getName());
-			return new SoundApiResponce(saveToVenueDto, null, HttpStatus.CREATED, "Sound add successfully", false);
-
-		} catch (Exception e) {
-			// TODO: handle exception
+	public ApiResponse addMehandiService(MehandiDto mehandi,Long vendorId) {
+		
+		Mehandi newMehandi = mapper.map(mehandi, Mehandi.class);
+		
+		UserEntity user = userEntityRepository.findById(vendorId).orElseThrow();
+		
+		if(user!=null) {
+		
+			newMehandi.setUserEntity(user);
+		Mehandi persistentEntity =  mehandiRepository.save(newMehandi);
+		return new ApiResponse("Added new Mehandi Service with ID " + persistentEntity.getId());
 		}
-		return new SoundApiResponce(null, null, HttpStatus.INTERNAL_SERVER_ERROR, "error", true);
-
+		else 
+			return new ApiResponse("Cannot add service" );
+	}
+	
+	@Override
+	public ApiResponse addSoundService(SoundDto sounddto,Long vendorId) {
+	Sound newSound = mapper.map(sounddto, Sound.class);
+		
+//		String email = sounddto.getUserEntity();
+		UserEntity user = userEntityRepository.findById(vendorId).orElseThrow();
+		
+		if(user!=null) {
+			
+			newSound.setUserEntity(user);
+			Sound persistUser =  soundRepository.save(newSound);
+			return new ApiResponse("Added New Service With Id:"+ persistUser.getId());
+		}
+		else	
+			return new ApiResponse("Can not add service");
 	}
 
+//	@Override
+//	public SoundApiResponce addSound(SoundDto soundDto, Long vendorId) {
+//		log.info("vv1=" + soundDto.getName());
+//		try {
+//			Optional<UserEntity> userEntity = userEntityRepository.findById(vendorId);
+//
+//			Sound sound = mapper.map(soundDto, Sound.class);
+//			log.info("vv2=" + soundDto.getName());
+//			sound.setName(soundDto.getName());
+//			sound.setStatus(soundDto.getStatus());
+//			sound.setDuration(soundDto.getDuration());
+//			sound.setCity(soundDto.getCity());
+//			sound.setDiscription(soundDto.getDiscription());
+//			sound.setPrice(soundDto.getPrice());
+//			sound.setRating(soundDto.getRating());
+//			sound.setType(soundDto.getType());
+//			sound.getUserEntity().setId(vendorId);
+//			log.info(sound.getName());
+//			soundRepository.save(sound);
+//			SoundDto saveToVenueDto = mapper.map(sound, SoundDto.class);
+//			log.info(saveToVenueDto.getName());
+//			return new SoundApiResponce(saveToVenueDto, null, HttpStatus.CREATED, "Sound add successfully", false);
+//
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
+//		return new SoundApiResponce(null, null, HttpStatus.INTERNAL_SERVER_ERROR, "error", true);
+//
+//	}
+	
+	
 	@Override
+	public ApiResponse addFoodService(FoodDto dto,Long vendorId) {
+		Food food = mapper.map(dto, Food.class);
+		
+		UserEntity user = userEntityRepository.findById(vendorId).orElseThrow();
+		if(user!=null) {
+			food.setUserEntity(user);
+			Food persistentEntity = foodRepository.save(food);
+			return new ApiResponse("Added new Food service with ID" + persistentEntity.getId());
+		}
+		else {
+			return new ApiResponse("Cannot add service");
+		}
+	}
+
+	/*@Override
 	public FoodApiResponce addFood(FoodDto foodDto, Long vendorId) {
 		try {
 			Optional<UserEntity> userEntity = userEntityRepository.findById(vendorId);
@@ -169,12 +222,30 @@ public class VendorServiceImpl implements VendorService {
 			// TODO: handle exception
 		}
 		return new FoodApiResponce(null, null, HttpStatus.INTERNAL_SERVER_ERROR, "error", true);
+	}*/
+	
+	@Override
+	public ApiResponse addDecorationService(DecorationDto dto,Long vendorId) {
+		Decoration decoration = mapper.map(dto, Decoration.class);
+		UserEntity user = userEntityRepository.findById(vendorId).orElseThrow();
+		
+		if(user!=null) {
+			decoration.setUserEntity(user);
+			Decoration persistentEntity = decorationRepository.save(decoration);
+			return new ApiResponse("Added new decoration Service with ID " + persistentEntity.getId());
+			
+		}
+		else {
+		
+		return new ApiResponse("cannot add service");
+		}
 	}
 
-	@Override
+	/*@Override
 	public DecorationApiResponce addDecoration(DecorationDto decorationDto, Long vendorId) {
 		try {
 			Optional<UserEntity> userEntity = userEntityRepository.findById(vendorId);
+			System.out.println(userEntity);
 
 			Decoration decoration = mapper.map(decorationDto, Decoration.class);
 			log.info("vv2=" + decorationDto.getName());
@@ -190,9 +261,26 @@ public class VendorServiceImpl implements VendorService {
 			// TODO: handle exception
 		}
 		return new DecorationApiResponce(null, null, HttpStatus.INTERNAL_SERVER_ERROR, "error", true);
+	}*/
+	
+	@Override
+	public ApiResponse addInvitationAndGiftService(InvitesGiftDto invitesAndGifts,Long vendorId) {
+	
+		InvitesGift newInvitesAndGifts = mapper.map(invitesAndGifts, InvitesGift.class);
+		
+		UserEntity user = userEntityRepository.findById(vendorId).orElseThrow();
+		
+		if(user!=null) {
+		
+			newInvitesAndGifts.setUserEntity(user);
+			InvitesGift persistentEntity =  invitesGiftsRepository.save(newInvitesAndGifts);
+		return new ApiResponse("Added new Mehandi Service with ID " + persistentEntity.getId());
+		}
+		else 
+			return new ApiResponse("Cannot add service" );	
 	}
 
-	@Override
+	/*@Override
 	public InvitesGiftsApiResponce addInvitesGifts(InvitesGiftDto InvitesGiftDto, Long vendorId) {
 		try {
 			Optional<UserEntity> userEntity = userEntityRepository.findById(vendorId);
@@ -211,9 +299,25 @@ public class VendorServiceImpl implements VendorService {
 			// TODO: handle exception
 		}
 		return new InvitesGiftsApiResponce(null, null, HttpStatus.INTERNAL_SERVER_ERROR, "error", true);
+	}*/
+	
+	@Override
+	public ApiResponse addMakeUpService(MakeUpDto dto,Long vendorId) {
+		MakeUp makeup = mapper.map(dto, MakeUp.class);
+		
+		UserEntity user = userEntityRepository.findById(vendorId).orElseThrow();
+		if(user!=null) {
+			makeup.setUserEntity(user);
+			MakeUp persistentEntity = makeupRepository.save(makeup);
+			return new ApiResponse("Added new makeup with Id" + persistentEntity.getId());
+		}
+		else {
+			return new ApiResponse("cannot add service");
+		}
+				
 	}
 
-	@Override
+	/*@Override
 	public MakeUpApiResponce addMakeUp(MakeUpDto makeUpDto, Long vendorId) {
 		try {
 			Optional<UserEntity> userEntity = userEntityRepository.findById(vendorId);
@@ -231,9 +335,26 @@ public class VendorServiceImpl implements VendorService {
 			// TODO: handle exception
 		}
 		return new MakeUpApiResponce(null, null, HttpStatus.INTERNAL_SERVER_ERROR, "error", true);
+	}*/
+	
+	@Override
+	public ApiResponse addPhotoService(PhotoDto photodto,Long vendorId) {
+		
+		Photo newPhoto = mapper.map(photodto, Photo.class);
+		
+		UserEntity user = userEntityRepository.findById(vendorId).orElseThrow();
+		
+		if(user!=null) {
+			
+			newPhoto.setUserEntity(user);
+			Photo persistUser =  photoRepository.save(newPhoto);
+			return new ApiResponse("Added New Service With Id:"+ persistUser.getId());
+		}
+		else	
+			return new ApiResponse("Can not add service");
 	}
 
-	@Override
+	/*@Override
 	public PhotoApiResponce addPhoto(PhotoDto PhotoDto, Long vendorId) {
 		try {
 			Optional<UserEntity> userEntity = userEntityRepository.findById(vendorId);
@@ -252,7 +373,7 @@ public class VendorServiceImpl implements VendorService {
 		}
 		return new PhotoApiResponce(null, null, HttpStatus.INTERNAL_SERVER_ERROR, "error", true);
 	}
-
+*/
 	
 	@Override
 	public VenueApiResponce deleteVenueById( Long vanueId,Long vendor_id) {
@@ -516,38 +637,30 @@ public class VendorServiceImpl implements VendorService {
 //    return str.substring(0, 1).toUpperCase() + str.substring(1);
 //}
 
-	@Override
-	public ServicesDTO getAllServices(Long vendorId) {
-		
-		List<Venue> venue = venueRepository.findByUserEntityId(vendorId);
-		
-		List<Decoration> decoration = decorationRepository.findByUserEntityId(vendorId);
+	@Override	
+		public ServicesDTO getAllServices(Long vendorId) {
+		    ServicesDTO servicesDTO = new ServicesDTO();
 
-		List<Food> food = foodRepository.findByUserEntityId(vendorId);
+		    List<Object> allServices = new ArrayList<>();
+		    allServices.addAll(venueRepository.findByUserEntityId(vendorId));
+		    allServices.addAll(makeupRepository.findByUserEntityId(vendorId));
+		    allServices.addAll(decorationRepository.findByUserEntityId(vendorId));
+		    allServices.addAll(foodRepository.findByUserEntityId(vendorId));
+		    allServices.addAll(photoRepository.findByUserEntityId(vendorId));
+		    allServices.addAll(soundRepository.findByUserEntityId(vendorId));
+		    allServices.addAll(invitesGiftsRepository.findByUserEntityId(vendorId));
+		    allServices.addAll(mehandiRepository.findByUserEntityId(vendorId));
 
-		List<Mehandi> mehandi = mehandiRepository.findByUserEntityId(vendorId);
+		    servicesDTO.setServices(allServices);
+		    return servicesDTO;
+		}
 
-		List<InvitesGift> invitesgifts = invitesGiftsRepository.findByUserEntityId(vendorId);
-		
-		List<Photo> Photo = photoRepository.findByUserEntityId(vendorId);
-		
-		List<Sound> sound = soundRepository.findByUserEntityId(vendorId);
-		
-		List<MakeUp> makeUp = makeupRepository.findByUserEntityId(vendorId);
 
-		return new ServicesDTO(venue, makeUp, decoration, food, Photo, sound, invitesgifts, mehandi);
-	}
 
 	@Override
 	public ByteArrayInputStream downloadExcel(Long vendor_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-//	@Override
-//	public List<ServicesDTO> getAllServices(Long vendorId) {
-//		
-//		return null;
-//	}
 	
 	}

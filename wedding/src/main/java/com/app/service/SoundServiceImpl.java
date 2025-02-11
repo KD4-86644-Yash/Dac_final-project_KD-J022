@@ -59,13 +59,13 @@ public class SoundServiceImpl implements SoundServices {
 	}
 
 	@Override
-	public ApiResponse addSoundService(SoundDto sounddto) {
+	public ApiResponse addSoundService(SoundDto sounddto,Long vendorId) {
 	Sound newSound = mapper.map(sounddto, Sound.class);
 		
-		String email = sounddto.getUserEntity();
-		UserEntity user = userRepository.findByEmail(email).orElseThrow();
+//		String email = sounddto.getUserEntity();
+		UserEntity user = userRepository.findById(vendorId).orElseThrow();
 		
-		if(user.getEmail().equalsIgnoreCase(email)) {
+		if(user!=null) {
 			
 			newSound.setUserEntity(user);
 			Sound persistUser =  sound.save(newSound);
@@ -106,6 +106,22 @@ public class SoundServiceImpl implements SoundServices {
 			Cart savingToCart = cartRepository.save(cartObject);
 			
 			return new ApiResponse("Add sucessfull");
+	}
+
+	@Override
+	public Sound getSingleSoundRecord(Long serviceId) {
+		Sound invitationObject = sound.findById(serviceId).orElseThrow();
+		
+		Sound anotherObject = new Sound();
+		
+		anotherObject.setName(invitationObject.getName());
+		anotherObject.setCity(invitationObject.getCity());
+		anotherObject.setDiscription(invitationObject.getDiscription());
+		anotherObject.setPrice(invitationObject.getPrice());
+		anotherObject.setRating(invitationObject.getRating());
+		
+		 
+		return  anotherObject;
 	}
 
 

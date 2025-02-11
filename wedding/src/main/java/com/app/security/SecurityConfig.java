@@ -56,12 +56,13 @@ public class SecurityConfig {
 		authorizeRequests()
 		.antMatchers("/users/view","/users/signup","/users/signin",
 				"/v*/api-doc*/**","/swagger-ui/**","/vendor_services//Venueadd/{vendorId}/**","/services/sound-system-service/**"
-				,"/services/makeup-service/get"
-				,"/services/photo/get","/cart/{userId}"
+				,"/services/makeup-service/**"
+				,"/services/photo/**","/cart/{userId}","/services/mehndi-service/get","/services/photo/photo-single/${serviceId}"
+				,"/services/sound-system-service/cart/${vendorId}/${userId}"
 				).permitAll()
 		// only required for JS clnts (react / angular) : for the pre flight requests
 		.antMatchers(HttpMethod.OPTIONS).permitAll()
-		.antMatchers("/vendor_services/**").hasRole("VENDAR")
+		.antMatchers("/vendor_services/**/**").hasRole("VENDAR")
 		.antMatchers("/users/**").hasRole("USER")
 		.anyRequest().authenticated()
 		.and()

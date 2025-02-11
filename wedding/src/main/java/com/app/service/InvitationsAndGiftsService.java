@@ -13,7 +13,7 @@ public interface InvitationsAndGiftsService {
 	
 	List<InvitesGiftDto> getAllList();
 	
-	ApiResponse addInvitationAndGiftService(InvitesGiftDto invitesAndGifts);
+	ApiResponse addInvitationAndGiftService(InvitesGiftDto invitesAndGifts,Long vendorId);
 
 	ApiResponse addInvitationAndGiftServiceToCart(CartDTO cartDto,Long serviceId, Long userId);
 	

@@ -20,7 +20,7 @@ import com.app.entities.Mehandi;
 import com.app.service.MehndiService;
 
 @RestController
-@RequestMapping("/mehandi")
+@RequestMapping("/services/mehndi-service")
 @CrossOrigin
 
 public class MehandiController {
@@ -29,7 +29,7 @@ public class MehandiController {
 	private MehndiService mehndiService;
 	
 	
-	@GetMapping
+	@GetMapping("/get")
 	public ResponseEntity<?> getMehndi(){
 		
 		List<MehandiDto> mehndi = mehndiService.getAllMehandiList();
@@ -39,10 +39,10 @@ public class MehandiController {
 		return ResponseEntity.ok(mehndi);
 	}
 	
-	@PostMapping("/add-mehandi")
-	public  ResponseEntity<?> addProduct(@RequestBody   MehandiDto mehandi) {
+	@PostMapping("/add-mehandi/{vendorId}")
+	public  ResponseEntity<?> addProduct(@RequestBody   MehandiDto mehandi,@PathVariable Long vendorId) {
 		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(mehndiService.addMehandiService(mehandi));
+				.body(mehndiService.addMehandiService(mehandi,vendorId));
 	}
 	
 	

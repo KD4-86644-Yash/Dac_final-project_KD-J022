@@ -12,7 +12,7 @@ public interface MehndiService {
 	
 		List<MehandiDto> getAllMehandiList();
 		
-		ApiResponse addMehandiService(MehandiDto mehandi);
+		ApiResponse addMehandiService(MehandiDto mehandi,Long vendorId);
 		
 		
 		ApiResponse addMehandiServiceToCart(CartDTO cartDto,Long serviceId, Long UserId);

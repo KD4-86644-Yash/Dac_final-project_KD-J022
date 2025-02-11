@@ -30,6 +30,7 @@ const MakeUpService = () => {
     <div className="container my-4">
       <MakeUpHeader />
 
+
       {error && <p className="text-center text-danger">{error}</p>}
 
       {makeupServices.length === 0 && !error ? (
@@ -43,12 +44,14 @@ const MakeUpService = () => {
                   src={images[index % images.length]} // Assign images sequentially
                   className="img-fluid rounded-start decoration-img"
                   alt={makeup.name}
+
                 />
               </div>
               <div className="col-md-8">
                 <div className="card-body">
                   <div className="d-flex justify-content-between align-items-start">
                     <div>
+
                       <h5 className="card-title">{makeup.name}</h5>
                       <p className="card-location">
                         <i className="bi bi-geo-alt"></i> {makeup.city}
@@ -75,6 +78,7 @@ const MakeUpService = () => {
 };
 
 export default MakeUpService;
+
 
 // import React from "react";
 // import { Link } from "react-router-dom"; // React Router for navigation

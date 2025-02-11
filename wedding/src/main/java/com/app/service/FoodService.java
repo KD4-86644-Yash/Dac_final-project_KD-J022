@@ -9,7 +9,7 @@ import com.app.entities.Food;
 
 public interface FoodService {
 	List<FoodDto> getAllFoodService();
-	ApiResponse addFoodService(FoodDto dto);
+	ApiResponse addFoodService(FoodDto dto,Long vendorId);
 	
 	ApiResponse addFoodToCart(CartDTO dto, Long foodId, Long userId);
 	

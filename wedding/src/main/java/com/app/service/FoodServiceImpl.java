@@ -50,13 +50,12 @@ public class FoodServiceImpl implements FoodService {
 
 	
 	@Override
-	public ApiResponse addFoodService(FoodDto dto) {
+	public ApiResponse addFoodService(FoodDto dto,Long vendorId) {
 		Food food = mapper.map(dto, Food.class);
 		
-		String emailValidation =  dto.getVendorEmail();
-		UserEntity vendorObject = userEntityRepository.findByEmail(emailValidation).orElseThrow();
-		if(vendorObject.getEmail().equalsIgnoreCase(emailValidation)) {
-			food.setUserEntity(vendorObject);
+		UserEntity user = userEntityRepository.findById(vendorId).orElseThrow();
+		if(user!=null) {
+			food.setUserEntity(user);
 			Food persistentEntity = foodRepository.save(food);
 			return new ApiResponse("Added new Food service with ID" + persistentEntity.getId());
 		}

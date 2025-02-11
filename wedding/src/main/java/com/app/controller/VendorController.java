@@ -21,6 +21,7 @@ import com.app.dto.DecorationDto;
 import com.app.dto.FoodDto;
 import com.app.dto.InvitesGiftDto;
 import com.app.dto.MakeUpDto;
+import com.app.dto.MehandiDto;
 import com.app.dto.PhotoDto;
 import com.app.dto.ServicesDTO;
 import com.app.dto.SoundDto;
@@ -59,64 +60,74 @@ public class VendorController {
 				vendorService.addVenue(venueDto, vendorId), HttpStatus.OK);
 		return responceEntity;
 	}
+	
+	@PostMapping("/MehandiAdd/{vendorId}")
+//	@PreAuthorize("hasAuthority('ROLE_Vendor')")
+	public ResponseEntity<?> addMehandi(@RequestBody MehandiDto mehandi,
+			@PathVariable("vendorId") Long vendorId) {
+		log.error(" addAllVenue controller");
+		ResponseEntity<?> responceEntity = new ResponseEntity<>(
+				vendorService.addMehandiService(mehandi, vendorId), HttpStatus.OK);
+		return responceEntity;
+	}
 
 	@PostMapping("/soundServiceadd/{vendorId}")
 //	@PreAuthorize("hasAuthority('ROLE_Vendor')")
-	public ResponseEntity<SoundApiResponce> addVenue(@RequestBody SoundDto soundDto,
+	public ResponseEntity<?> addSoundSerivce(@RequestBody SoundDto soundDto,
 			@PathVariable("vendorId") Long vendorId) {
 		log.error(" addAllSound controller");
-		ResponseEntity<SoundApiResponce> responceEntity = new ResponseEntity<>(
-				vendorService.addSound(soundDto, vendorId), HttpStatus.OK);
+		ResponseEntity<?> responceEntity = new ResponseEntity<>(
+				vendorService.addSoundService(soundDto, vendorId), HttpStatus.OK);
 		return responceEntity;
 	}
 
 	@PostMapping("/FoodServiceadd/{vendorId}")
 //	@PreAuthorize("hasAuthority('ROLE_Vendor')")
-	public ResponseEntity<FoodApiResponce> addFood(@RequestBody FoodDto foodDto,
+	public ResponseEntity<?> addFood(@RequestBody FoodDto foodDto,
 			@PathVariable("vendorId") Long vendorId) {
 		log.error(" addAllFood controller");
-		ResponseEntity<FoodApiResponce> responceEntity = new ResponseEntity<>(vendorService.addFood(foodDto, vendorId),
+		ResponseEntity<?> responceEntity = new ResponseEntity<>(vendorService.addFoodService(foodDto, vendorId),
 				HttpStatus.OK);
 		return responceEntity;
 	}
 
 	@PostMapping("/InvitesGiftsServiceadd/{vendorId}")
 //	@PreAuthorize("hasAuthority('ROLE_Vendor')")
-	public ResponseEntity<InvitesGiftsApiResponce> addInvitesGifts(@RequestBody InvitesGiftDto invitesGiftsDto,
+	public ResponseEntity<?> addInvitesGifts(@RequestBody InvitesGiftDto invitesGiftsDto,
 			@PathVariable("vendorId") Long vendorId) {
 		log.error(" addAllInvites controller");
-		ResponseEntity<InvitesGiftsApiResponce> responceEntity = new ResponseEntity<>(
-				vendorService.addInvitesGifts(invitesGiftsDto, vendorId), HttpStatus.OK);
+		ResponseEntity<?> responceEntity = new ResponseEntity<>(
+				vendorService.addInvitationAndGiftService(invitesGiftsDto, vendorId), HttpStatus.OK);
 		return responceEntity;
 	}
 
 	@PostMapping("/DecorationServiceadd/{vendorId}")
 //	@PreAuthorize("hasAuthority('ROLE_Vendor')")
-	public ResponseEntity<DecorationApiResponce> addDecoration(@RequestBody DecorationDto decorationDto,
+	public ResponseEntity<?> addDecoration(@RequestBody DecorationDto decorationDto,
 			@PathVariable("vendorId") Long vendorId) {
 		log.error(" addAllDecoration controller");
-		ResponseEntity<DecorationApiResponce> responceEntity = new ResponseEntity<>(
-				vendorService.addDecoration(decorationDto, vendorId), HttpStatus.OK);
+		ResponseEntity<?> responceEntity = new ResponseEntity<>(
+				vendorService.addDecorationService(decorationDto, vendorId), HttpStatus.OK);
 		return responceEntity;
 	}
 
 	@PostMapping("/MakeUpDtoServiceadd/{vendorId}")
 //	@PreAuthorize("hasAuthority('ROLE_Vendor')")
-	public ResponseEntity<MakeUpApiResponce> addMakeUp(@RequestBody MakeUpDto makeUpDto,
+	public ResponseEntity<?> addMakeUp(@RequestBody MakeUpDto makeUpDto,
 			@PathVariable("vendorId") Long vendorId) {
 		log.error(" addAllMakeUp controller");
-		ResponseEntity<MakeUpApiResponce> responceEntity = new ResponseEntity<>(
-				vendorService.addMakeUp(makeUpDto, vendorId), HttpStatus.OK);
+		ResponseEntity<?> responceEntity = new ResponseEntity<>(
+				vendorService.addMakeUpService(makeUpDto, vendorId), HttpStatus.OK);
 		return responceEntity;
 	}
 
 	@PostMapping("/PhotoServiceadd/{vendorId}")
 //	@PreAuthorize("hasAuthority('ROLE_Vendor')")
-	public ResponseEntity<PhotoApiResponce> addPhoto(@RequestBody PhotoDto photoDto,
+	public ResponseEntity<?> addPhoto(@RequestBody PhotoDto photoDto,
 			@PathVariable("vendorId") Long vendorId) {
 		log.error(" addAllPhoto controller");
-		ResponseEntity<PhotoApiResponce> responceEntity = new ResponseEntity<>(
-				vendorService.addPhoto(photoDto, vendorId), HttpStatus.OK);
+		ResponseEntity<?> responceEntity = new ResponseEntity<>(
+				vendorService.addPhotoService(photoDto, vendorId), HttpStatus.OK);
 		return responceEntity;
 	}
 
@@ -133,10 +144,10 @@ public class VendorController {
 
 	@DeleteMapping("/soundServicedelete/{soundId}/{vendorId}")
 //	@PreAuthorize("hasAuthority('ROLE_Vendor')")
-	public ResponseEntity<SoundApiResponce> deleteVenue(@PathVariable("soundId") Long soundId,
+	public ResponseEntity<?> deleteVenue(@PathVariable("soundId") Long soundId,
 			@PathVariable("vendorId") Long vendorId) {
 		log.error(" delete AllSound controller");
-		ResponseEntity<SoundApiResponce> responceEntity = new ResponseEntity<>(
+		ResponseEntity<?> responceEntity = new ResponseEntity<>(
 				vendorService.deleteSound(soundId, vendorId), HttpStatus.OK);
 		return responceEntity;
 	}
@@ -190,6 +201,7 @@ public class VendorController {
 				vendorService.deletePhoto(photoId, vendorId), HttpStatus.OK);
 		return responceEntity;
 	}
+	
 	@GetMapping("/download-excel/{vendor_id}")
 	public ResponseEntity<byte[]> downloadExcel(	@PathVariable("vendor_id") Long vendor_id) {
 		log.info("download-excel endpoint called");

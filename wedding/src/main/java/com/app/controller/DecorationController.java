@@ -33,6 +33,7 @@ public class DecorationController {
 	@PostMapping("/addDecoration/{vendorId}")
 	public ResponseEntity<?> addDecoration(@RequestBody DecorationDto decoration,@PathVariable Long vendorId){
 		return ResponseEntity.status(HttpStatus.CREATED).body(decorationService.addDecorationService(decoration,vendorId));
+
 	}
 	
 	

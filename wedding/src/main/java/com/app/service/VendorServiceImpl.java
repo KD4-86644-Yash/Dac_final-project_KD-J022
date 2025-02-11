@@ -154,6 +154,7 @@ public class VendorServiceImpl implements VendorService {
 			Sound persistUser =  soundRepository.save(newSound);
 			return new ApiResponse("Added New Service With Id:"+ persistUser.getId());
 		}
+
 		else	
 			return new ApiResponse("Can not add service");
 	}
@@ -187,8 +188,7 @@ public class VendorServiceImpl implements VendorService {
 //		return new SoundApiResponce(null, null, HttpStatus.INTERNAL_SERVER_ERROR, "error", true);
 //
 //	}
-	
-	
+
 	@Override
 	public ApiResponse addFoodService(FoodDto dto,Long vendorId) {
 		Food food = mapper.map(dto, Food.class);
@@ -654,7 +654,6 @@ public class VendorServiceImpl implements VendorService {
 		    servicesDTO.setServices(allServices);
 		    return servicesDTO;
 		}
-
 
 
 	@Override

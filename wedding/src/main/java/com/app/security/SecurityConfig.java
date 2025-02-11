@@ -59,6 +59,7 @@ public class SecurityConfig {
 				,"/services/makeup-service/**"
 				,"/services/photo/**","/cart/{userId}","/services/mehndi-service/get","/services/photo/photo-single/${serviceId}"
 				,"/services/sound-system-service/cart/${vendorId}/${userId}"
+
 				).permitAll()
 		// only required for JS clnts (react / angular) : for the pre flight requests
 		.antMatchers(HttpMethod.OPTIONS).permitAll()

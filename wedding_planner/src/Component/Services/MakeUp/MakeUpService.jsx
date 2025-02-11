@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import MakeUpHeader from "./MakeUpHeader";
 
-// Import images
 import makeup1 from "../../../image/makeup1.jpg";
 import makeup2 from "../../../image/makeup2.png";
 import makeup3 from "../../../image/makeup3.jpg";
@@ -11,23 +10,27 @@ import makeup3 from "../../../image/makeup3.jpg";
 const images = [makeup1, makeup2, makeup3]; // Array of images
 
 const MakeUpService = () => {
+
   const [makeupServices, setMakeupServices] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     axios
       .get("http://localhost:7070/services/makeup-service/get")
+
       .then((response) => {
         setMakeupServices(response.data);
       })
       .catch((error) => {
         console.error("Error fetching Makeup services:", error);
         setError("Failed to load Makeup services. Please try again later.");
+
       });
   }, []);
 
   return (
     <div className="container my-4">
+
       <MakeUpHeader />
 
 
@@ -45,12 +48,14 @@ const MakeUpService = () => {
                   className="img-fluid rounded-start decoration-img"
                   alt={makeup.name}
 
+
                 />
               </div>
               <div className="col-md-8">
                 <div className="card-body">
                   <div className="d-flex justify-content-between align-items-start">
                     <div>
+
 
                       <h5 className="card-title">{makeup.name}</h5>
                       <p className="card-location">
@@ -65,6 +70,7 @@ const MakeUpService = () => {
                   </p>
                   <p className="card-description">{makeup.details}</p>
                   <Link to={`/makeup/${makeup.id}`} className="btn btn-pink">
+
                     View Details
                   </Link>
                 </div>

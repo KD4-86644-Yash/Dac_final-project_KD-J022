@@ -10,7 +10,7 @@ export default function UserRegistration() {
     lastName: "",
     email: "",
     password: "",
-    role: "USER", // ✅ Default to USER role
+    role: "ROLE_USER", // ✅ Default to USER role
   });
 
   const [message, setMessage] = useState("");
@@ -59,7 +59,7 @@ export default function UserRegistration() {
       lastName: "",
       email: "",
       password: "",
-      role: "USER",
+      role: "ROLE_USER",
     });
   };
 

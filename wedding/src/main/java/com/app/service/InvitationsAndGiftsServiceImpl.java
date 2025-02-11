@@ -51,23 +51,20 @@ public class InvitationsAndGiftsServiceImpl implements InvitationsAndGiftsServic
 
 
 	@Override
-	public ApiResponse addInvitationAndGiftService(InvitesGiftDto invitesAndGifts) {
+	public ApiResponse addInvitationAndGiftService(InvitesGiftDto invitesAndGifts,Long vendorId) {
 	
 		InvitesGift newInvitesAndGifts = mapper.map(invitesAndGifts, InvitesGift.class);
 		
-		String emailValidation = invitesAndGifts.getVendorEmail();
-		UserEntity VendorObject = userEntityRepository.findByEmail(emailValidation).orElseThrow();
+		UserEntity user = userEntityRepository.findById(vendorId).orElseThrow();
 		
-		if(VendorObject.getEmail().equalsIgnoreCase(emailValidation)) {
+		if(user!=null) {
 		
-			newInvitesAndGifts.setUserEntity(VendorObject);
+			newInvitesAndGifts.setUserEntity(user);
 			InvitesGift persistentEntity =  invitationsAndGiftsRepository.save(newInvitesAndGifts);
 		return new ApiResponse("Added new Mehandi Service with ID " + persistentEntity.getId());
 		}
 		else 
-			return new ApiResponse("Cannot add service" );
-		
-		
+			return new ApiResponse("Cannot add service" );	
 	}
 	
 	
@@ -121,75 +118,4 @@ public class InvitationsAndGiftsServiceImpl implements InvitationsAndGiftsServic
 		return  anotherObject;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }

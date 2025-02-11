@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.app.dto.CartDTO;
 import com.app.dto.PhotoDto;
 import com.app.entities.Cart;
+import com.app.entities.InvitesGift;
 import com.app.entities.Photo;
 import com.app.entities.Services;
 import com.app.entities.UserEntity;
@@ -50,14 +51,13 @@ public class PhotoServiceImpl implements PhotoService {
 	}
 
 	@Override
-	public ApiResponse addPhotoService(PhotoDto photodto) {
+	public ApiResponse addPhotoService(PhotoDto photodto,Long vendorId) {
 		
 		Photo newPhoto = mapper.map(photodto, Photo.class);
 		
-		String email = photodto.getVendorEmail();
-		UserEntity user = userRepository.findByEmail(email).orElseThrow();
+		UserEntity user = userRepository.findById(vendorId).orElseThrow();
 		
-		if(user.getEmail().equalsIgnoreCase(email)) {
+		if(user!=null) {
 			
 			newPhoto.setUserEntity(user);
 			Photo persistUser =  photoRepository.save(newPhoto);
@@ -92,5 +92,22 @@ public class PhotoServiceImpl implements PhotoService {
 			Cart savingToCart = cartRepository.save(cartObject);
 			
 			return new ApiResponse("Add sucessfull");
+	}
+
+	@Override
+	public Photo getSinglePhotoRecord(Long serviceId) {
+		
+	Photo invitationObject = photoRepository.findById(serviceId).orElseThrow();
+		
+		Photo anotherObject = new Photo();
+		
+		anotherObject.setName(invitationObject.getName());
+		anotherObject.setCity(invitationObject.getCity());
+		anotherObject.setDiscription(invitationObject.getDiscription());
+		anotherObject.setPrice(invitationObject.getPrice());
+		anotherObject.setRating(invitationObject.getRating());
+		
+		 
+		return  anotherObject;
 	}
 }

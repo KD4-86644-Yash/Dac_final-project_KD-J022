@@ -22,6 +22,7 @@ import com.app.dto.DecorationDto;
 import com.app.dto.FoodDto;
 import com.app.dto.InvitesGiftDto;
 import com.app.dto.MakeUpDto;
+import com.app.dto.MehandiDto;
 import com.app.dto.PhotoDto;
 import com.app.dto.ServicesDTO;
 import com.app.dto.SoundDto;
@@ -124,6 +125,23 @@ public class VendorServiceImpl implements VendorService {
 	}
 	
 	@Override
+	public ApiResponse addMehandiService(MehandiDto mehandi,Long vendorId) {
+		
+		Mehandi newMehandi = mapper.map(mehandi, Mehandi.class);
+		
+		UserEntity user = userEntityRepository.findById(vendorId).orElseThrow();
+		
+		if(user!=null) {
+		
+			newMehandi.setUserEntity(user);
+		Mehandi persistentEntity =  mehandiRepository.save(newMehandi);
+		return new ApiResponse("Added new Mehandi Service with ID " + persistentEntity.getId());
+		}
+		else 
+			return new ApiResponse("Cannot add service" );
+	}
+	
+	@Override
 	public ApiResponse addSoundService(SoundDto sounddto,Long vendorId) {
 	Sound newSound = mapper.map(sounddto, Sound.class);
 		
@@ -136,6 +154,7 @@ public class VendorServiceImpl implements VendorService {
 			Sound persistUser =  soundRepository.save(newSound);
 			return new ApiResponse("Added New Service With Id:"+ persistUser.getId());
 		}
+
 		else	
 			return new ApiResponse("Can not add service");
 	}
@@ -171,6 +190,21 @@ public class VendorServiceImpl implements VendorService {
 //	}
 
 	@Override
+	public ApiResponse addFoodService(FoodDto dto,Long vendorId) {
+		Food food = mapper.map(dto, Food.class);
+		
+		UserEntity user = userEntityRepository.findById(vendorId).orElseThrow();
+		if(user!=null) {
+			food.setUserEntity(user);
+			Food persistentEntity = foodRepository.save(food);
+			return new ApiResponse("Added new Food service with ID" + persistentEntity.getId());
+		}
+		else {
+			return new ApiResponse("Cannot add service");
+		}
+	}
+
+	/*@Override
 	public FoodApiResponce addFood(FoodDto foodDto, Long vendorId) {
 		try {
 			Optional<UserEntity> userEntity = userEntityRepository.findById(vendorId);
@@ -188,9 +222,26 @@ public class VendorServiceImpl implements VendorService {
 			// TODO: handle exception
 		}
 		return new FoodApiResponce(null, null, HttpStatus.INTERNAL_SERVER_ERROR, "error", true);
+	}*/
+	
+	@Override
+	public ApiResponse addDecorationService(DecorationDto dto,Long vendorId) {
+		Decoration decoration = mapper.map(dto, Decoration.class);
+		UserEntity user = userEntityRepository.findById(vendorId).orElseThrow();
+		
+		if(user!=null) {
+			decoration.setUserEntity(user);
+			Decoration persistentEntity = decorationRepository.save(decoration);
+			return new ApiResponse("Added new decoration Service with ID " + persistentEntity.getId());
+			
+		}
+		else {
+		
+		return new ApiResponse("cannot add service");
+		}
 	}
 
-	@Override
+	/*@Override
 	public DecorationApiResponce addDecoration(DecorationDto decorationDto, Long vendorId) {
 		try {
 			Optional<UserEntity> userEntity = userEntityRepository.findById(vendorId);
@@ -210,9 +261,26 @@ public class VendorServiceImpl implements VendorService {
 			// TODO: handle exception
 		}
 		return new DecorationApiResponce(null, null, HttpStatus.INTERNAL_SERVER_ERROR, "error", true);
+	}*/
+	
+	@Override
+	public ApiResponse addInvitationAndGiftService(InvitesGiftDto invitesAndGifts,Long vendorId) {
+	
+		InvitesGift newInvitesAndGifts = mapper.map(invitesAndGifts, InvitesGift.class);
+		
+		UserEntity user = userEntityRepository.findById(vendorId).orElseThrow();
+		
+		if(user!=null) {
+		
+			newInvitesAndGifts.setUserEntity(user);
+			InvitesGift persistentEntity =  invitesGiftsRepository.save(newInvitesAndGifts);
+		return new ApiResponse("Added new Mehandi Service with ID " + persistentEntity.getId());
+		}
+		else 
+			return new ApiResponse("Cannot add service" );	
 	}
 
-	@Override
+	/*@Override
 	public InvitesGiftsApiResponce addInvitesGifts(InvitesGiftDto InvitesGiftDto, Long vendorId) {
 		try {
 			Optional<UserEntity> userEntity = userEntityRepository.findById(vendorId);
@@ -231,9 +299,25 @@ public class VendorServiceImpl implements VendorService {
 			// TODO: handle exception
 		}
 		return new InvitesGiftsApiResponce(null, null, HttpStatus.INTERNAL_SERVER_ERROR, "error", true);
+	}*/
+	
+	@Override
+	public ApiResponse addMakeUpService(MakeUpDto dto,Long vendorId) {
+		MakeUp makeup = mapper.map(dto, MakeUp.class);
+		
+		UserEntity user = userEntityRepository.findById(vendorId).orElseThrow();
+		if(user!=null) {
+			makeup.setUserEntity(user);
+			MakeUp persistentEntity = makeupRepository.save(makeup);
+			return new ApiResponse("Added new makeup with Id" + persistentEntity.getId());
+		}
+		else {
+			return new ApiResponse("cannot add service");
+		}
+				
 	}
 
-	@Override
+	/*@Override
 	public MakeUpApiResponce addMakeUp(MakeUpDto makeUpDto, Long vendorId) {
 		try {
 			Optional<UserEntity> userEntity = userEntityRepository.findById(vendorId);
@@ -251,9 +335,26 @@ public class VendorServiceImpl implements VendorService {
 			// TODO: handle exception
 		}
 		return new MakeUpApiResponce(null, null, HttpStatus.INTERNAL_SERVER_ERROR, "error", true);
+	}*/
+	
+	@Override
+	public ApiResponse addPhotoService(PhotoDto photodto,Long vendorId) {
+		
+		Photo newPhoto = mapper.map(photodto, Photo.class);
+		
+		UserEntity user = userEntityRepository.findById(vendorId).orElseThrow();
+		
+		if(user!=null) {
+			
+			newPhoto.setUserEntity(user);
+			Photo persistUser =  photoRepository.save(newPhoto);
+			return new ApiResponse("Added New Service With Id:"+ persistUser.getId());
+		}
+		else	
+			return new ApiResponse("Can not add service");
 	}
 
-	@Override
+	/*@Override
 	public PhotoApiResponce addPhoto(PhotoDto PhotoDto, Long vendorId) {
 		try {
 			Optional<UserEntity> userEntity = userEntityRepository.findById(vendorId);
@@ -272,7 +373,7 @@ public class VendorServiceImpl implements VendorService {
 		}
 		return new PhotoApiResponce(null, null, HttpStatus.INTERNAL_SERVER_ERROR, "error", true);
 	}
-
+*/
 	
 	@Override
 	public VenueApiResponce deleteVenueById( Long vanueId,Long vendor_id) {
@@ -553,7 +654,6 @@ public class VendorServiceImpl implements VendorService {
 		    servicesDTO.setServices(allServices);
 		    return servicesDTO;
 		}
-
 
 
 	@Override

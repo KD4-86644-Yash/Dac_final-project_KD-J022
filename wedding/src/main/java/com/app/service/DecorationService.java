@@ -12,7 +12,7 @@ import com.app.dto.VenueDto;
 public interface DecorationService {
 
 	List<DecorationDto> getAllDecoration();
-	ApiResponse addDecorationService(DecorationDto dto);
+	ApiResponse addDecorationService(DecorationDto dto,Long vendorId);
 	
 	ApiResponse addDecorationToCart(CartDTO dto, Long decorationId, Long userId);
 	

@@ -12,7 +12,7 @@ import com.app.dto.MakeUpDto;
 
 public interface MakeUpService  {
 	List<MakeUpDto> getAllMakeUp();
-	ApiResponse addMakeUpService(MakeUpDto dto);
+	ApiResponse addMakeUpService(MakeUpDto dto,Long vendorId);
 	
 	ApiResponse deleteMakeUpService();
 	ApiResponse addMakeUpToCart(CartDTO dto, Long makeUpId, Long userId );

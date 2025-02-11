@@ -108,6 +108,22 @@ public class SoundServiceImpl implements SoundServices {
 			return new ApiResponse("Add sucessfull");
 	}
 
+	@Override
+	public Sound getSingleSoundRecord(Long serviceId) {
+		Sound invitationObject = sound.findById(serviceId).orElseThrow();
+		
+		Sound anotherObject = new Sound();
+		
+		anotherObject.setName(invitationObject.getName());
+		anotherObject.setCity(invitationObject.getCity());
+		anotherObject.setDiscription(invitationObject.getDiscription());
+		anotherObject.setPrice(invitationObject.getPrice());
+		anotherObject.setRating(invitationObject.getRating());
+		
+		 
+		return  anotherObject;
+	}
+
 
 
 	

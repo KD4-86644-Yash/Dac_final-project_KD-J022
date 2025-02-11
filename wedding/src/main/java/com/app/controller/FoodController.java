@@ -30,9 +30,9 @@ public class FoodController {
 		return ResponseEntity.ok(foodService.getAllFoodService());
 	}
 	
-	@PostMapping("/addFood")
-	public ResponseEntity<?> addFoodService(@RequestBody FoodDto dto){
-		return ResponseEntity.status(HttpStatus.CREATED).body(foodService.addFoodService(dto));
+	@PostMapping("/addFood/{vendorId}")
+	public ResponseEntity<?> addFoodService(@RequestBody FoodDto dto,@PathVariable Long vendorId){
+		return ResponseEntity.status(HttpStatus.CREATED).body(foodService.addFoodService(dto,vendorId));
 	}
 	
 	@PostMapping("/addFoodTocart/{id}/{userId}")

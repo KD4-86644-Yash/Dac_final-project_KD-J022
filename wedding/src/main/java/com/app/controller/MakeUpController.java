@@ -19,8 +19,9 @@ import com.app.service.MakeUpService;
 
 
 @RestController
-@RequestMapping("/service/Makeup")
-@CrossOrigin
+@RequestMapping("/services/makeup-service")
+@CrossOrigin("*")
+
 public class MakeUpController {
 	@Autowired
 	private MakeUpService makeUpService;
@@ -30,10 +31,10 @@ public class MakeUpController {
 		return ResponseEntity.ok(makeUpService.getAllMakeUp());
 	}
 	
-	@PostMapping("/add")
-	public ResponseEntity<?> addMakeUp(@RequestBody MakeUpDto makeup){
+	@PostMapping("/add/{vendorId}")
+	public ResponseEntity<?> addMakeUp(@RequestBody MakeUpDto makeup,@PathVariable Long vendorId){
 		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(makeUpService.addMakeUpService(makeup));
+				.body(makeUpService.addMakeUpService(makeup,vendorId));
 	}
 	
 	@PostMapping("/addToCart/{makeUpId}/{userId}")

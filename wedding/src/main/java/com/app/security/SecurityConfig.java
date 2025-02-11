@@ -55,9 +55,10 @@ public class SecurityConfig {
 		and().
 		authorizeRequests()
 		.antMatchers("/users/view","/users/signup","/users/signin",
-				"/v*/api-doc*/**","/swagger-ui/**","/vendor_services//Venueadd/{vendorId}/**","/vendor_services//get/{vendorId}/**",
-				"/services/sound-system-service/get"
-				,"/services/photo/get","/cart/{userId}/**","/services/mehndi-service/get"
+				"/v*/api-doc*/**","/swagger-ui/**","/vendor_services//Venueadd/{vendorId}/**","/services/sound-system-service/**"
+				,"/services/makeup-service/**"
+				,"/services/photo/**","/cart/{userId}","/services/mehndi-service/get","/services/photo/photo-single/${serviceId}"
+				,"/services/sound-system-service/cart/${vendorId}/${userId}"
 
 				).permitAll()
 		// only required for JS clnts (react / angular) : for the pre flight requests

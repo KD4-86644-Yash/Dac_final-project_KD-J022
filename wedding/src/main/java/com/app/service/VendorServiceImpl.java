@@ -3,6 +3,7 @@ package com.app.service;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,6 +44,7 @@ import com.app.repository.PhotoRepository;
 import com.app.repository.SoundRepository;
 import com.app.repository.UserEntityRepository;
 import com.app.repository.VenueRepository;
+import com.app.responseapi.ApiResponse;
 import com.app.responseapi.DecorationApiResponce;
 import com.app.responseapi.FoodApiResponce;
 import com.app.responseapi.InvitesGiftsApiResponce;
@@ -120,36 +122,53 @@ public class VendorServiceImpl implements VendorService {
 		return new VenueApiResponce(null, null, HttpStatus.INTERNAL_SERVER_ERROR, "error", true);
 
 	}
-
+	
 	@Override
-	public SoundApiResponce addSound(SoundDto soundDto, Long vendorId) {
-		log.info("vv1=" + soundDto.getName());
-		try {
-			Optional<UserEntity> userEntity = userEntityRepository.findById(vendorId);
-
-			Sound sound = mapper.map(soundDto, Sound.class);
-			log.info("vv2=" + soundDto.getName());
-			sound.setName(soundDto.getName());
-			sound.setStatus(soundDto.getStatus());
-			sound.setDuration(soundDto.getDuration());
-			sound.setCity(soundDto.getCity());
-			sound.setDiscription(soundDto.getDiscription());
-			sound.setPrice(soundDto.getPrice());
-			sound.setRating(soundDto.getRating());
-			sound.setType(soundDto.getType());
-			sound.getUserEntity().setId(vendorId);
-			log.info(sound.getName());
-			soundRepository.save(sound);
-			SoundDto saveToVenueDto = mapper.map(sound, SoundDto.class);
-			log.info(saveToVenueDto.getName());
-			return new SoundApiResponce(saveToVenueDto, null, HttpStatus.CREATED, "Sound add successfully", false);
-
-		} catch (Exception e) {
-			// TODO: handle exception
+	public ApiResponse addSoundService(SoundDto sounddto,Long vendorId) {
+	Sound newSound = mapper.map(sounddto, Sound.class);
+		
+//		String email = sounddto.getUserEntity();
+		UserEntity user = userEntityRepository.findById(vendorId).orElseThrow();
+		
+		if(user!=null) {
+			
+			newSound.setUserEntity(user);
+			Sound persistUser =  soundRepository.save(newSound);
+			return new ApiResponse("Added New Service With Id:"+ persistUser.getId());
 		}
-		return new SoundApiResponce(null, null, HttpStatus.INTERNAL_SERVER_ERROR, "error", true);
-
+		else	
+			return new ApiResponse("Can not add service");
 	}
+
+//	@Override
+//	public SoundApiResponce addSound(SoundDto soundDto, Long vendorId) {
+//		log.info("vv1=" + soundDto.getName());
+//		try {
+//			Optional<UserEntity> userEntity = userEntityRepository.findById(vendorId);
+//
+//			Sound sound = mapper.map(soundDto, Sound.class);
+//			log.info("vv2=" + soundDto.getName());
+//			sound.setName(soundDto.getName());
+//			sound.setStatus(soundDto.getStatus());
+//			sound.setDuration(soundDto.getDuration());
+//			sound.setCity(soundDto.getCity());
+//			sound.setDiscription(soundDto.getDiscription());
+//			sound.setPrice(soundDto.getPrice());
+//			sound.setRating(soundDto.getRating());
+//			sound.setType(soundDto.getType());
+//			sound.getUserEntity().setId(vendorId);
+//			log.info(sound.getName());
+//			soundRepository.save(sound);
+//			SoundDto saveToVenueDto = mapper.map(sound, SoundDto.class);
+//			log.info(saveToVenueDto.getName());
+//			return new SoundApiResponce(saveToVenueDto, null, HttpStatus.CREATED, "Sound add successfully", false);
+//
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
+//		return new SoundApiResponce(null, null, HttpStatus.INTERNAL_SERVER_ERROR, "error", true);
+//
+//	}
 
 	@Override
 	public FoodApiResponce addFood(FoodDto foodDto, Long vendorId) {
@@ -175,6 +194,7 @@ public class VendorServiceImpl implements VendorService {
 	public DecorationApiResponce addDecoration(DecorationDto decorationDto, Long vendorId) {
 		try {
 			Optional<UserEntity> userEntity = userEntityRepository.findById(vendorId);
+			System.out.println(userEntity);
 
 			Decoration decoration = mapper.map(decorationDto, Decoration.class);
 			log.info("vv2=" + decorationDto.getName());
@@ -516,38 +536,30 @@ public class VendorServiceImpl implements VendorService {
 //    return str.substring(0, 1).toUpperCase() + str.substring(1);
 //}
 
-	@Override
-	public ServicesDTO getAllServices(Long vendorId) {
-		
-		List<Venue> venue = venueRepository.findByUserEntityId(vendorId);
-		
-		List<Decoration> decoration = decorationRepository.findByUserEntityId(vendorId);
+	@Override	
+		public ServicesDTO getAllServices(Long vendorId) {
+		    ServicesDTO servicesDTO = new ServicesDTO();
 
-		List<Food> food = foodRepository.findByUserEntityId(vendorId);
+		    List<Object> allServices = new ArrayList<>();
+		    allServices.addAll(venueRepository.findByUserEntityId(vendorId));
+		    allServices.addAll(makeupRepository.findByUserEntityId(vendorId));
+		    allServices.addAll(decorationRepository.findByUserEntityId(vendorId));
+		    allServices.addAll(foodRepository.findByUserEntityId(vendorId));
+		    allServices.addAll(photoRepository.findByUserEntityId(vendorId));
+		    allServices.addAll(soundRepository.findByUserEntityId(vendorId));
+		    allServices.addAll(invitesGiftsRepository.findByUserEntityId(vendorId));
+		    allServices.addAll(mehandiRepository.findByUserEntityId(vendorId));
 
-		List<Mehandi> mehandi = mehandiRepository.findByUserEntityId(vendorId);
+		    servicesDTO.setServices(allServices);
+		    return servicesDTO;
+		}
 
-		List<InvitesGift> invitesgifts = invitesGiftsRepository.findByUserEntityId(vendorId);
-		
-		List<Photo> Photo = photoRepository.findByUserEntityId(vendorId);
-		
-		List<Sound> sound = soundRepository.findByUserEntityId(vendorId);
-		
-		List<MakeUp> makeUp = makeupRepository.findByUserEntityId(vendorId);
 
-		return new ServicesDTO(venue, makeUp, decoration, food, Photo, sound, invitesgifts, mehandi);
-	}
 
 	@Override
 	public ByteArrayInputStream downloadExcel(Long vendor_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-//	@Override
-//	public List<ServicesDTO> getAllServices(Long vendorId) {
-//		
-//		return null;
-//	}
 	
 	}

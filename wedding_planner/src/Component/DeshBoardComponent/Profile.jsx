@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import profile from "../../image/profile.jpg";
 
 function Profile() {
     const userId = localStorage.getItem("id"); // Retrieve user ID
@@ -43,7 +44,7 @@ function Profile() {
             <div className="row">
                 <div className="col-md-4 text-center">
                     <img
-                        src={user.image} // Ensure this is a valid URL
+                        src={profile} // Ensure this is a valid URL
                         alt="User"
                         className="img-fluid rounded-circle mb-3"
                         style={{ width: "150px", height: "150px" }}
@@ -55,14 +56,14 @@ function Profile() {
                         <h5 className="mb-3">General Information</h5>
                         <div className="mb-3"><strong>First Name:</strong> {user.firstName}</div>
                         <div className="mb-3"><strong>Last Name:</strong> {user.lastName}</div>
-                        <div className="mb-3"><strong>Last Logged In:</strong> {user.lastLoggedIn}</div>
+                        {/* <div className="mb-3"><strong>Last Logged In:</strong> {user.lastLoggedIn}</div> */}
                         <div className="mb-3"><strong>Role:</strong> <span className="badge bg-primary text-white">{user.role}</span></div>
                     </div>
 
                     <div className="card p-4 shadow mt-4">
                         <h5 className="mb-3">Contact Information</h5>
                         <div className="mb-3"><strong>Email:</strong> {user.email}</div>
-                        <div className="mb-3"><strong>Phone:</strong> {user.phone}</div>
+                        {/* <div className="mb-3"><strong>Phone:</strong> {user.phone}</div> */}
                     </div>
                 </div>
             </div>

@@ -12,7 +12,7 @@ public interface SoundServices {
 
 	List<SoundReqDTO> getAllSound();
 
-	ApiResponse addSoundService(SoundDto sounddto);
+	ApiResponse addSoundService(SoundDto sounddto,Long vendorId);
 
 	ApiResponse updateSoundService(SoundDto updateDto);
 	List<SoundReqDTO> getbyId(Long vandor_id);

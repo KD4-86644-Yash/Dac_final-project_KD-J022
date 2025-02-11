@@ -36,10 +36,10 @@ public class SoundContorller {
 		return ResponseEntity.ok(sounddto);	
 	}
 	
-	@PostMapping("/add")
-	public ResponseEntity<?> addSound(@RequestBody SoundDto sounddto){
+	@PostMapping("/add/{vendorId}")
+	public ResponseEntity<?> addSound(@RequestBody SoundDto sounddto,@PathVariable Long vendorId){
 		
-		return ResponseEntity.status(HttpStatus.CREATED).body(soundservice.addSoundService(sounddto));
+		return ResponseEntity.status(HttpStatus.CREATED).body(soundservice.addSoundService(sounddto,vendorId));
 		
 	}
 	

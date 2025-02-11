@@ -19,13 +19,13 @@ import com.app.service.MakeUpService;
 
 
 @RestController
-@RequestMapping("/makeup")
-@CrossOrigin
+@RequestMapping("/services/makeup-service")
+@CrossOrigin("*")
 public class MakeUpController {
 	@Autowired
 	private MakeUpService makeUpService;
 	
-	@GetMapping("/")
+	@GetMapping("/get")
 	public ResponseEntity<?> viewAllMakeUp(){
 		return ResponseEntity.ok(makeUpService.getAllMakeUp());
 	}

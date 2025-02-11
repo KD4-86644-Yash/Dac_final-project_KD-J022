@@ -56,8 +56,8 @@ public class SecurityConfig {
 		authorizeRequests()
 		.antMatchers("/users/view","/users/signup","/users/signin",
 				"/v*/api-doc*/**","/swagger-ui/**","/vendor_services//Venueadd/{vendorId}/**","/services/sound-system-service/**"
-				,"/services/photo/get","/cart/{userId}	"
-
+				,"/services/makeup-service/get"
+				,"/services/photo/get","/cart/{userId}"
 				).permitAll()
 		// only required for JS clnts (react / angular) : for the pre flight requests
 		.antMatchers(HttpMethod.OPTIONS).permitAll()

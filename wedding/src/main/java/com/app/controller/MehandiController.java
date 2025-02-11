@@ -54,7 +54,7 @@ public class MehandiController {
 				.body(mehndiService.addMehandiServiceToCart(cartDto, id,userId));
 	}
 	
-	@GetMapping("services/mehandi/{user-id}/{service-id}")
+	@GetMapping("/{user-id}/{service-id}")
 	public ResponseEntity<?> getSingleInvitationObject(@PathVariable ("service-id") Long id){
 		Mehandi mehandiObject = mehndiService.getSingleMehandiRecord(id);
 		return ResponseEntity.ok(mehandiObject);

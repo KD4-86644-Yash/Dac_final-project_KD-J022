@@ -21,7 +21,7 @@ import com.app.entities.InvitesGift;
 import com.app.service.InvitationsAndGiftsService;
 
 @RestController
-@RequestMapping("/invitations")
+@RequestMapping("services/invitations-service")
 @CrossOrigin
 
 public class InvitationsAndGiftsController {
@@ -29,7 +29,7 @@ public class InvitationsAndGiftsController {
 	@Autowired
 	private InvitationsAndGiftsService invitationsAndGiftsService;
 	
-	@GetMapping
+	@GetMapping("/get")
 	public ResponseEntity<?> getList(){
 		
 		List<InvitesGiftDto> invitesList = invitationsAndGiftsService.getAllList();
@@ -53,7 +53,7 @@ public class InvitationsAndGiftsController {
 				.body(invitationsAndGiftsService.addInvitationAndGiftServiceToCart(cartDto, id, userId));
 	}
 	
-	@GetMapping("services/invitations/{user-id}/{service-id}")
+	@GetMapping("/{user-id}/{service-id}")
 	public ResponseEntity<?> getSingleInvitationObject(@PathVariable ("service-id") Long id){
 		InvitesGift inviteObject = invitationsAndGiftsService.getSingleInvitationRecord(id);
 		return ResponseEntity.ok(inviteObject);

@@ -20,7 +20,7 @@ import lombok.Setter;
 @Data
 public class SoundDto{
 	private int id;
-	private String Name;
+	private String name;
 	private String type;
 	private String city;
 	private String duration;

@@ -3,19 +3,28 @@ import "../../css/Gallery/gallery.css";
 import homegallery1 from "../../image/homegallery1.webp"
 import homegallery2 from "../../image/homegallery2.jpg"
 import homegallery3 from "../../image/homegallery3.jpeg"
+import SoundMainImage from "../../image/SoundMainImage.jpg";
+import VenueMainImage from "../../image/MainVenue.jpg";
+import MakeupMainImage from "../../image/MainMakeup.jpg";
+import DecorationMainImage from "../../image/MainDecoration.jpg";
+import PhotographerMainImage from "../../image/MainPhotography.jpg";
+import FoodMainImage from "../../image/MainFood.jpg";
+import InvitationMainImage from "../../image/MainGiftAndInvitation.jpg";
+import MehndiMainImage from "../../image/MainMehndi.jpg";
 
 function GalleryContainer() {
     const images = [
         homegallery1,
         homegallery2,
         homegallery3,
-        "image4.jpg",
-        "image5.jpg",
-        "image6.jpg",
-        "image7.jpg",
-        "image8.jpg",
-        "image9.jpg",
-        "image10.jpg",
+        SoundMainImage,
+        VenueMainImage,
+        MakeupMainImage,
+        DecorationMainImage,
+        PhotographerMainImage,
+        FoodMainImage,
+        InvitationMainImage,
+        MehndiMainImage,
         // Add more image URLs here
     ];
 

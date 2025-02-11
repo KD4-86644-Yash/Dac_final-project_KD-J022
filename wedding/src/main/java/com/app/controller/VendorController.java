@@ -62,11 +62,11 @@ public class VendorController {
 
 	@PostMapping("/soundServiceadd/{vendorId}")
 //	@PreAuthorize("hasAuthority('ROLE_Vendor')")
-	public ResponseEntity<SoundApiResponce> addVenue(@RequestBody SoundDto soundDto,
+	public ResponseEntity<?> addSoundSerivce(@RequestBody SoundDto soundDto,
 			@PathVariable("vendorId") Long vendorId) {
 		log.error(" addAllSound controller");
-		ResponseEntity<SoundApiResponce> responceEntity = new ResponseEntity<>(
-				vendorService.addSound(soundDto, vendorId), HttpStatus.OK);
+		ResponseEntity<?> responceEntity = new ResponseEntity<>(
+				vendorService.addSoundService(soundDto, vendorId), HttpStatus.OK);
 		return responceEntity;
 	}
 
@@ -190,6 +190,7 @@ public class VendorController {
 				vendorService.deletePhoto(photoId, vendorId), HttpStatus.OK);
 		return responceEntity;
 	}
+	
 	@GetMapping("/download-excel/{vendor_id}")
 	public ResponseEntity<byte[]> downloadExcel(	@PathVariable("vendor_id") Long vendor_id) {
 		log.info("download-excel endpoint called");

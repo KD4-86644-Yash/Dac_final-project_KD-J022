@@ -110,3 +110,24 @@ input[type="number"] {
 .cart-container .checkout-btn {
     margin-top: 20px;
 }
+
+.date-picker-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.date-picker-container label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.date-picker {
+    padding: 8px;
+    border: 2px solid #ff69b4;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #fff;
+}

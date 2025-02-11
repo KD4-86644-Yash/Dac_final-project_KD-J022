@@ -12,6 +12,7 @@ import com.app.dto.PhotoDto;
 import com.app.dto.ServicesDTO;
 import com.app.dto.SoundDto;
 import com.app.dto.VenueDto;
+import com.app.responseapi.ApiResponse;
 import com.app.responseapi.DecorationApiResponce;
 import com.app.responseapi.FoodApiResponce;
 import com.app.responseapi.InvitesGiftsApiResponce;
@@ -23,7 +24,8 @@ import com.app.responseapi.VenueApiResponce;
 public interface VendorService {
 
 	public VenueApiResponce addVenue( VenueDto venueDto, Long vendorId);
-	public SoundApiResponce addSound( SoundDto soundDto,Long vendorId);
+//	public SoundApiResponce addSound( SoundDto soundDto,Long vendorId);
+	ApiResponse addSoundService(SoundDto sounddto,Long vendorId);
 
 	public FoodApiResponce addFood( FoodDto foodDto,Long vendorId);
 	public DecorationApiResponce addDecoration( DecorationDto decorationDto,Long vendorId);

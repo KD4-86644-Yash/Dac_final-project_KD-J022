@@ -59,13 +59,13 @@ public class SoundServiceImpl implements SoundServices {
 	}
 
 	@Override
-	public ApiResponse addSoundService(SoundDto sounddto) {
+	public ApiResponse addSoundService(SoundDto sounddto,Long vendorId) {
 	Sound newSound = mapper.map(sounddto, Sound.class);
 		
-		String email = sounddto.getUserEntity();
-		UserEntity user = userRepository.findByEmail(email).orElseThrow();
+//		String email = sounddto.getUserEntity();
+		UserEntity user = userRepository.findById(vendorId).orElseThrow();
 		
-		if(user.getEmail().equalsIgnoreCase(email)) {
+		if(user!=null) {
 			
 			newSound.setUserEntity(user);
 			Sound persistUser =  sound.save(newSound);

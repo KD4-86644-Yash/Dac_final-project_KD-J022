@@ -20,7 +20,7 @@ import com.app.entities.Mehandi;
 import com.app.service.MehndiService;
 
 @RestController
-@RequestMapping("/mehandi")
+@RequestMapping("/services/mehndi-service")
 @CrossOrigin
 
 public class MehandiController {
@@ -29,7 +29,7 @@ public class MehandiController {
 	private MehndiService mehndiService;
 	
 	
-	@GetMapping
+	@GetMapping("/get")
 	public ResponseEntity<?> getMehndi(){
 		
 		List<MehandiDto> mehndi = mehndiService.getAllMehandiList();

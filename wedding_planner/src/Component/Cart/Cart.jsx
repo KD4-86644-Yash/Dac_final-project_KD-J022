@@ -4,14 +4,16 @@ import { useParams } from "react-router-dom";
 import jsPDF from "jspdf"; 
 import "jspdf-autotable"; 
 import "../../css/Cart/cart.css"; 
+import NavBar from "../NavBar";
 
 function Cart() {
-    const { userId } = useParams();
+    const userId  = localStorage.getItem("id");
     const token = localStorage.getItem("token");
 
     const [cartItems, setCartItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+    const [selectedDate, setSelectedDate] = useState("");
 
     useEffect(() => {
         const fetchCartData = async () => {
@@ -59,7 +61,10 @@ function Cart() {
 
     const generatePDF = () => {
         const doc = new jsPDF();
-        doc.text("Invoice - Your Cart Items", 14, 20);
+        doc.text("Dream Weddings Invoice - Your Cart Items", 14, 20);
+
+        // Selected Date in Invoice
+        doc.text(`Wedding Date: ${selectedDate || "Not Selected"}`, 14, 30);
 
         // Table Headers
         const headers = [["Item", "Price", "Quantity", "Total"]];
@@ -74,7 +79,7 @@ function Cart() {
 
         // Auto-table plugin
         doc.autoTable({
-            startY: 30,
+            startY: 40,
             head: headers,
             body: data
         });
@@ -90,8 +95,25 @@ function Cart() {
     if (error) return <p className="error">{error}</p>;
 
     return (
+        <div>
+            <div>
+                <NavBar />
+            </div>
         <div className="cart-container">
+            
             <h2>Your Cart</h2>
+
+            {/* Date Picker */}
+            <div className="date-picker-container">
+                <label>Select Wedding Date:</label>
+                <input
+                    type="date"
+                    className="date-picker"
+                    value={selectedDate}
+                    onChange={(e) => setSelectedDate(e.target.value)}
+                />
+            </div>
+
             <div className="cart-items">
                 {cartItems.length === 0 ? (
                     <p>Your cart is empty!</p>
@@ -117,16 +139,18 @@ function Cart() {
                     ))
                 )}
             </div>
+
             <div className="cart-total">
                 <p>Total: ${calculateTotal()}</p>
             </div>
+
             <button className="checkout-btn" onClick={generatePDF}>Generate Bill</button>
+        </div>
         </div>
     );
 }
 
 export default Cart;
-
 
 
 /*import React, { useState, useEffect } from "react";
